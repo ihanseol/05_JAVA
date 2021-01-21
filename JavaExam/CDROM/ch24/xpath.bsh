@@ -1,0 +1,38 @@
+import javax.xml.*;
+import org.xml.sax.InputSource;
+import org.w3c.dom.*;
+import javax.xml.xpath.*;
+import javax.xml.transform.*;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+
+String expression = bsh.args[0];
+String filename = bsh.args[1];
+
+XPath xpath = XPathFactory.newInstance().newXPath();
+InputSource inputSource = new InputSource( filename );
+
+printXML( Element element )
+{
+	Transformer transformer = 
+		TransformerFactory.newInstance().newTransformer();
+	transformer.setOutputProperty( OutputKeys.OMIT_XML_DECLARATION, "yes" );
+	Source source = new DOMSource( element );
+	Result output = new StreamResult( System.out );
+	transformer.transform( source, output );
+	System.out.println();
+}
+
+NodeList elements = (NodeList)xpath.evaluate( 
+	expression, inputSource, XPathConstants.NODESET );
+for( int i=0; i<elements.getLength(); i++ )
+{
+	if ( elements.item(i) instanceof Element )
+	{
+		print("element:" + elements.item(i).getClass());
+		print("element:" + elements.item(i));
+		printXML( elements.item(i) );
+	} else
+		print( elements.item(i) );
+}
+

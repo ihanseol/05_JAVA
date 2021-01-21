@@ -1,0 +1,4323 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 9">
+<meta name=Originator content="Microsoft Word 9">
+<link rel=File-List href="./ImportKeys_files/filelist.xml">
+<title>The TestWrite example</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Pat</o:Author>
+  <o:Template>ora.dot</o:Template>
+  <o:LastAuthor>Debra Cameron</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>13</o:TotalTime>
+  <o:LastPrinted>2002-03-22T21:13:00Z</o:LastPrinted>
+  <o:Created>2002-03-22T21:14:00Z</o:Created>
+  <o:LastSaved>2002-03-22T21:14:00Z</o:LastSaved>
+  <o:Pages>5</o:Pages>
+  <o:Words>2999</o:Words>
+  <o:Characters>17099</o:Characters>
+  <o:Company>self</o:Company>
+  <o:Lines>142</o:Lines>
+  <o:Paragraphs>34</o:Paragraphs>
+  <o:CharactersWithSpaces>20998</o:CharactersWithSpaces>
+  <o:Version>9.2720</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:AttachedTemplate
+   HRef="C:\WINDOWS\Application Data\Microsoft\Templates\ora.dot"></w:AttachedTemplate>
+  <w:UpdateStylesOnOpen/>
+  <w:DisplayHorizontalDrawingGridEvery>0</w:DisplayHorizontalDrawingGridEvery>
+  <w:DisplayVerticalDrawingGridEvery>0</w:DisplayVerticalDrawingGridEvery>
+  <w:UseMarginsForDrawingGridOrigin/>
+  <w:Compatibility>
+   <w:FootnoteLayoutLikeWW8/>
+   <w:ShapeLayoutLikeWW8/>
+   <w:AlignTablesRowByRow/>
+   <w:ForgetLastTabAlignment/>
+   <w:LayoutRawTableWidth/>
+   <w:LayoutTableRowsApart/>
+  </w:Compatibility>
+ </w:WordDocument>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+@font-face
+	{font-family:Times;
+	panose-1:0 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-format:other;
+	mso-font-pitch:variable;
+	mso-font-signature:3 0 0 0 1 0;}
+@font-face
+	{font-family:Helvetica;
+	panose-1:0 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-format:other;
+	mso-font-pitch:variable;
+	mso-font-signature:3 0 0 0 1 0;}
+@font-face
+	{font-family:Courier;
+	panose-1:0 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:0;
+	mso-generic-font-family:modern;
+	mso-font-format:other;
+	mso-font-pitch:fixed;
+	mso-font-signature:3 0 0 0 1 0;}
+@font-face
+	{font-family:Geneva;
+	panose-1:0 0 0 0 0 0 0 0 0 0;
+	mso-font-alt:Arial;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-format:other;
+	mso-font-pitch:variable;
+	mso-font-signature:3 0 0 0 1 0;}
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+h1
+	{margin-top:16.0pt;
+	margin-right:0in;
+	margin-bottom:8.0pt;
+	margin-left:0in;
+	text-align:justify;
+	mso-line-height-alt:12.0pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	font-size:18.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Times;
+	color:red;
+	mso-font-kerning:0pt;
+	mso-bidi-font-weight:normal;}
+h2
+	{margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	text-align:justify;
+	mso-line-height-alt:12.0pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:2;
+	font-size:14.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Times;
+	color:red;
+	mso-bidi-font-weight:normal;}
+h3
+	{margin-top:8.0pt;
+	margin-right:0in;
+	margin-bottom:4.0pt;
+	margin-left:0in;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:3;
+	font-size:10.0pt;
+	font-family:Times;
+	color:red;
+	mso-bidi-font-weight:normal;}
+h4
+	{margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:4;
+	font-size:10.0pt;
+	font-family:Times;
+	color:red;
+	mso-bidi-font-weight:normal;}
+h5
+	{margin-top:3.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	text-align:justify;
+	mso-line-height-alt:12.0pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:5;
+	border:none;
+	mso-border-top-alt:solid windowtext .75pt;
+	padding:0in;
+	mso-padding-alt:2.0pt 0in 0in 0in;
+	font-size:14.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Times;
+	color:fuchsia;
+	mso-bidi-font-weight:normal;}
+h6
+	{margin-top:3.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:6;
+	font-size:10.0pt;
+	font-family:Times;
+	color:fuchsia;
+	mso-bidi-font-weight:normal;}
+p.MsoHeading7, li.MsoHeading7, div.MsoHeading7
+	{margin-top:2.0pt;
+	margin-right:0in;
+	margin-bottom:2.0pt;
+	margin-left:.25in;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:7;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:fuchsia;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.MsoHeading8, li.MsoHeading8, div.MsoHeading8
+	{margin-top:2.0pt;
+	margin-right:0in;
+	margin-bottom:2.0pt;
+	margin-left:.5in;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	mso-outline-level:8;
+	font-size:9.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Helvetica;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:fuchsia;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.MsoHeading9, li.MsoHeading9, div.MsoHeading9
+	{margin-top:2.0pt;
+	margin-right:0in;
+	margin-bottom:2.0pt;
+	margin-left:.75in;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	mso-outline-level:9;
+	font-size:9.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Helvetica;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:fuchsia;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.MsoFootnoteText, li.MsoFootnoteText, div.MsoFootnoteText
+	{margin-top:3.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	tab-stops:center 3.0in right 6.0in;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+	{margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	tab-stops:center 3.0in right 6.0in;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+span.MsoFootnoteReference
+	{vertical-align:super;}
+p.MsoListBullet, li.MsoListBullet, div.MsoListBullet
+	{mso-style-update:auto;
+	margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.25in;
+	text-align:justify;
+	text-indent:-.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	mso-list:l9 level1 lfo1;
+	tab-stops:list .25in;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+p.MsoListNumber, li.MsoListNumber, div.MsoListNumber
+	{margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.25in;
+	text-align:justify;
+	text-indent:-.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	mso-list:l8 level1 lfo6;
+	tab-stops:list .25in;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+p.MsoListBullet2, li.MsoListBullet2, div.MsoListBullet2
+	{mso-style-update:auto;
+	margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.5in;
+	text-align:justify;
+	text-indent:-.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	mso-list:l7 level1 lfo2;
+	tab-stops:list .5in;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+p.MsoListBullet3, li.MsoListBullet3, div.MsoListBullet3
+	{mso-style-update:auto;
+	margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.75in;
+	text-align:justify;
+	text-indent:-.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	mso-list:l6 level1 lfo3;
+	tab-stops:list .75in;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+p.MsoListBullet4, li.MsoListBullet4, div.MsoListBullet4
+	{mso-style-update:auto;
+	margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:1.0in;
+	text-align:justify;
+	text-indent:-.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	mso-list:l5 level1 lfo4;
+	tab-stops:list 1.0in;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+p.MsoListBullet5, li.MsoListBullet5, div.MsoListBullet5
+	{mso-style-update:auto;
+	margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:1.25in;
+	text-align:justify;
+	text-indent:-.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	mso-list:l4 level1 lfo5;
+	tab-stops:list 1.25in;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+p.MsoListNumber2, li.MsoListNumber2, div.MsoListNumber2
+	{margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.5in;
+	text-align:justify;
+	text-indent:-.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	mso-list:l3 level1 lfo7;
+	tab-stops:list .5in;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+p.MsoListNumber3, li.MsoListNumber3, div.MsoListNumber3
+	{margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.75in;
+	text-align:justify;
+	text-indent:-.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	mso-list:l2 level1 lfo8;
+	tab-stops:list .75in;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+p.MsoListNumber4, li.MsoListNumber4, div.MsoListNumber4
+	{margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:1.0in;
+	text-align:justify;
+	text-indent:-.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	mso-list:l1 level1 lfo9;
+	tab-stops:list 1.0in;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+p.MsoListNumber5, li.MsoListNumber5, div.MsoListNumber5
+	{margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:1.25in;
+	text-align:justify;
+	text-indent:-.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	mso-list:l0 level1 lfo10;
+	tab-stops:list 1.25in;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+p.MsoBodyText, li.MsoBodyText, div.MsoBodyText
+	{margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;
+	font-style:italic;}
+a:link, span.MsoHyperlink
+	{color:red;
+	font-style:italic;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+p.MsoDocumentMap, li.MsoDocumentMap, div.MsoDocumentMap
+	{margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	background:navy;
+	font-size:10.0pt;
+	font-family:Geneva;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+p.ListBullet, li.ListBullet, div.ListBullet
+	{mso-style-name:">ListBullet\,>lb";
+	margin-top:4.0pt;
+	margin-right:0in;
+	margin-bottom:4.0pt;
+	margin-left:.5in;
+	text-align:justify;
+	text-indent:-.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	mso-list:l23 level1 lfo31;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:maroon;}
+p.ListBullet0, li.ListBullet0, div.ListBullet0
+	{mso-style-name:"ListBullet\,lb";
+	margin-top:4.0pt;
+	margin-right:0in;
+	margin-bottom:4.0pt;
+	margin-left:.25in;
+	text-align:justify;
+	text-indent:-.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	mso-list:l43 level1 lfo43;
+	tab-stops:list .25in;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:maroon;}
+p.CodeNum, li.CodeNum, div.CodeNum
+	{mso-style-name:CodeNum;
+	mso-style-parent:"Code\,x";
+	margin-top:0in;
+	margin-right:-67.7pt;
+	margin-bottom:0in;
+	margin-left:.25in;
+	margin-bottom:.0001pt;
+	text-indent:-.25in;
+	line-height:10.0pt;
+	mso-line-height-rule:exactly;
+	mso-pagination:widow-orphan;
+	mso-list:l84 level1 lfo44;
+	tab-stops:list .25in bar 5.25in;
+	border:none;
+	mso-border-left-alt:solid windowtext .75pt;
+	padding:0in;
+	mso-padding-alt:0in 0in 0in 2.0pt;
+	font-size:9.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Courier;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:green;
+	letter-spacing:-.5pt;}
+p.Code, li.Code, div.Code
+	{mso-style-name:"Code\,x";
+	margin-top:0in;
+	margin-right:-67.7pt;
+	margin-bottom:0in;
+	margin-left:.25in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	tab-stops:bar 5.25in;
+	border:none;
+	mso-border-left-alt:solid windowtext .75pt;
+	padding:0in;
+	mso-padding-alt:0in 0in 0in 2.0pt;
+	font-size:9.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Courier;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:green;
+	letter-spacing:-.5pt;}
+p.NoteListBullet, li.NoteListBullet, div.NoteListBullet
+	{mso-style-name:Note>ListBullet;
+	mso-style-parent:"Note\,n";
+	margin-top:4.0pt;
+	margin-right:.5in;
+	margin-bottom:4.0pt;
+	margin-left:.75in;
+	text-align:justify;
+	text-indent:-.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	mso-list:l59 level1 lfo45;
+	border:none;
+	mso-border-top-alt:solid windowtext .75pt;
+	mso-border-bottom-alt:solid windowtext .75pt;
+	padding:0in;
+	mso-padding-alt:2.0pt 0in 2.0pt 0in;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:teal;}
+p.Note, li.Note, div.Note
+	{mso-style-name:"Note\,n";
+	margin-top:6.0pt;
+	margin-right:.5in;
+	margin-bottom:6.0pt;
+	margin-left:.5in;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	border:none;
+	mso-border-top-alt:solid windowtext .75pt;
+	mso-border-bottom-alt:solid windowtext .75pt;
+	padding:0in;
+	mso-padding-alt:2.0pt 0in 2.0pt 0in;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:teal;}
+p.NoteListNumber, li.NoteListNumber, div.NoteListNumber
+	{mso-style-name:Note>ListNumber;
+	mso-style-parent:Note>ListBullet;
+	margin-top:4.0pt;
+	margin-right:.5in;
+	margin-bottom:4.0pt;
+	margin-left:.75in;
+	text-align:justify;
+	text-indent:-.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	mso-list:l25 level1 lfo33;
+	border:none;
+	mso-border-top-alt:solid windowtext .75pt;
+	mso-border-bottom-alt:solid windowtext .75pt;
+	padding:0in;
+	mso-padding-alt:2.0pt 0in 2.0pt 0in;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:teal;}
+p.NoteWarningListBullet, li.NoteWarningListBullet, div.NoteWarningListBullet
+	{mso-style-name:NoteWarning>ListBullet;
+	mso-style-parent:"NoteWarning\,nw";
+	margin-top:4.0pt;
+	margin-right:.5in;
+	margin-bottom:4.0pt;
+	margin-left:.75in;
+	text-align:justify;
+	text-indent:-.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	mso-list:l82 level1 lfo46;
+	border:none;
+	mso-border-top-alt:double windowtext 2.25pt;
+	mso-border-bottom-alt:double windowtext 2.25pt;
+	padding:0in;
+	mso-padding-alt:2.0pt 0in 2.0pt 0in;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:purple;}
+p.NoteWarning, li.NoteWarning, div.NoteWarning
+	{mso-style-name:"NoteWarning\,nw";
+	mso-style-parent:"Note\,n";
+	margin-top:6.0pt;
+	margin-right:.5in;
+	margin-bottom:6.0pt;
+	margin-left:.5in;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	border:none;
+	mso-border-top-alt:double windowtext 2.25pt;
+	mso-border-bottom-alt:double windowtext 2.25pt;
+	padding:0in;
+	mso-padding-alt:2.0pt 0in 2.0pt 0in;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:purple;}
+p.NoteWarningListNumber, li.NoteWarningListNumber, div.NoteWarningListNumber
+	{mso-style-name:NoteWarning>ListNumber;
+	mso-style-parent:Note>ListBullet;
+	margin-top:4.0pt;
+	margin-right:.5in;
+	margin-bottom:4.0pt;
+	margin-left:.75in;
+	text-align:justify;
+	text-indent:-.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	mso-list:l24 level1 lfo32;
+	border:none;
+	mso-border-top-alt:double windowtext 2.25pt;
+	mso-border-bottom-alt:double windowtext 2.25pt;
+	padding:0in;
+	mso-padding-alt:2.0pt 0in 2.0pt 0in;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:purple;}
+p.RefPurpose, li.RefPurpose, div.RefPurpose
+	{mso-style-name:"RefPurpose\,rp";
+	mso-style-parent:"RefSynopsis\,NutSynopsis\,rs";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.25in;
+	margin-bottom:.0001pt;
+	text-indent:-.25in;
+	line-height:10.0pt;
+	mso-line-height-rule:exactly;
+	mso-pagination:widow-orphan;
+	mso-list:l10 level1 lfo11;
+	tab-stops:.25in;
+	mso-element:frame;
+	mso-element-frame-width:2.0in;
+	mso-element-frame-hspace:9.35pt;
+	mso-element-wrap:around;
+	mso-element-anchor-vertical:paragraph;
+	mso-element-anchor-horizontal:column;
+	mso-element-left:right;
+	mso-element-top:-15.05pt;
+	mso-height-rule:exactly;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:fuchsia;
+	text-decoration:underline;
+	text-underline:single;}
+p.RefSynopsis, li.RefSynopsis, div.RefSynopsis
+	{mso-style-name:"RefSynopsis\,NutSynopsis\,rs";
+	margin-top:4.0pt;
+	margin-right:0in;
+	margin-bottom:4.0pt;
+	margin-left:0in;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:fuchsia;}
+p.SidebarListBullet, li.SidebarListBullet, div.SidebarListBullet
+	{mso-style-name:"SidebarListBullet\,ylb";
+	mso-style-parent:"ListBullet\,lb";
+	margin-top:4.0pt;
+	margin-right:.25in;
+	margin-bottom:4.0pt;
+	margin-left:.5in;
+	text-align:justify;
+	text-indent:-.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-list:l53 level1 lfo48;
+	mso-hyphenate:none;
+	border:none;
+	mso-border-alt:solid windowtext 1.5pt;
+	padding:0in;
+	mso-padding-alt:.25in .25in .25in .25in;
+	mso-border-shadow:yes;
+	mso-element:frame;
+	mso-element-frame-hspace:9.35pt;
+	mso-element-frame-vspace:9.35pt;
+	mso-element-wrap:no-wrap-beside;
+	mso-element-anchor-vertical:paragraph;
+	mso-element-anchor-horizontal:column;
+	mso-element-top:.05pt;
+	mso-height-rule:exactly;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:teal;}
+p.SidebarListNumber, li.SidebarListNumber, div.SidebarListNumber
+	{mso-style-name:"SidebarListNumber\,yln";
+	mso-style-parent:"ListNumber\,ln";
+	margin-top:4.0pt;
+	margin-right:.25in;
+	margin-bottom:4.0pt;
+	margin-left:.5in;
+	text-align:justify;
+	text-indent:-.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	mso-list:l80 level1 lfo49;
+	border:none;
+	mso-border-alt:solid windowtext 1.5pt;
+	padding:0in;
+	mso-padding-alt:.25in .25in .25in .25in;
+	mso-border-shadow:yes;
+	mso-element:frame;
+	mso-element-frame-hspace:9.35pt;
+	mso-element-frame-vspace:9.35pt;
+	mso-element-wrap:no-wrap-beside;
+	mso-element-anchor-vertical:paragraph;
+	mso-element-anchor-horizontal:column;
+	mso-element-top:.05pt;
+	mso-height-rule:exactly;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:teal;
+	layout-grid-mode:line;}
+p.ListNumber, li.ListNumber, div.ListNumber
+	{mso-style-name:"ListNumber\,ln";
+	mso-style-parent:"ListBullet\,lb";
+	margin-top:4.0pt;
+	margin-right:0in;
+	margin-bottom:4.0pt;
+	margin-left:.25in;
+	text-align:justify;
+	text-indent:-.25in;
+	mso-pagination:widow-orphan;
+	tab-stops:list .25in;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:navy;
+	layout-grid-mode:line;}
+span.onlineitem
+	{mso-style-name:"online item\,fiy";
+	mso-ascii-font-family:Times;
+	mso-hansi-font-family:Times;
+	color:red;
+	font-style:italic;}
+p.FigureTitle, li.FigureTitle, div.FigureTitle
+	{mso-style-name:"FigureTitle\,gt";
+	margin-top:4.0pt;
+	margin-right:.5in;
+	margin-bottom:4.0pt;
+	margin-left:.5in;
+	text-align:center;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:maroon;
+	font-style:italic;
+	mso-bidi-font-style:normal;}
+span.filename
+	{mso-style-name:filename;
+	mso-bidi-font-size:12.0pt;
+	mso-ascii-font-family:"Times New Roman";
+	mso-hansi-font-family:"Times New Roman";
+	color:windowtext;}
+span.literal
+	{mso-style-name:"literal\,fc";
+	mso-ascii-font-family:Courier;
+	mso-hansi-font-family:Courier;
+	color:red;}
+span.FirstTerm
+	{mso-style-name:FirstTerm;
+	mso-bidi-font-size:12.0pt;
+	mso-ascii-font-family:"Times New Roman";
+	mso-hansi-font-family:"Times New Roman";
+	color:windowtext;}
+span.userinput
+	{mso-style-name:"user input\,fcb";
+	mso-ascii-font-family:Courier;
+	mso-hansi-font-family:Courier;
+	color:red;
+	font-weight:bold;}
+p.ChapterTitle, li.ChapterTitle, div.ChapterTitle
+	{mso-style-name:"ChapterTitle\,ct";
+	margin-top:4.0pt;
+	margin-right:0in;
+	margin-bottom:1.5in;
+	margin-left:0in;
+	text-align:right;
+	mso-line-height-alt:12.0pt;
+	mso-pagination:widow-orphan;
+	mso-outline-level:1;
+	font-size:24.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:red;}
+p.ChapterLabel, li.ChapterLabel, div.ChapterLabel
+	{mso-style-name:"ChapterLabel\,cl";
+	mso-style-parent:"ChapterTitle\,ct";
+	margin-top:4.0pt;
+	margin-right:0in;
+	margin-bottom:24.0pt;
+	margin-left:0in;
+	text-align:right;
+	mso-line-height-alt:12.0pt;
+	page-break-before:always;
+	mso-pagination:widow-orphan;
+	mso-outline-level:1;
+	font-size:48.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:red;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.CellCode, li.CellCode, div.CellCode
+	{mso-style-name:"CellCode\,tc";
+	mso-style-parent:"CellBody\,tb";
+	margin-top:2.0pt;
+	margin-right:0in;
+	margin-bottom:2.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan lines-together;
+	font-size:9.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Courier;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:navy;}
+p.ListBullet1, li.ListBullet1, div.ListBullet1
+	{mso-style-name:"ListBullet\.\.\.\,lbb";
+	margin-top:4.0pt;
+	margin-right:0in;
+	margin-bottom:4.0pt;
+	margin-left:.25in;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:maroon;}
+p.ListVariable, li.ListVariable, div.ListVariable
+	{mso-style-name:"ListVariable\,lv";
+	mso-style-next:"ListVariableTerm\,lvt";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:4.0pt;
+	margin-left:.25in;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:green;}
+p.ListNumber0, li.ListNumber0, div.ListNumber0
+	{mso-style-name:"ListNumber\.\.\.\,lnn";
+	mso-style-parent:"ListBullet\.\.\.\,lbb";
+	margin-top:4.0pt;
+	margin-right:0in;
+	margin-bottom:4.0pt;
+	margin-left:.25in;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:navy;}
+p.ListNumberStart, li.ListNumberStart, div.ListNumberStart
+	{mso-style-name:"ListNumberStart\,lns";
+	mso-style-parent:"ListNumber\,ln";
+	mso-style-next:"ListNumber\,ln";
+	margin-top:4.0pt;
+	margin-right:0in;
+	margin-bottom:4.0pt;
+	margin-left:.25in;
+	text-align:justify;
+	text-indent:-.25in;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	tab-stops:list .25in;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:navy;
+	layout-grid-mode:line;}
+p.FigureHolder, li.FigureHolder, div.FigureHolder
+	{mso-style-name:"FigureHolder\,gh";
+	margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	text-align:center;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:maroon;}
+p.ExampleTitle, li.ExampleTitle, div.ExampleTitle
+	{mso-style-name:"ExampleTitle\,xt";
+	mso-style-next:"Code\,x";
+	margin-top:4.0pt;
+	margin-right:-.2in;
+	margin-bottom:4.0pt;
+	margin-left:.25in;
+	text-align:center;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	border:none;
+	mso-border-left-alt:solid windowtext .75pt;
+	padding:0in;
+	mso-padding-alt:0in 0in 0in 2.0pt;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:green;
+	font-style:italic;
+	mso-bidi-font-style:normal;}
+p.CellBody, li.CellBody, div.CellBody
+	{mso-style-name:"CellBody\,tb";
+	margin-top:2.0pt;
+	margin-right:0in;
+	margin-bottom:2.0pt;
+	margin-left:0in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan lines-together;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:navy;}
+p.CellHeading, li.CellHeading, div.CellHeading
+	{mso-style-name:"CellHeading\,th";
+	mso-style-parent:"CellBody\,tb";
+	margin-top:2.0pt;
+	margin-right:0in;
+	margin-bottom:2.0pt;
+	margin-left:0in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan lines-together;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:navy;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.CellSubhead, li.CellSubhead, div.CellSubhead
+	{mso-style-name:"CellSubhead\,ts";
+	mso-style-parent:"CellHeading\,th";
+	margin-top:2.0pt;
+	margin-right:0in;
+	margin-bottom:2.0pt;
+	margin-left:0in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan lines-together;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:navy;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.CodeEmphasis, li.CodeEmphasis, div.CodeEmphasis
+	{mso-style-name:"CodeEmphasis\,xe";
+	mso-style-parent:"Code\,x";
+	margin-top:0in;
+	margin-right:-67.7pt;
+	margin-bottom:0in;
+	margin-left:.25in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	tab-stops:bar 5.25in;
+	border:none;
+	mso-border-left-alt:solid windowtext .75pt;
+	padding:0in;
+	mso-padding-alt:0in 0in 0in 2.0pt;
+	font-size:9.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Courier;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:green;
+	letter-spacing:-.5pt;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.TableTitle, li.TableTitle, div.TableTitle
+	{mso-style-name:"TableTitle\,tt";
+	mso-style-parent:"FigureTitle\,gt";
+	margin-top:12.0pt;
+	margin-right:.5in;
+	margin-bottom:4.0pt;
+	margin-left:.5in;
+	text-align:center;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:navy;
+	font-style:italic;
+	mso-bidi-font-style:normal;}
+p.Epigraph, li.Epigraph, div.Epigraph
+	{mso-style-name:"Epigraph\,e";
+	margin-top:4.0pt;
+	margin-right:0in;
+	margin-bottom:4.0pt;
+	margin-left:0in;
+	text-align:right;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;
+	font-style:italic;
+	mso-bidi-font-style:normal;}
+p.EpigraphAuthor, li.EpigraphAuthor, div.EpigraphAuthor
+	{mso-style-name:"EpigraphAuthor\,ea";
+	mso-style-parent:"Epigraph\,e";
+	margin-top:4.0pt;
+	margin-right:0in;
+	margin-bottom:4.0pt;
+	margin-left:0in;
+	text-align:right;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+p.EpigraphCitation, li.EpigraphCitation, div.EpigraphCitation
+	{mso-style-name:"EpigraphCitation\,ec";
+	mso-style-parent:"Epigraph\,e";
+	margin-top:4.0pt;
+	margin-right:0in;
+	margin-bottom:24.0pt;
+	margin-left:0in;
+	text-align:right;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;
+	font-style:italic;
+	mso-bidi-font-style:normal;}
+p.SidebarTitle, li.SidebarTitle, div.SidebarTitle
+	{mso-style-name:"SidebarTitle\,yt";
+	mso-style-parent:"SidebarBody\,yb";
+	margin-top:4.0pt;
+	margin-right:.25in;
+	margin-bottom:4.0pt;
+	margin-left:.25in;
+	text-align:center;
+	mso-line-height-alt:12.0pt;
+	mso-pagination:widow-orphan lines-together;
+	border:none;
+	mso-border-alt:solid windowtext 1.5pt;
+	padding:0in;
+	mso-padding-alt:.25in .25in .25in .25in;
+	mso-border-shadow:yes;
+	mso-element:frame;
+	mso-element-frame-hspace:9.35pt;
+	mso-element-frame-vspace:9.35pt;
+	mso-element-wrap:no-wrap-beside;
+	mso-element-anchor-vertical:paragraph;
+	mso-element-anchor-horizontal:column;
+	mso-element-top:.05pt;
+	mso-height-rule:exactly;
+	font-size:18.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:teal;}
+p.SidebarBody, li.SidebarBody, div.SidebarBody
+	{mso-style-name:"SidebarBody\,yb";
+	margin-top:4.0pt;
+	margin-right:.25in;
+	margin-bottom:4.0pt;
+	margin-left:.25in;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan lines-together;
+	border:none;
+	mso-border-alt:solid windowtext 1.5pt;
+	padding:0in;
+	mso-padding-alt:.25in .25in .25in .25in;
+	mso-border-shadow:yes;
+	mso-element:frame;
+	mso-element-frame-hspace:9.35pt;
+	mso-element-frame-vspace:9.35pt;
+	mso-element-wrap:no-wrap-beside;
+	mso-element-anchor-vertical:paragraph;
+	mso-element-anchor-horizontal:column;
+	mso-element-top:.05pt;
+	mso-height-rule:exactly;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:teal;}
+p.Quote, li.Quote, div.Quote
+	{mso-style-name:"Quote\,q";
+	margin-top:4.0pt;
+	margin-right:.25in;
+	margin-bottom:4.0pt;
+	margin-left:.25in;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:teal;}
+p.ListBullet2, li.ListBullet2, div.ListBullet2
+	{mso-style-name:">ListBullet\.\.\.\,>lbb";
+	mso-style-parent:"ListBullet\.\.\.\,lbb";
+	margin-top:4.0pt;
+	margin-right:0in;
+	margin-bottom:4.0pt;
+	margin-left:.5in;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:maroon;}
+p.ListVariable0, li.ListVariable0, div.ListVariable0
+	{mso-style-name:">ListVariable\,>lv";
+	mso-style-parent:"ListVariable\,lv";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:4.0pt;
+	margin-left:.5in;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:green;}
+p.ListNumberStart0, li.ListNumberStart0, div.ListNumberStart0
+	{mso-style-name:">ListNumberStart\,>lns";
+	mso-style-parent:"ListNumberStart\,lns";
+	mso-style-next:">ListNumber\,>ln";
+	margin-top:4.0pt;
+	margin-right:0in;
+	margin-bottom:4.0pt;
+	margin-left:.5in;
+	text-align:justify;
+	text-indent:-.25in;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	tab-stops:list .25in;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:navy;
+	layout-grid-mode:line;}
+p.ListNumber1, li.ListNumber1, div.ListNumber1
+	{mso-style-name:">ListNumber\,>ln";
+	mso-style-parent:"ListNumber\,ln";
+	margin-top:4.0pt;
+	margin-right:0in;
+	margin-bottom:4.0pt;
+	margin-left:.5in;
+	text-align:justify;
+	text-indent:-.25in;
+	mso-pagination:widow-orphan;
+	tab-stops:list .25in;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:navy;
+	layout-grid-mode:line;}
+p.ListNumber2, li.ListNumber2, div.ListNumber2
+	{mso-style-name:">ListNumber\.\.\.\,>lnn";
+	mso-style-parent:"ListNumber\.\.\.\,lnn";
+	margin-top:4.0pt;
+	margin-right:0in;
+	margin-bottom:4.0pt;
+	margin-left:.5in;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:navy;}
+span.bold
+	{mso-style-name:"bold\,fb";
+	mso-ascii-font-family:Times;
+	mso-hansi-font-family:Times;
+	color:red;
+	mso-ansi-language:EN-US;
+	font-weight:bold;}
+p.ListVariableTerm, li.ListVariableTerm, div.ListVariableTerm
+	{mso-style-name:"ListVariableTerm\,lvt";
+	mso-style-parent:"ListVariable\,lv";
+	mso-style-next:"ListVariable\,lv";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:green;}
+p.ListVariableTerm0, li.ListVariableTerm0, div.ListVariableTerm0
+	{mso-style-name:">ListVariableTerm\,>lvt";
+	mso-style-parent:">ListVariable\,>lv";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.25in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:green;
+	font-style:italic;
+	mso-bidi-font-style:normal;}
+p.ListSimple, li.ListSimple, div.ListSimple
+	{mso-style-name:"ListSimple\,ls";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.25in;
+	margin-bottom:.0001pt;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:blue;}
+span.technicalitalic
+	{mso-style-name:"technical italic\,fix";
+	mso-ascii-font-family:Times;
+	mso-hansi-font-family:Times;
+	color:red;
+	font-style:italic;}
+span.emphasis
+	{mso-style-name:"emphasis\,fi";
+	mso-ascii-font-family:Times;
+	mso-hansi-font-family:Times;
+	color:red;
+	mso-ansi-language:EN-US;
+	font-style:italic;}
+span.replaceable
+	{mso-style-name:"replaceable\,fci";
+	mso-ascii-font-family:Courier;
+	mso-hansi-font-family:Courier;
+	color:red;
+	font-style:italic;}
+span.superscript
+	{mso-style-name:superscript;
+	color:red;
+	mso-text-raise:3.0pt;}
+span.subscript
+	{mso-style-name:subscript;
+	mso-ansi-font-size:10.0pt;
+	mso-ascii-font-family:Times;
+	mso-hansi-font-family:Times;
+	color:red;
+	mso-text-raise:-3.0pt;}
+p.Comment, li.Comment, div.Comment
+	{mso-style-name:"Comment\,z";
+	margin-top:4.0pt;
+	margin-right:0in;
+	margin-bottom:4.0pt;
+	margin-left:0in;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+p.SidebarCode, li.SidebarCode, div.SidebarCode
+	{mso-style-name:"SidebarCode\,yc";
+	mso-style-parent:"SidebarBody\,yb";
+	margin-top:0in;
+	margin-right:.25in;
+	margin-bottom:0in;
+	margin-left:.25in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	line-height:10.0pt;
+	mso-line-height-rule:exactly;
+	mso-pagination:widow-orphan lines-together;
+	border:none;
+	mso-border-alt:solid windowtext 1.5pt;
+	padding:0in;
+	mso-padding-alt:.25in .25in .25in .25in;
+	mso-border-shadow:yes;
+	mso-element:frame;
+	mso-element-frame-hspace:9.35pt;
+	mso-element-frame-vspace:9.35pt;
+	mso-element-wrap:no-wrap-beside;
+	mso-element-anchor-vertical:paragraph;
+	mso-element-anchor-horizontal:column;
+	mso-element-top:.05pt;
+	mso-height-rule:exactly;
+	font-size:9.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Courier;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:teal;}
+span.userinputreplaceable
+	{mso-style-name:"user input replaceable\,fcbi";
+	mso-style-parent:"user input\,fcb";
+	mso-ascii-font-family:Courier;
+	mso-hansi-font-family:Courier;
+	color:red;
+	font-weight:bold;
+	font-style:italic;}
+p.NoteCode, li.NoteCode, div.NoteCode
+	{mso-style-name:Note>Code;
+	mso-style-parent:"Note\,n";
+	margin-top:0in;
+	margin-right:.5in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	line-height:10.0pt;
+	mso-line-height-rule:exactly;
+	mso-pagination:widow-orphan;
+	border:none;
+	mso-border-top-alt:solid windowtext .75pt;
+	mso-border-bottom-alt:solid windowtext .75pt;
+	padding:0in;
+	mso-padding-alt:2.0pt 0in 2.0pt 0in;
+	font-size:9.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Courier;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:teal;}
+span.Symbol
+	{mso-style-name:Symbol;
+	mso-ascii-font-family:Symbol;
+	mso-hansi-font-family:Symbol;
+	color:red;
+	border:none;}
+p.NoteWarningCode, li.NoteWarningCode, div.NoteWarningCode
+	{mso-style-name:NoteWarning>Code;
+	mso-style-parent:"NoteWarning\,nw";
+	margin-top:0in;
+	margin-right:.5in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	line-height:10.0pt;
+	mso-line-height-rule:exactly;
+	mso-pagination:widow-orphan;
+	border:none;
+	mso-border-top-alt:double windowtext 2.25pt;
+	mso-border-bottom-alt:double windowtext 2.25pt;
+	padding:0in;
+	mso-padding-alt:2.0pt 0in 2.0pt 0in;
+	font-size:9.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Courier;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:purple;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+@list l0
+	{mso-list-id:-132;
+	mso-list-type:simple;
+	mso-list-template-ids:-903439920;}
+@list l0:level1
+	{mso-level-tab-stop:1.25in;
+	mso-level-number-position:left;
+	margin-left:1.25in;
+	text-indent:-.25in;}
+@list l1
+	{mso-list-id:-131;
+	mso-list-type:simple;
+	mso-list-template-ids:1349692094;}
+@list l1:level1
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	margin-left:1.0in;
+	text-indent:-.25in;}
+@list l2
+	{mso-list-id:-130;
+	mso-list-type:simple;
+	mso-list-template-ids:-1421164964;}
+@list l2:level1
+	{mso-level-tab-stop:.75in;
+	mso-level-number-position:left;
+	margin-left:.75in;
+	text-indent:-.25in;}
+@list l3
+	{mso-list-id:-129;
+	mso-list-type:simple;
+	mso-list-template-ids:359945280;}
+@list l3:level1
+	{mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4
+	{mso-list-id:-128;
+	mso-list-type:simple;
+	mso-list-template-ids:1739995856;}
+@list l4:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:1.25in;
+	mso-level-number-position:left;
+	margin-left:1.25in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l5
+	{mso-list-id:-127;
+	mso-list-type:simple;
+	mso-list-template-ids:635846536;}
+@list l5:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	margin-left:1.0in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l6
+	{mso-list-id:-126;
+	mso-list-type:simple;
+	mso-list-template-ids:2143173986;}
+@list l6:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.75in;
+	mso-level-number-position:left;
+	margin-left:.75in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l7
+	{mso-list-id:-125;
+	mso-list-type:simple;
+	mso-list-template-ids:522454614;}
+@list l7:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l8
+	{mso-list-id:-120;
+	mso-list-type:simple;
+	mso-list-template-ids:746241926;}
+@list l8:level1
+	{mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l9
+	{mso-list-id:-119;
+	mso-list-type:simple;
+	mso-list-template-ids:-342228500;}
+@list l9:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l10
+	{mso-list-id:-2;
+	mso-list-type:simple;
+	mso-list-template-ids:0;}
+@list l10:level1
+	{mso-level-start-at:0;
+	mso-level-style-link:RefPurpose;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l11
+	{mso-list-id:1;
+	mso-list-type:simple;
+	mso-list-template-ids:-1;}
+@list l11:level1
+	{mso-level-start-at:0;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l12
+	{mso-list-id:2;
+	mso-list-type:simple;
+	mso-list-template-ids:-2145630574;}
+@list l12:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l13
+	{mso-list-id:3;
+	mso-list-type:simple;
+	mso-list-template-ids:-2145630574;}
+@list l13:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l14
+	{mso-list-id:4;
+	mso-list-type:simple;
+	mso-list-template-ids:-1;}
+@list l14:level1
+	{mso-level-start-at:0;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l15
+	{mso-list-id:5;
+	mso-list-type:simple;
+	mso-list-template-ids:-1;}
+@list l15:level1
+	{mso-level-start-at:0;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l16
+	{mso-list-id:6;
+	mso-list-type:simple;
+	mso-list-template-ids:-1;}
+@list l16:level1
+	{mso-level-start-at:0;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l17
+	{mso-list-id:7;
+	mso-list-type:simple;
+	mso-list-template-ids:-999938550;}
+@list l17:level1
+	{mso-level-start-at:2;
+	mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l18
+	{mso-list-id:9;
+	mso-list-type:simple;
+	mso-list-template-ids:-1;}
+@list l18:level1
+	{mso-level-start-at:0;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l19
+	{mso-list-id:10;
+	mso-list-type:simple;
+	mso-list-template-ids:-1;}
+@list l19:level1
+	{mso-level-start-at:0;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l20
+	{mso-list-id:11;
+	mso-list-type:simple;
+	mso-list-template-ids:-1;}
+@list l20:level1
+	{mso-level-start-at:0;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l21
+	{mso-list-id:12;
+	mso-list-type:simple;
+	mso-list-template-ids:-1;}
+@list l21:level1
+	{mso-level-start-at:0;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l22
+	{mso-list-id:13;
+	mso-list-type:simple;
+	mso-list-template-ids:-1;}
+@list l22:level1
+	{mso-level-start-at:0;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l23
+	{mso-list-id:14;
+	mso-list-type:simple;
+	mso-list-template-ids:0;}
+@list l23:level1
+	{mso-level-number-format:bullet;
+	mso-level-style-link:>ListBullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l24
+	{mso-list-id:15;
+	mso-list-type:simple;
+	mso-list-template-ids:-198919550;}
+@list l24:level1
+	{mso-level-style-link:NoteWarning>ListNumber;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l25
+	{mso-list-id:16;
+	mso-list-type:simple;
+	mso-list-template-ids:0;}
+@list l25:level1
+	{mso-level-style-link:Note>ListNumber;
+	mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l26
+	{mso-list-id:23336855;
+	mso-list-type:simple;
+	mso-list-template-ids:-1;}
+@list l26:level1
+	{mso-level-start-at:0;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l27
+	{mso-list-id:81339472;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l27:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l28
+	{mso-list-id:82722815;
+	mso-list-type:simple;
+	mso-list-template-ids:-1207784814;}
+@list l28:level1
+	{mso-level-start-at:3;
+	mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l29
+	{mso-list-id:109252563;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l29:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	text-indent:-.25in;}
+@list l30
+	{mso-list-id:191458823;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l30:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l31
+	{mso-list-id:246306559;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l31:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.3in;
+	text-indent:-.25in;}
+@list l32
+	{mso-list-id:318266831;
+	mso-list-type:simple;
+	mso-list-template-ids:-1;}
+@list l32:level1
+	{mso-level-start-at:0;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l33
+	{mso-list-id:381058107;
+	mso-list-type:simple;
+	mso-list-template-ids:-2145630574;}
+@list l33:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l34
+	{mso-list-id:429206223;
+	mso-list-type:simple;
+	mso-list-template-ids:-768445754;}
+@list l34:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-text:"%1\)";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.55in;
+	text-indent:-.25in;}
+@list l35
+	{mso-list-id:433549853;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l35:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.3in;
+	text-indent:-.25in;}
+@list l36
+	{mso-list-id:436368843;
+	mso-list-type:simple;
+	mso-list-template-ids:-1;}
+@list l36:level1
+	{mso-level-start-at:0;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l37
+	{mso-list-id:517742026;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l37:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.3in;
+	text-indent:-.25in;}
+@list l38
+	{mso-list-id:543298772;
+	mso-list-type:simple;
+	mso-list-template-ids:-768445754;}
+@list l38:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-text:"%1\)";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.55in;
+	text-indent:-.25in;}
+@list l39
+	{mso-list-id:549146146;
+	mso-list-type:simple;
+	mso-list-template-ids:-1;}
+@list l39:level1
+	{mso-level-start-at:0;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l40
+	{mso-list-id:566457592;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l40:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.3in;
+	text-indent:-.25in;}
+@list l41
+	{mso-list-id:567962367;
+	mso-list-type:simple;
+	mso-list-template-ids:-2145630574;}
+@list l41:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l42
+	{mso-list-id:591621228;
+	mso-list-type:simple;
+	mso-list-template-ids:-2145630574;}
+@list l42:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l43
+	{mso-list-id:601913694;
+	mso-list-type:simple;
+	mso-list-template-ids:1252566738;}
+@list l43:level1
+	{mso-level-number-format:bullet;
+	mso-level-style-link:ListBullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l44
+	{mso-list-id:610085353;
+	mso-list-type:simple;
+	mso-list-template-ids:-1;}
+@list l44:level1
+	{mso-level-start-at:0;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l45
+	{mso-list-id:624848123;
+	mso-list-type:simple;
+	mso-list-template-ids:846375846;}
+@list l45:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l46
+	{mso-list-id:626856251;
+	mso-list-type:simple;
+	mso-list-template-ids:-1;}
+@list l46:level1
+	{mso-level-start-at:0;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l47
+	{mso-list-id:677538203;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l47:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.3in;
+	text-indent:-.25in;}
+@list l48
+	{mso-list-id:690567196;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l48:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.3in;
+	text-indent:-.25in;}
+@list l49
+	{mso-list-id:734008717;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l49:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.3in;
+	text-indent:-.25in;}
+@list l50
+	{mso-list-id:734671284;
+	mso-list-type:simple;
+	mso-list-template-ids:-1;}
+@list l50:level1
+	{mso-level-start-at:0;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l51
+	{mso-list-id:735669632;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l51:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l52
+	{mso-list-id:751976439;
+	mso-list-type:simple;
+	mso-list-template-ids:-1;}
+@list l52:level1
+	{mso-level-start-at:0;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l53
+	{mso-list-id:815411582;
+	mso-list-type:simple;
+	mso-list-template-ids:1325411750;}
+@list l53:level1
+	{mso-level-number-format:bullet;
+	mso-level-style-link:SidebarListBullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l54
+	{mso-list-id:822477435;
+	mso-list-type:simple;
+	mso-list-template-ids:-768445754;}
+@list l54:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-text:"%1\)";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.55in;
+	text-indent:-.25in;}
+@list l55
+	{mso-list-id:831334942;
+	mso-list-type:simple;
+	mso-list-template-ids:-1;}
+@list l55:level1
+	{mso-level-start-at:0;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l56
+	{mso-list-id:860123194;
+	mso-list-type:simple;
+	mso-list-template-ids:-922948940;}
+@list l56:level1
+	{mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l57
+	{mso-list-id:939605999;
+	mso-list-type:simple;
+	mso-list-template-ids:-2145630574;}
+@list l57:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l58
+	{mso-list-id:948970068;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l58:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.3in;
+	text-indent:-.25in;}
+@list l59
+	{mso-list-id:952833409;
+	mso-list-type:simple;
+	mso-list-template-ids:-1557993748;}
+@list l59:level1
+	{mso-level-number-format:bullet;
+	mso-level-style-link:Note>ListBullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l60
+	{mso-list-id:970327993;
+	mso-list-type:simple;
+	mso-list-template-ids:-768445754;}
+@list l60:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-text:"%1\)";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	text-indent:-.25in;}
+@list l61
+	{mso-list-id:978149076;
+	mso-list-type:simple;
+	mso-list-template-ids:-2145630574;}
+@list l61:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l62
+	{mso-list-id:986662064;
+	mso-list-type:simple;
+	mso-list-template-ids:-768445754;}
+@list l62:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-text:"%1\)";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.55in;
+	text-indent:-.25in;}
+@list l63
+	{mso-list-id:993993563;
+	mso-list-type:simple;
+	mso-list-template-ids:-2145630574;}
+@list l63:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l64
+	{mso-list-id:1006324633;
+	mso-list-type:simple;
+	mso-list-template-ids:-1;}
+@list l64:level1
+	{mso-level-start-at:0;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l65
+	{mso-list-id:1013723002;
+	mso-list-type:simple;
+	mso-list-template-ids:-1;}
+@list l65:level1
+	{mso-level-start-at:0;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l66
+	{mso-list-id:1053387318;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l66:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l67
+	{mso-list-id:1072001493;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l67:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l68
+	{mso-list-id:1094666222;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l68:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	text-indent:-.25in;}
+@list l69
+	{mso-list-id:1096171451;
+	mso-list-type:simple;
+	mso-list-template-ids:-768445754;}
+@list l69:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-text:"%1\)";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	text-indent:-.25in;}
+@list l70
+	{mso-list-id:1130242251;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l70:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	text-indent:-.25in;}
+@list l71
+	{mso-list-id:1158956619;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l71:level1
+	{mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l72
+	{mso-list-id:1167331328;
+	mso-list-type:simple;
+	mso-list-template-ids:-147952942;}
+@list l72:level1
+	{mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l73
+	{mso-list-id:1213812495;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l73:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.3in;
+	text-indent:-.25in;}
+@list l74
+	{mso-list-id:1220751754;
+	mso-list-type:simple;
+	mso-list-template-ids:-768445754;}
+@list l74:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-text:"%1\)";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.55in;
+	text-indent:-.25in;}
+@list l75
+	{mso-list-id:1221667886;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l75:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.3in;
+	text-indent:-.25in;}
+@list l76
+	{mso-list-id:1253317287;
+	mso-list-type:simple;
+	mso-list-template-ids:-768445754;}
+@list l76:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-text:"%1\)";
+	mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l77
+	{mso-list-id:1264608548;
+	mso-list-type:simple;
+	mso-list-template-ids:-768445754;}
+@list l77:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-text:"%1\)";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.55in;
+	text-indent:-.25in;}
+@list l78
+	{mso-list-id:1267613843;
+	mso-list-type:simple;
+	mso-list-template-ids:-1;}
+@list l78:level1
+	{mso-level-start-at:0;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l79
+	{mso-list-id:1270772914;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l79:level1
+	{mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l80
+	{mso-list-id:1318650478;
+	mso-list-type:simple;
+	mso-list-template-ids:-2145630574;}
+@list l80:level1
+	{mso-level-style-link:SidebarListNumber;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l81
+	{mso-list-id:1329216303;
+	mso-list-type:simple;
+	mso-list-template-ids:-1;}
+@list l81:level1
+	{mso-level-start-at:0;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l82
+	{mso-list-id:1370960661;
+	mso-list-type:simple;
+	mso-list-template-ids:1134695778;}
+@list l82:level1
+	{mso-level-number-format:bullet;
+	mso-level-style-link:NoteWarning>ListBullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l83
+	{mso-list-id:1376155942;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l83:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	text-indent:-.25in;}
+@list l84
+	{mso-list-id:1381124722;
+	mso-list-type:simple;
+	mso-list-template-ids:-22622980;}
+@list l84:level1
+	{mso-level-style-link:CodeNum;
+	mso-level-text:%1;
+	mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l85
+	{mso-list-id:1386903609;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l85:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.3in;
+	text-indent:-.25in;}
+@list l86
+	{mso-list-id:1426534621;
+	mso-list-type:simple;
+	mso-list-template-ids:-768445754;}
+@list l86:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-text:"%1\)";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	text-indent:-.25in;}
+@list l87
+	{mso-list-id:1470629908;
+	mso-list-type:simple;
+	mso-list-template-ids:-1;}
+@list l87:level1
+	{mso-level-start-at:0;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l88
+	{mso-list-id:1484195725;
+	mso-list-type:simple;
+	mso-list-template-ids:1183478732;}
+@list l88:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l89
+	{mso-list-id:1491553866;
+	mso-list-type:simple;
+	mso-list-template-ids:-2145630574;}
+@list l89:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l90
+	{mso-list-id:1503668661;
+	mso-list-type:simple;
+	mso-list-template-ids:-1172537794;}
+@list l90:level1
+	{mso-level-start-at:2;
+	mso-level-number-format:alpha-lower;
+	mso-level-text:"%1\)";
+	mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l91
+	{mso-list-id:1505123349;
+	mso-list-type:simple;
+	mso-list-template-ids:-2145630574;}
+@list l91:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l92
+	{mso-list-id:1545294944;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l92:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	text-indent:-.25in;}
+@list l93
+	{mso-list-id:1545363375;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l93:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l94
+	{mso-list-id:1579444145;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l94:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l95
+	{mso-list-id:1584223467;
+	mso-list-type:simple;
+	mso-list-template-ids:-1;}
+@list l95:level1
+	{mso-level-start-at:0;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l96
+	{mso-list-id:1588613459;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l96:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	text-indent:-.25in;}
+@list l97
+	{mso-list-id:1591506843;
+	mso-list-type:simple;
+	mso-list-template-ids:-768445754;}
+@list l97:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-text:"%1\)";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	text-indent:-.25in;}
+@list l98
+	{mso-list-id:1620529064;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l98:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l99
+	{mso-list-id:1624728391;
+	mso-list-type:simple;
+	mso-list-template-ids:-2145630574;}
+@list l99:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l100
+	{mso-list-id:1653489373;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l100:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	text-indent:-.25in;}
+@list l101
+	{mso-list-id:1685087635;
+	mso-list-type:simple;
+	mso-list-template-ids:-2145630574;}
+@list l101:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l102
+	{mso-list-id:1685135365;
+	mso-list-type:simple;
+	mso-list-template-ids:-2145630574;}
+@list l102:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l103
+	{mso-list-id:1697736387;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l103:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	text-indent:-.25in;}
+@list l104
+	{mso-list-id:1796753672;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l104:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	text-indent:-.25in;}
+@list l105
+	{mso-list-id:1844199869;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l105:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l106
+	{mso-list-id:1859469637;
+	mso-list-type:simple;
+	mso-list-template-ids:-768445754;}
+@list l106:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-text:"%1\)";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	text-indent:-.25in;}
+@list l107
+	{mso-list-id:1859805567;
+	mso-list-type:simple;
+	mso-list-template-ids:-311238496;}
+@list l107:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l108
+	{mso-list-id:1869100159;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l108:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	text-indent:-.25in;}
+@list l109
+	{mso-list-id:1891068077;
+	mso-list-type:simple;
+	mso-list-template-ids:-768445754;}
+@list l109:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-text:"%1\)";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	text-indent:-.25in;}
+@list l110
+	{mso-list-id:1929659350;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l110:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.3in;
+	text-indent:-.25in;}
+@list l111
+	{mso-list-id:1945724350;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l111:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.3in;
+	text-indent:-.25in;}
+@list l112
+	{mso-list-id:2012564902;
+	mso-list-type:simple;
+	mso-list-template-ids:-1;}
+@list l112:level1
+	{mso-level-start-at:0;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l113
+	{mso-list-id:2029015648;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l113:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	text-indent:-.25in;}
+@list l114
+	{mso-list-id:2054499230;
+	mso-list-type:simple;
+	mso-list-template-ids:-768445754;}
+@list l114:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-text:"%1\)";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.55in;
+	text-indent:-.25in;}
+@list l115
+	{mso-list-id:2066710041;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l115:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.3in;
+	text-indent:-.25in;}
+@list l10:level1 lfo11
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l11:level1 lfo12
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Times;}
+@list l12:level1 lfo13
+	{mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Times;}
+@list l14:level1 lfo15
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Times;}
+@list l15:level1 lfo16
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Times;}
+@list l16:level1 lfo17
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Times;}
+@list l17:level1 lfo18
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Times;}
+@list l11:level1 lfo19
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Courier;}
+@list l12:level1 lfo20
+	{mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Courier;}
+@list l13:level1 lfo21
+	{mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Courier;}
+@list l14:level1 lfo22
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Courier;}
+@list l15:level1 lfo23
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Courier;}
+@list l16:level1 lfo24
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Courier;}
+@list l18:level1 lfo26
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Courier;}
+@list l19:level1 lfo27
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Courier;}
+@list l20:level1 lfo28
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Courier;}
+@list l21:level1 lfo29
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Courier;}
+@list l22:level1 lfo30
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Courier;}
+@list l44:level1 lfo34
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Arial;
+	mso-bidi-font-family:"Times New Roman";}
+@list l17:level1 lfo35
+	{mso-level-start-at:1;}
+@list l81:level1 lfo36
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:"Courier New";
+	mso-bidi-font-family:"Times New Roman";}
+@list l52:level1 lfo37
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:"Courier New";
+	mso-bidi-font-family:"Times New Roman";}
+@list l87:level1 lfo38
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Arial;
+	mso-bidi-font-family:"Times New Roman";}
+@list l39:level1 lfo39
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Arial;
+	mso-bidi-font-family:"Times New Roman";}
+@list l55:level1 lfo40
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Arial;
+	mso-bidi-font-family:"Times New Roman";}
+@list l112:level1 lfo41
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Arial;
+	mso-bidi-font-family:"Times New Roman";}
+@list l50:level1 lfo42
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Arial;
+	mso-bidi-font-family:"Times New Roman";}
+@list l10:level1 lfo47
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l26:level1 lfo50
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l64:level1 lfo51
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l46:level1 lfo52
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l95:level1 lfo53
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l78:level1 lfo58
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Times;}
+@list l36:level1 lfo59
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Times;}
+@list l65:level1 lfo60
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Times;}
+@list l32:level1 lfo61
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Times;}
+ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+</head>
+
+<body lang=EN-US link=red vlink=purple style='tab-interval:.5in'>
+
+<div class=Section1>
+
+<p class=MsoBodyText>This section was originally published in the first edition
+of Learning Java as part of the Applets chapter. In Java 1.4, the Java Plug-in
+makes it possible for users to accept signed applets based on certificates
+without requiring local installation of keys.<span style="mso-spacerun: yes"> 
+</span>We include this section covering the importation of public keys and
+certificates for support of legacy environments that may still use these
+techniques.</p>
+
+<h3>The TestWrite example</h3>
+
+<p class=MsoNormal>Let's take a look at an example, just to prove that you can
+actually sign objects with the older releases of the <!--[if supportFields]><span
+style='mso-element:field-begin'></span><span style="mso-spacerun: yes"> </span><span
+style='mso-element:field-begin'></span><span style="mso-spacerun:
+yes"> </span>PRIVATE &lt;indexterm class=&quot;startofrange&quot;
+id=&quot;ch20-idx-1000003726-1&quot; number=&quot;4344&quot;&gt; <span
+style='mso-element:field-end'></span>MACROBUTTON ATI_Paired_StartTag<span
+style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE &quot;Software Development Kit
+(SDK):signing object with (TestWrite example)&quot;<span style="mso-spacerun:
+yes">  </span><![endif]--><!--[if supportFields]><span style='mso-element:field-end'></span><![endif]--><span
+style="mso-spacerun: yes"> </span><!--[if supportFields]><span
+style='mso-element:field-begin'></span><span style="mso-spacerun: yes"> </span><span
+style='mso-element:field-begin'></span><span style="mso-spacerun:
+yes"> </span>PRIVATE &lt;indexterm class=&quot;startofrange&quot;
+id=&quot;ch20-idx-1000003726-2&quot; number=&quot;4345&quot;&gt; <span
+style='mso-element:field-end'></span>MACROBUTTON ATI_Paired_StartTag<span
+style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE &quot;Java Plug-in:signing object
+with (TestWrite example)&quot;<span style="mso-spacerun: yes">  </span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]-->SDK and the Java Plug-in. In
+the process of discussing the example, we'll point out some things that were
+lacking.</p>
+
+<p class=MsoNormal>Use your browser to navigate to <!--[if supportFields]><span
+style='mso-element:field-begin'></span><span style="mso-spacerun: yes"> </span><span
+style='mso-element:field-begin'></span><span style="mso-spacerun:
+yes"> </span>PRIVATE &lt;systemitem role=&quot;url&quot;&gt; <span
+style='mso-element:field-end'></span>MACROBUTTON ATI_Paired_StartTag<span
+style='color:red'>&lt;systemitem&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><span class=onlineitem><span
+style='color:red'>http://www.oreilly.com/catalog/learnjava/TestWrite/Unsigned.html</span></span>.
+When you push the button, this applet attempts to write a harmless file on the
+local host. Give it a try. The applet should fail with a security exception and
+display a message.</p>
+
+<p class=MsoNormal>At this point, load a web page that displays the same
+applet:<span class=filename><span style='font-family:"Times New Roman"'> </span></span><span
+class=onlineitem><span style='color:red'>http://www.oreilly.com/catalog/learnjava/TestWrite/Signed.html</span></span>.
+The only difference is that I've wrapped the applet in a JAR file that I have
+signed, with a key and certificate that I generated using <span class=literal><span
+style='font-family:Courier;color:red'>keytool</span></span>. When it loads the
+applet's JAR file, the Java Plug-in also retrieves the signature. However,
+nothing has changed for the applet just yet. When you click the button, you
+still get a security exception when the applet tries to write a file.</p>
+
+<p class=MsoNormal>But now that an identity is associated with the applet, we
+can do more. You can download my certificate from <!--[if supportFields]><span
+style='mso-element:field-begin'></span><span style="mso-spacerun: yes"> </span><span
+style='mso-element:field-begin'></span><span style="mso-spacerun:
+yes"> </span>PRIVATE &lt;systemitem role=&quot;url&quot;&gt; <span
+style='mso-element:field-end'></span>MACROBUTTON ATI_Paired_StartTag<span
+style='color:red'>&lt;systemitem&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><span class=onlineitem><span
+style='color:red'>http://www.oreilly.com/catalog/learnjava/TestWrite/Jonathan.cer</span></span>.
+Enabling the signed applet to write a file takes two steps. First, you'll have
+to import this certificate file into a <span class=FirstTerm><span
+style='font-family:"Times New Roman"'>keystore</span></span><!--[if supportFields]><span
+style='mso-element:field-begin'></span> <span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span>PRIVATE &lt;indexterm
+number=&quot;4346&quot;&gt; <span style='mso-element:field-end'></span>MACROBUTTON
+ATI_Paired_StartTag<span style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE keystores<span style="mso-spacerun:
+yes">  </span><![endif]--><!--[if supportFields]><span style='mso-element:field-end'></span><![endif]--><span
+style="mso-spacerun: yes"> </span><!--[if supportFields]><span
+style='mso-element:field-begin'></span><span style="mso-spacerun: yes"> </span><span
+style='mso-element:field-begin'></span><span style="mso-spacerun:
+yes"> </span>PRIVATE &lt;indexterm number=&quot;4347&quot;&gt; <span
+style='mso-element:field-end'></span>MACROBUTTON ATI_Paired_StartTag<span
+style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE &quot;certificates:storing in
+keystore&quot;<span style="mso-spacerun: yes">  </span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><span style="mso-spacerun:
+yes"> </span><!--[if supportFields]><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span>PRIVATE &lt;indexterm
+number=&quot;4348&quot;&gt; <span style='mso-element:field-end'></span>MACROBUTTON
+ATI_Paired_StartTag<span style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE &quot;public/private encryption
+keys:storing in keystore&quot;<span style="mso-spacerun: yes">  </span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]-->, which is simply a collection
+of keys and certificates. The second step is to create a <span class=FirstTerm><span
+style='font-family:"Times New Roman"'>policy file </span></span><!--[if supportFields]><span
+style='mso-element:field-begin'></span><span style="mso-spacerun: yes"> </span><span
+style='mso-element:field-begin'></span><span style="mso-spacerun:
+yes"> </span>PRIVATE &lt;indexterm number=&quot;4349&quot;&gt; <span
+style='mso-element:field-end'></span>MACROBUTTON ATI_Paired_StartTag<span
+style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE &quot;policy files:enabling signed
+applets to write files&quot;<span style="mso-spacerun: yes">  </span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]-->that tells the Java Plug-in
+that this applet is allowed to write a file.</p>
+
+<p class=MsoNormal>To import the certificate file, use the <!--[if supportFields]><span
+style='mso-element:field-begin'></span><span style="mso-spacerun: yes"> </span><span
+style='mso-element:field-begin'></span><span style="mso-spacerun:
+yes"> </span>PRIVATE &lt;indexterm number=&quot;4350&quot;&gt; <span
+style='mso-element:field-end'></span>MACROBUTTON ATI_Paired_StartTag<span
+style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE &quot;keytool utility:importing
+certificate with&quot;<span style="mso-spacerun: yes">  </span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><span class=literal><span
+style='font-family:Courier;color:red'>keytool</span></span> utility that comes
+with the SDK. For this example, we'll create an entirely new keystore. The
+following command imports the <span class=filename><span style='font-family:
+"Times New Roman"'>Jonathan.cer</span></span> certificate file and puts it in a
+keystore called <span class=filename><span style='font-family:"Times New Roman"'>client.keystore</span></span>.
+If the keystore file doesn't exist, it will be created.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<div style='border:none;border-left:solid windowtext .75pt;padding:0in 0in 0in 2.0pt'>
+
+<p class=Code>C:\&gt; <span class=userinput><span style='color:red'>keytool
+-import -file Jonathan.cer -alias Jonathan -keystore client.keystore -storepass
+buendia</span></span></p>
+
+</div>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>The -<span class=literal><span style='font-family:Courier;
+color:red'>alias</span></span> option tells <span class=literal><span
+style='font-family:Courier;color:red'>keytool</span></span> what <!--[if supportFields]><span
+style='mso-element:field-begin'></span><span style="mso-spacerun: yes"> </span><span
+style='mso-element:field-begin'></span><span style="mso-spacerun:
+yes"> </span>PRIVATE &lt;indexterm number=&quot;4351&quot;&gt; <span
+style='mso-element:field-end'></span>MACROBUTTON ATI_Paired_StartTag<span
+style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE &quot;aliases for keys in
+certificates&quot;<span style="mso-spacerun: yes">  </span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]-->alias to use for the imported
+certificate. This is just a name you can use to refer to the keys in the
+certificate. The integrity of the keystore is protected using a <!--[if supportFields]><span
+style='mso-element:field-begin'></span><span style="mso-spacerun: yes"> </span><span
+style='mso-element:field-begin'></span><span style="mso-spacerun:
+yes"> </span>PRIVATE &lt;indexterm number=&quot;4352&quot;&gt; <span
+style='mso-element:field-end'></span>MACROBUTTON ATI_Paired_StartTag<span
+style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE &quot;passwords:for
+keystores&quot;<span style="mso-spacerun: yes">  </span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]-->password, specified with the -<span
+class=literal><span style='font-family:Courier;color:red'>storepass</span></span>
+option. Whenever you access the keystore, you'll need to supply the same
+password to verify that the keystore hasn't been tampered with.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>After you type this command, <span class=literal><span
+style='font-family:Courier;color:red'>keytool</span></span> prints out some
+information about the certificate you are about to import. Then it asks if this
+certificate should be <!--[if supportFields]><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span>PRIVATE &lt;indexterm number=&quot;4353&quot;&gt;
+<span style='mso-element:field-end'></span>MACROBUTTON ATI_Paired_StartTag<span
+style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE &quot;trust:certificates,
+questioning by keytool&quot;<span style="mso-spacerun: yes">  </span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]-->trusted. This is an important
+question, as anyone can generate this kind of self-signed certificate. (I've
+decided to be my own certificate authority of one, for now.)</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<div style='border:none;border-left:solid windowtext .75pt;padding:0in 0in 0in 2.0pt'>
+
+<p class=Code>Owner: CN=Jonathan Knudsen</p>
+
+<p class=Code>Issuer: CN=Jonathan Knudsen</p>
+
+<p class=Code>Serial number: 3804d2c1</p>
+
+<p class=Code>Valid from: Wed Oct 13 14:43:13 EDT 1999 until:</p>
+
+<p class=Code><span style="mso-spacerun: yes">  </span>Tue Jan 11 13:43:13 EST
+2000</p>
+
+<p class=Code>Certificate fingerprints:</p>
+
+<p class=Code><span style="mso-spacerun: yes">    </span>MD5:<span
+style="mso-spacerun: yes"> 
+</span>A6:56:C2:52:2B:20:69:26:67:A2:0B:78:D3:3C:AC:45</p>
+
+<p class=Code><span style="mso-spacerun: yes"> </span><span
+style="mso-spacerun: yes">   </span>SHA1:
+A3:AF:41:93:73:1F:48:EE:6E:F5:8B:93:66:3E:73:F5:99:5D:54:AF</p>
+
+<p class=Code>Trust this certificate? [no]:<span style="mso-spacerun: yes"> 
+</span><span class=userinput><span style='color:red'>yes</span></span></p>
+
+<p class=Code>Certificate was added to keystore</p>
+
+<p class=Code><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=Code>C:\&gt;</p>
+
+</div>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>What can we do? We might simply get a certificate signed by
+a more popular authority than myself. But you would still have to register the
+CA's certificate somehow, following this same process.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>For now, you can verify this certificate by hand. We'll do
+this not only to get through this example, but because it presents a useful
+analogy to the process of certification. The SHA1 &quot;thumbprint&quot; that <span
+class=literal><span style='font-family:Courier;color:red'>keytool</span></span>
+displays should match this:</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<div style='border:none;border-left:solid windowtext .75pt;padding:0in 0in 0in 2.0pt'>
+
+<p class=Code>A3:AF:41:93:73:1F:48:EE:6E:F5:8B:93:66:3E:73:F5:99:5D:54:AF</p>
+
+</div>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>If everything looks good, you can type &quot;yes&quot; to
+accept this certificate. By doing so, you are saying that you accept my identity,
+and believe that I have in fact signed certificates that match this thumbprint.
+You have effectively chained your trust to this printed page rather than an
+online certificate authority. You can be reasonably sure that no one has gone
+to the effort of issuing counterfeit O'Reilly books.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>You are now ready to assign greater privileges to this
+applet. For example, you can allow it to write files. To grant privileges in
+this way, you need to create a security policy. Use the SDK's <!--[if supportFields]><span
+style='mso-element:field-begin'></span><span style="mso-spacerun: yes"> </span><span
+style='mso-element:field-begin'></span><span style="mso-spacerun:
+yes"> </span>PRIVATE &lt;indexterm number=&quot;4354&quot;&gt; <span
+style='mso-element:field-end'></span>MACROBUTTON ATI_Paired_StartTag<span
+style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE &quot;policy files:creating with
+policytool:SDL&quot;<span style="mso-spacerun: yes">  </span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><span style="mso-spacerun:
+yes"> </span><!--[if supportFields]><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span>PRIVATE &lt;indexterm
+number=&quot;4355&quot;&gt; <span style='mso-element:field-end'></span>MACROBUTTON
+ATI_Paired_StartTag<span style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE &quot;SDL policytool
+utility&quot;<span style="mso-spacerun: yes">  </span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><span class=literal><span
+style='font-family:Courier;color:red'>policytool</span></span> utility (which
+we introduced in chapter 3, “Tools of the Trade”). Start the utility from a
+command line:</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<div style='border:none;border-left:solid windowtext .75pt;padding:0in 0in 0in 2.0pt'>
+
+<p class=Code>C:\&gt; <span class=userinput><span style='color:red'>policytool<o:p></o:p></span></span></p>
+
+</div>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>The <span class=literal><span style='font-family:Courier;
+color:red'>policytool</span></span> interface isn't pretty, but it gets the job
+done. When you first run <span class=literal><span style='font-family:Courier;
+color:red'>policytool</span></span>, you may get a message that it can't find
+the default policy file. Just click <!--[if supportFields]><span
+style='mso-element:field-begin'></span><span style="mso-spacerun: yes"> </span><span
+style='mso-element:field-begin'></span><span style="mso-spacerun:
+yes"> </span>PRIVATE &lt;emphasis role=&quot;bold&quot;&gt; <span
+style='mso-element:field-end'></span>MACROBUTTON ATI_Paired_StartTag<span
+style='color:red'>&lt;emphasis&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><b style='mso-bidi-font-weight:
+normal'>OK</b>. (If you don't get this message, choose <!--[if supportFields]><span
+style='mso-element:field-begin'></span><span style="mso-spacerun: yes"> </span><span
+style='mso-element:field-begin'></span><span style="mso-spacerun:
+yes"> </span>PRIVATE &lt;emphasis role=&quot;bold&quot;&gt; <span
+style='mso-element:field-end'></span>MACROBUTTON ATI_Paired_StartTag<span
+style='color:red'>&lt;emphasis&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><b style='mso-bidi-font-weight:
+normal'>New</b> from the <!--[if supportFields]><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span>PRIVATE &lt;emphasis role=&quot;bold&quot;&gt;
+<span style='mso-element:field-end'></span>MACROBUTTON ATI_Paired_StartTag<span
+style='color:red'>&lt;emphasis&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><b style='mso-bidi-font-weight:
+normal'>File</b> menu to start with a clean slate.)</p>
+
+<p class=MsoNormal>Our eventual goal is to tell the Plug-in that any applet we
+have signed is allowed to write a file on your computer. The policy file needs
+to reference the certificate in the keystore we just created. The first thing
+we need to do, therefore, is tell <span class=literal><span style='font-family:
+Courier;color:red'>policytool</span></span> where to find the keystore. Select
+the <!--[if supportFields]><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span>PRIVATE &lt;emphasis
+role=&quot;bold&quot;&gt; <span style='mso-element:field-end'></span>MACROBUTTON
+ATI_Paired_StartTag<span style='color:red'>&lt;emphasis&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><b style='mso-bidi-font-weight:
+normal'>Change KeyStore</b> option from the <!--[if supportFields]><span
+style='mso-element:field-begin'></span><span style="mso-spacerun: yes"> </span><span
+style='mso-element:field-begin'></span><span style="mso-spacerun:
+yes"> </span>PRIVATE &lt;emphasis role=&quot;bold&quot;&gt; <span
+style='mso-element:field-end'></span>MACROBUTTON ATI_Paired_StartTag<span
+style='color:red'>&lt;emphasis&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><b style='mso-bidi-font-weight:
+normal'>Edit</b> method. Type the URL of the keystore file you just created.
+(On a Windows system, it looks something like this: <!--[if supportFields]><span
+style='mso-element:field-begin'></span><span style="mso-spacerun: yes"> </span><span
+style='mso-element:field-begin'></span><span style="mso-spacerun:
+yes"> </span>PRIVATE &lt;systemitem role=&quot;url&quot;&gt; <span
+style='mso-element:field-end'></span>MACROBUTTON ATI_Paired_StartTag<span
+style='color:red'>&lt;systemitem&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><span class=onlineitem><span
+style='color:red'>file:/c:/SignTest/client.keystore</span></span>.) You can
+leave the keystore type blank. Then click <!--[if supportFields]><span
+style='mso-element:field-begin'></span><span style="mso-spacerun: yes"> </span><span
+style='mso-element:field-begin'></span><span style="mso-spacerun:
+yes"> </span>PRIVATE &lt;emphasis role=&quot;bold&quot;&gt; <span
+style='mso-element:field-end'></span>MACROBUTTON ATI_Paired_StartTag<span
+style='color:red'>&lt;emphasis&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><b style='mso-bidi-font-weight:
+normal'>OK</b>.</p>
+
+<p class=MsoNormal>Now that we're pointed at the right keystore, we need to add
+a permission for file writing. Click on the <!--[if supportFields]><span
+style='mso-element:field-begin'></span><span style="mso-spacerun: yes"> </span><span
+style='mso-element:field-begin'></span><span style="mso-spacerun:
+yes"> </span>PRIVATE &lt;emphasis role=&quot;bold&quot;&gt; <span
+style='mso-element:field-end'></span>MACROBUTTON ATI_Paired_StartTag<span
+style='color:red'>&lt;emphasis&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><b style='mso-bidi-font-weight:
+normal'>Add Policy Entry</b> button. In the window that comes up, leave the
+CodeBase field blank. Fill in the SignedBy field with <span class=literal><span
+style='font-family:Courier;color:red'>Jonathan</span></span>. This means that
+we're setting a policy for all code signed by <span class=literal><span
+style='font-family:Courier;color:red'>Jonathan</span></span>. (Remember, <span
+class=literal><span style='font-family:Courier;color:red'>Jonathan</span></span>
+is the alias we used for the certificate when it was imported to the keystore.)</p>
+
+<p class=MsoNormal>To give code signed by Jonathan permission to write files,
+click on the <!--[if supportFields]><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span>PRIVATE &lt;emphasis
+role=&quot;bold&quot;&gt; <span style='mso-element:field-end'></span>MACROBUTTON
+ATI_Paired_StartTag<span style='color:red'>&lt;emphasis&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><b style='mso-bidi-font-weight:
+normal'>Add Permission</b> button. In the next dialog, choose <!--[if supportFields]><span
+style='mso-element:field-begin'></span><span style="mso-spacerun: yes"> </span><span
+style='mso-element:field-begin'></span><span style="mso-spacerun:
+yes"> </span>PRIVATE &lt;emphasis role=&quot;bold&quot;&gt; <span
+style='mso-element:field-end'></span>MACROBUTTON ATI_Paired_StartTag<span
+style='color:red'>&lt;emphasis&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><b style='mso-bidi-font-weight:
+normal'>FilePermission</b> from the top combo box. In the second combo box,
+choose <!--[if supportFields]><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span>PRIVATE &lt;emphasis
+role=&quot;bold&quot;&gt; <span style='mso-element:field-end'></span>MACROBUTTON
+ATI_Paired_StartTag<span style='color:red'>&lt;emphasis&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><b style='mso-bidi-font-weight:
+normal'>&lt;&lt;ALL FILES&gt;&gt;</b>. In the third combo box, choose <!--[if supportFields]><span
+style='mso-element:field-begin'></span><span style="mso-spacerun: yes"> </span><span
+style='mso-element:field-begin'></span><span style="mso-spacerun:
+yes"> </span>PRIVATE &lt;emphasis role=&quot;bold&quot;&gt; <span
+style='mso-element:field-end'></span>MACROBUTTON ATI_Paired_StartTag<span
+style='color:red'>&lt;emphasis&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><b style='mso-bidi-font-weight:
+normal'>write</b>. Finally, click on <!--[if supportFields]><span
+style='mso-element:field-begin'></span><span style="mso-spacerun: yes"> </span><span
+style='mso-element:field-begin'></span><span style="mso-spacerun:
+yes"> </span>PRIVATE &lt;emphasis role=&quot;bold&quot;&gt; <span
+style='mso-element:field-end'></span>MACROBUTTON ATI_Paired_StartTag<span
+style='color:red'>&lt;emphasis&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><b style='mso-bidi-font-weight:
+normal'>OK</b> to finish creating the permission. Then click on <!--[if supportFields]><span
+style='mso-element:field-begin'></span><span style="mso-spacerun: yes"> </span><span
+style='mso-element:field-begin'></span><span style="mso-spacerun:
+yes"> </span>PRIVATE &lt;emphasis role=&quot;bold&quot;&gt; <span
+style='mso-element:field-end'></span>MACROBUTTON ATI_Paired_StartTag<span
+style='color:red'>&lt;emphasis&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><b style='mso-bidi-font-weight:
+normal'>Done</b> to finish creating the policy.</p>
+
+<p class=MsoNormal>Having set this up, you now need to save the policy file.
+Choose <!--[if supportFields]><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span>PRIVATE &lt;emphasis
+role=&quot;bold&quot;&gt; <span style='mso-element:field-end'></span>MACROBUTTON
+ATI_Paired_StartTag<span style='color:red'>&lt;emphasis&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><b style='mso-bidi-font-weight:
+normal'>Save</b> from the <!--[if supportFields]><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span>PRIVATE &lt;emphasis
+role=&quot;bold&quot;&gt; <span style='mso-element:field-end'></span>MACROBUTTON
+ATI_Paired_StartTag<span style='color:red'>&lt;emphasis&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><b style='mso-bidi-font-weight:
+normal'>File</b> menu; save this policy file as <span class=filename><span
+style='font-family:"Times New Roman"'>client.policy</span></span>. You can exit
+the <span class=literal><span style='font-family:Courier;color:red'>policytool</span></span>
+utility now.</p>
+
+<p class=MsoNormal>The last thing you need to do is tell the Java Plug-in to
+use the policy file we've just so laboriously created. To do this, use a text
+editor to edit the <span class=filename><span style='font-family:"Times New Roman"'>java.security</span></span><!--[if supportFields]><span
+style='mso-element:field-begin'></span> <span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span>PRIVATE &lt;indexterm
+number=&quot;4356&quot;&gt; <span style='mso-element:field-end'></span>MACROBUTTON
+ATI_Paired_StartTag<span style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE &quot;java.security file,
+editing&quot;<span style="mso-spacerun: yes">  </span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><span style="mso-spacerun:
+yes"> </span><!--[if supportFields]><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span>PRIVATE &lt;indexterm
+number=&quot;4357&quot;&gt; <span style='mso-element:field-end'></span>MACROBUTTON
+ATI_Paired_StartTag<span style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE &quot;security:java.security
+file&quot;<span style="mso-spacerun: yes">  </span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><span style="mso-spacerun:
+yes"> </span>file. This file is found underneath the installation directory for
+the <!--[if supportFields]><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span>PRIVATE &lt;indexterm
+number=&quot;4358&quot;&gt; <span style='mso-element:field-end'></span>MACROBUTTON
+ATI_Paired_StartTag<span style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE &quot;Java Runtime Environment
+(JRE):java.security file&quot;<span style="mso-spacerun: yes">  </span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><span style="mso-spacerun:
+yes"> </span><!--[if supportFields]><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span>PRIVATE &lt;indexterm
+number=&quot;4359&quot;&gt; <span style='mso-element:field-end'></span>MACROBUTTON
+ATI_Paired_StartTag<span style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE JRE \t &quot;Java Runtime
+Environment&quot;<span style="mso-spacerun: yes">  </span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]-->JRE, in the <span
+class=filename><span style='font-family:"Times New Roman"'>lib/security</span></span>
+subdirectory. (If you have both the SDK and the JRE installed, you will
+actually have two copies of this file in different locations. For example, you
+might have one JRE installed in <span class=filename><span style='font-family:
+"Times New Roman"'>C:\sdk1.3\jre</span></span> and another in <span
+class=filename><span style='font-family:"Times New Roman"'>C:\Program
+Files\JavaSoft\JRE</span></span>. Make sure you edit the <span class=literal><span
+style='font-family:Courier;color:red'>java.security</span></span> file that is
+used by the Plug-in, which is probably the one that's not in the SDK
+installation directory.)</p>
+
+<p class=MsoNormal>Once you've found the right <span class=filename><span
+style='font-family:"Times New Roman"'>java.security</span></span> file, you
+need to find the section that contains entries for <span class=literal><span
+style='font-family:Courier;color:red'>policy.url</span></span>. Add a line to
+reference the policy file we just created, like this:</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<div style='border:none;border-left:solid windowtext .75pt;padding:0in 0in 0in 2.0pt'>
+
+<p class=Code>policy.url.3=file:/c:/SignTest/client.policy</p>
+
+</div>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Finally, you're ready to test the signed applet. (You may
+need to restart your browser.) Navigate to the signed applet page. When you press
+the button, the file is written successfully.</p>
+
+<p class=MsoNormal>So, how did we <!--[if supportFields]><span
+style='mso-element:field-begin'></span><span style="mso-spacerun: yes"> </span><span
+style='mso-element:field-begin'></span><span style="mso-spacerun:
+yes"> </span>PRIVATE &lt;indexterm class=&quot;endofrange&quot;
+startref=&quot;ch20-idx-1000003726-1&quot; number=&quot;4360&quot;&gt; <span
+style='mso-element:field-end'></span>MACROBUTTON ATI_Paired_StartTag<span
+style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--> <!--[if supportFields]><span
+style='mso-element:field-begin'></span><span style="mso-spacerun: yes"> </span><span
+style='mso-element:field-begin'></span><span style="mso-spacerun:
+yes"> </span>PRIVATE &lt;indexterm class=&quot;endofrange&quot;
+startref=&quot;ch20-idx-1000003726-2&quot; number=&quot;4361&quot;&gt; <span
+style='mso-element:field-end'></span>MACROBUTTON ATI_Paired_StartTag<span
+style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]-->create this certificate and
+sign the JAR file? Let's move on.</p>
+
+<h2><a name="ATID_ch20x2D29x2Dfm2x78ml"></a><!--[if supportFields]><span
+style='mso-bookmark:ATID_ch20x2D29x2Dfm2x78ml'></span><span style='mso-element:
+field-begin'></span><span style='mso-bookmark:ATID_ch20x2D29x2Dfm2x78ml'><span
+style='font-family:"Times New Roman";color:windowtext'><span
+style="mso-spacerun: yes"> </span></span></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:ATID_ch20x2D29x2Dfm2x78ml'><span style='font-family:"Times New Roman";
+color:windowtext'><span style="mso-spacerun: yes"> </span>PRIVATE &lt;sect2
+id=&quot;ch20-29-fm2xml&quot; number=&quot;20.4.3&quot;&gt; </span></span><span
+style='mso-element:field-end'></span><span style='mso-bookmark:ATID_ch20x2D29x2Dfm2x78ml'><span
+style='font-family:"Times New Roman";color:windowtext'>MACROBUTTON
+ATI_Paired_StartTag</span></span><span style='mso-bookmark:ATID_ch20x2D29x2Dfm2x78ml'><span
+style='font-family:"Times New Roman"'>&lt;sect2&gt;</span></span><span
+style='mso-bookmark:ATID_ch20x2D29x2Dfm2x78ml'></span><![endif]--><span
+style='mso-bookmark:ATID_ch20x2D29x2Dfm2x78ml'></span><!--[if supportFields]><span
+style='mso-bookmark:ATID_ch20x2D29x2Dfm2x78ml'></span><span style='mso-element:
+field-end'></span><![endif]--><span style='mso-bookmark:ATID_ch20x2D29x2Dfm2x78ml'>Keystores,
+Keys, and Certificates</span></h2>
+
+<p class=MsoNormal><!--[if supportFields]><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span>PRIVATE &lt;indexterm
+number=&quot;4362&quot;&gt; <span style='mso-element:field-end'></span>MACROBUTTON
+ATI_Paired_StartTag<span style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE &quot;identities:database
+of&quot;<span style="mso-spacerun: yes">  </span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]-->The SDK <!--[if supportFields]><span
+style='mso-element:field-begin'></span><span style="mso-spacerun: yes"> </span><span
+style='mso-element:field-begin'></span><span style="mso-spacerun:
+yes"> </span>PRIVATE &lt;indexterm class=&quot;startofrange&quot;
+id=&quot;ch20-idx-1000003739-1&quot; number=&quot;4363&quot;&gt; <span
+style='mso-element:field-end'></span>MACROBUTTON ATI_Paired_StartTag<span
+style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE &quot;digital signatures:keystores,
+keys and certificates&quot;<span style="mso-spacerun: yes">  </span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><span style="mso-spacerun:
+yes"> </span><!--[if supportFields]><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span>PRIVATE &lt;indexterm
+class=&quot;startofrange&quot; id=&quot;ch20-idx-1000003739-2&quot;
+number=&quot;4364&quot;&gt; <span style='mso-element:field-end'></span>MACROBUTTON
+ATI_Paired_StartTag<span style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE keystores<span style="mso-spacerun:
+yes">  </span><![endif]--><!--[if supportFields]><span style='mso-element:field-end'></span><![endif]--><span
+style="mso-spacerun: yes"> </span><!--[if supportFields]><span
+style='mso-element:field-begin'></span><span style="mso-spacerun: yes"> </span><span
+style='mso-element:field-begin'></span><span style="mso-spacerun:
+yes"> </span>PRIVATE &lt;indexterm class=&quot;startofrange&quot;
+id=&quot;ch20-idx-1000003739-3&quot; number=&quot;4365&quot;&gt; <span
+style='mso-element:field-end'></span>MACROBUTTON ATI_Paired_StartTag<span
+style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE &quot;encryption keys&quot;<span
+style="mso-spacerun: yes">  </span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><span style="mso-spacerun:
+yes"> </span><!--[if supportFields]><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span>PRIVATE &lt;indexterm
+class=&quot;startofrange&quot; id=&quot;ch20-idx-1000003739-4&quot;
+number=&quot;4366&quot;&gt; <span style='mso-element:field-end'></span>MACROBUTTON
+ATI_Paired_StartTag<span style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE certificates<span
+style="mso-spacerun: yes">  </span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]-->supports <span
+class=FirstTerm><span style='font-family:"Times New Roman"'>keystores</span></span>
+that hold identities along with their public keys, private keys, and
+certificates. It includes a utility called <span class=literal><span
+style='font-family:Courier;color:red'>keytool</span></span> that manages
+keystores. You just saw how Jonathan's certificate could be contained in a
+keystore. The identities in keystores are visible to Java. We'll discuss what
+that means in a bit, but for the most part, we'll only use this database as a
+repository while we create and work with our identity locally.</p>
+
+<p class=MsoNormal><!--[if supportFields]><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span>PRIVATE &lt;indexterm
+number=&quot;4367&quot;&gt; <span style='mso-element:field-end'></span>MACROBUTTON
+ATI_Paired_StartTag<span style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE identities<span style="mso-spacerun:
+yes">  </span><![endif]--><!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->An
+identity can be a person, an organization, or perhaps a logical part of an
+organization. Before it can be used, an identity must have a public key and at
+least one certificate validating its public key. <span class=literal><span
+style='font-family:Courier;color:red'>keytool</span></span> refers to entities
+in the local database by IDs or aliases. These names are arbitrary and are not
+used outside of the keystore and any policy files that reference it. Identities
+that have a private key stored locally in the keystore, along with their public
+key, can be used to sign JAR files. These identities are also called <em>signers</em><!--[if supportFields]><span
+style='mso-element:field-begin'></span> <span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span>PRIVATE &lt;indexterm
+number=&quot;4368&quot;&gt; <span style='mso-element:field-end'></span>MACROBUTTON
+ATI_Paired_StartTag<span style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE signers<span style="mso-spacerun:
+yes">  </span><![endif]--><!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->.</p>
+
+<p class=MsoNormal>The default location for a keystore is the file <em>.keystore</em>
+in the user's home directory. On a single user system, the Java installation
+directory is used instead of the user's home directory.</p>
+
+<p class=MsoFootnoteText><!--[if supportFields]><span style='font-family:"Times New Roman"'><span
+style='mso-element:field-begin'></span><span style="mso-spacerun: yes"> </span><span
+style='mso-element:field-begin'></span><span style="mso-spacerun:
+yes"> </span>PRIVATE &lt;footnote number=&quot;7&quot;&gt; <span
+style='mso-element:field-end'></span>MACROBUTTON ATI_Paired_StartTag</span><span
+style='font-family:"Times New Roman";color:red'>&lt;footnote&gt;</span><![endif]--><!--[if supportFields]><span
+style='font-family:"Times New Roman"'><span style='mso-element:field-end'></span></span><![endif]-->Beware
+if you have both the SDK and HotJava installed in separate locations on a
+single user system, such as a PC running Windows. You will have to inform
+HotJava where to find the SDK package using the <span class=literal><span
+style='font-family:Courier;color:red'>JDK_HOME</span></span> environment
+variable. The default keystore location is used by <span class=literal><span
+style='font-family:Courier;color:red'>keytool</span></span> unless you specify
+another keystore with the -<span class=literal><span style='font-family:Courier;
+color:red'>keystore</span></span> option.</p>
+
+<p class=MsoNormal>If you are going to maintain any private keys in a keystore
+(if you will have any signers), you must take special care to keep the keystore
+file safe (and not publicly readable). Private keys must be kept private.</p>
+
+<h3><a name="ATID_ch20x2D30x2Dfm2x78ml"></a><!--[if supportFields]><span
+style='mso-bookmark:ATID_ch20x2D30x2Dfm2x78ml'></span><span style='mso-element:
+field-begin'></span><span style='mso-bookmark:ATID_ch20x2D30x2Dfm2x78ml'><span
+style='font-family:"Times New Roman";color:windowtext'><span
+style="mso-spacerun: yes"> </span></span></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:ATID_ch20x2D30x2Dfm2x78ml'><span style='font-family:"Times New Roman";
+color:windowtext'><span style="mso-spacerun: yes"> </span>PRIVATE &lt;sect3
+id=&quot;ch20-30-fm2xml&quot; number=&quot;20.4.3.1&quot;&gt; </span></span><span
+style='mso-element:field-end'></span><span style='mso-bookmark:ATID_ch20x2D30x2Dfm2x78ml'><span
+style='font-family:"Times New Roman";color:windowtext'>MACROBUTTON
+ATI_Paired_StartTag</span></span><span style='mso-bookmark:ATID_ch20x2D30x2Dfm2x78ml'><span
+style='font-family:"Times New Roman"'>&lt;sect3&gt;</span></span><span
+style='mso-bookmark:ATID_ch20x2D30x2Dfm2x78ml'></span><![endif]--><span
+style='mso-bookmark:ATID_ch20x2D30x2Dfm2x78ml'></span><!--[if supportFields]><span
+style='mso-bookmark:ATID_ch20x2D30x2Dfm2x78ml'></span><span style='mso-element:
+field-end'></span><![endif]--><span style='mso-bookmark:ATID_ch20x2D30x2Dfm2x78ml'>Public
+and private keys</span></h3>
+
+<p class=MsoNormal><!--[if supportFields]><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span>PRIVATE &lt;indexterm
+number=&quot;4369&quot;&gt; <span style='mso-element:field-end'></span>MACROBUTTON
+ATI_Paired_StartTag<span style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE &quot;public/private encryption
+keys&quot;<span style="mso-spacerun: yes">  </span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><span style="mso-spacerun:
+yes"> </span><!--[if supportFields]><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span>PRIVATE &lt;indexterm number=&quot;4370&quot;&gt;
+<span style='mso-element:field-end'></span>MACROBUTTON ATI_Paired_StartTag<span
+style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE &quot;keystores:public/private key
+entries&quot;<span style="mso-spacerun: yes">  </span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]-->We can create a new entry in
+the default keystore, complete with a key pair, with the following <span
+class=literal><span style='font-family:Courier;color:red'>keytool</span></span>
+command:</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<div style='border:none;border-left:solid windowtext .75pt;padding:0in 0in 0in 2.0pt'>
+
+<p class=Code>C:\&gt; <span class=userinput><span style='color:red'>keytool
+-genkey -alias Jonathan -keyalg DSA -keysize 1024 -dname &quot;CN=Jonathan<span
+style="mso-spacerun: yes">  </span>Knudsen, OU=Technical Publications,
+O=O'Reilly &amp; Associates, C=US&quot; -keypass gianni<span
+style="mso-spacerun: yes">  </span>-storepass buendia</span></span></p>
+
+</div>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>There are a lot of options to explain. The most important
+one is -<span class=literal><span style='font-family:Courier;color:red'>genkey</span></span>,
+which tells <span class=literal><span style='font-family:Courier;color:red'>keytool</span></span>
+to create a new key pair for this entry. A key pair enables this entry to sign
+code. The -<span class=literal><span style='font-family:Courier;color:red'>alias</span></span>
+options supplies an alias for this entry, Jonathan. The <span class=literal><span
+style='font-family:Courier;color:red'>-keyalg</span></span> argument, DSA, is
+the algorithm for which we are going to generate the keys. The current release
+of Java only supports one: <!--[if supportFields]><span style='mso-element:
+field-begin'></span><span style="mso-spacerun: yes"> </span><span
+style='mso-element:field-begin'></span><span style="mso-spacerun:
+yes"> </span>PRIVATE &lt;indexterm number=&quot;4371&quot;&gt; <span
+style='mso-element:field-end'></span>MACROBUTTON ATI_Paired_StartTag<span
+style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE &quot;DSA (Digital Signature
+Algorithm)&quot;<span style="mso-spacerun: yes">  </span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span><span style="mso-spacerun: yes"> </span><span
+style='mso-element:field-begin'></span><span style="mso-spacerun:
+yes"> </span>PRIVATE &lt;indexterm number=&quot;4372&quot;&gt; <span
+style='mso-element:field-end'></span>MACROBUTTON ATI_Paired_StartTag<span
+style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE &quot;digital signatures:DSA (Digital
+Signature Algorithm)&quot;<span style="mso-spacerun: yes">  </span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><span style="mso-spacerun:
+yes"> </span><!--[if supportFields]><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span>PRIVATE &lt;indexterm
+number=&quot;4373&quot;&gt; <span style='mso-element:field-end'></span>MACROBUTTON
+ATI_Paired_StartTag<span style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE &quot;algorithms:DSA (Digital
+Signature Algorithm)&quot;<span style="mso-spacerun: yes">  </span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><span style="mso-spacerun:
+yes"> </span>DSA, the Digital Signature Algorithm, which is a U.S. government
+standard for signing. The <span class=literal><span style='font-family:Courier;
+color:red'>-keysize</span></span> argument is the key length in bits. For most
+algorithms, larger key sizes provide stronger encryption. DSA supports keys of
+either 512 or 1024 bits. You should use the latter, unless you have a specific
+reason to do otherwise.</p>
+
+<p class=MsoNormal><span class=literal><span style='font-family:Courier;
+color:red'>keytool</span></span> generates the keys and places them in the
+default keystore. Private keys are specially protected using the -<span
+class=literal><span style='font-family:Courier;color:red'>keypass</span></span>
+option. To retrieve Jonathan's private key, you will have to know the correct
+key password. The integrity of the keystore as a whole is protected by the -<span
+class=literal><span style='font-family:Courier;color:red'>storepass</span></span>
+option. You need to supply the same keystore password to retrieve data from
+this keystore later.</p>
+
+<p class=MsoNormal>Once we've created a keystore entry, we can display it with
+the command:</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<div style='border:none;border-left:solid windowtext .75pt;padding:0in 0in 0in 2.0pt'>
+
+<p class=Code>C:\&gt; <span class=userinput><span style='color:red'>keytool</span></span>
+-list -alias Jonathan -storepass </p>
+
+<p class=Code>buendia</p>
+
+</div>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>To see more detail, add the -<span class=literal><span
+style='font-family:Courier;color:red'>v</span></span> option (for
+&quot;verbose&quot;):</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<div style='border:none;border-left:solid windowtext .75pt;padding:0in 0in 0in 2.0pt'>
+
+<p class=Code>C:\&gt; <span class=userinput><span style='color:red'>keytool</span></span>
+-list -alias Jonathan -v</p>
+
+<p class=Code>-storepass buendia</p>
+
+</div>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Or we can list the entire contents of the database:</p>
+
+<div style='border:none;border-left:solid windowtext .75pt;padding:0in 0in 0in 2.0pt'>
+
+<p class=Code>C:\&gt; <span class=userinput><span style='color:red'>keytool
+-list -storepass buendia</span></span></p>
+
+</div>
+
+<h3><a name="ATID_ch20x2D31x2Dfm2x78ml"></a><!--[if supportFields]><span
+style='mso-bookmark:ATID_ch20x2D31x2Dfm2x78ml'></span><span style='mso-element:
+field-begin'></span><span style='mso-bookmark:ATID_ch20x2D31x2Dfm2x78ml'><span
+style='font-family:"Times New Roman";color:windowtext'><span
+style="mso-spacerun: yes"> </span></span></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:ATID_ch20x2D31x2Dfm2x78ml'><span style='font-family:"Times New Roman";
+color:windowtext'><span style="mso-spacerun: yes"> </span>PRIVATE &lt;sect3
+id=&quot;ch20-31-fm2xml&quot; number=&quot;20.4.3.2&quot;&gt; </span></span><span
+style='mso-element:field-end'></span><span style='mso-bookmark:ATID_ch20x2D31x2Dfm2x78ml'><span
+style='font-family:"Times New Roman";color:windowtext'>MACROBUTTON
+ATI_Paired_StartTag</span></span><span style='mso-bookmark:ATID_ch20x2D31x2Dfm2x78ml'><span
+style='font-family:"Times New Roman"'>&lt;sect3&gt;</span></span><span
+style='mso-bookmark:ATID_ch20x2D31x2Dfm2x78ml'></span><![endif]--><span
+style='mso-bookmark:ATID_ch20x2D31x2Dfm2x78ml'></span><!--[if supportFields]><span
+style='mso-bookmark:ATID_ch20x2D31x2Dfm2x78ml'></span><span style='mso-element:
+field-end'></span><![endif]--><span style='mso-bookmark:ATID_ch20x2D31x2Dfm2x78ml'><span
+style='font-family:"Times New Roman";color:windowtext'><o:p></o:p></span></span></h3>
+
+<h3><span style='mso-bookmark:ATID_ch20x2D31x2Dfm2x78ml'>Certificates</span></h3>
+
+<p class=MsoNormal><!--[if supportFields]><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span>PRIVATE &lt;indexterm
+number=&quot;4374&quot;&gt; <span style='mso-element:field-end'></span>MACROBUTTON
+ATI_Paired_StartTag<span style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE security:certificates<span
+style="mso-spacerun: yes">  </span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span><span style="mso-spacerun: yes"> </span><span
+style='mso-element:field-begin'></span><span style="mso-spacerun:
+yes"> </span>PRIVATE &lt;indexterm number=&quot;4375&quot;&gt; <span
+style='mso-element:field-end'></span>MACROBUTTON ATI_Paired_StartTag<span
+style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE &quot;certificates:public keys,
+wrapping in&quot;<span style="mso-spacerun: yes">  </span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]-->Now that we have keys, we want
+a certificate in which to wrap our public key for distribution. Ideally, at
+this point, we'd send a public key to a trusted certificate authority and
+receive a certificate in return. <!--[if supportFields]><span style='mso-element:
+field-begin'></span><span style="mso-spacerun: yes"> </span><span
+style='mso-element:field-begin'></span><span style="mso-spacerun:
+yes"> </span>PRIVATE &lt;indexterm number=&quot;4376&quot;&gt; <span
+style='mso-element:field-end'></span>MACROBUTTON ATI_Paired_StartTag<span
+style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE &quot;keytool utility:Certificate
+Signing Request (CSR), generating&quot;<span style="mso-spacerun: yes"> 
+</span><![endif]--><!--[if supportFields]><span style='mso-element:field-end'></span><![endif]--><span
+style="mso-spacerun: yes"> </span><!--[if supportFields]><span
+style='mso-element:field-begin'></span><span style="mso-spacerun: yes"> </span><span
+style='mso-element:field-begin'></span><span style="mso-spacerun:
+yes"> </span>PRIVATE &lt;indexterm number=&quot;4377&quot;&gt; <span
+style='mso-element:field-end'></span>MACROBUTTON ATI_Paired_StartTag<span
+style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE &quot;Certificate Signing Request
+(CSR)&quot;<span style="mso-spacerun: yes">  </span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><span class=literal><span
+style='font-family:Courier;color:red'>keytool</span></span> can generate such a
+request, called a Certificate Signing Request (CSR). To generate a signing
+request for the entry we just created, you would do this:</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<div style='border:none;border-left:solid windowtext .75pt;padding:0in 0in 0in 2.0pt'>
+
+<p class=Code>C:\&gt; <span class=userinput><span style='color:red'>keytool
+-csr -alias Jonathan -file Jonathan.csr -keypass firenze -storepass buendia</span></span></p>
+
+</div>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>You need to specify the alias for the entry you want, a
+filename where the CSR will be written, and the password for the private key.
+Once you've generated the CSR file, you can send it off to your favorite
+Certificate Authority. Once they've performed some identity checks on you, and
+once you pay them, they will send a certificate back to you. Suppose they send
+it back in a file called <span class=filename><span style='font-family:"Times New Roman"'>Jonathan.x509</span></span>.
+You can use <span class=literal><span style='font-family:Courier;color:red'>keytool</span></span>
+to import this certificate as follows:</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<div style='border:none;border-left:solid windowtext .75pt;padding:0in 0in 0in 2.0pt'>
+
+<p class=Code>C:\&gt; <span class=userinput><span style='color:red'>keytool
+-import -alias Jonathan -file Jonathan.x509 -keypass firenze -storepass buendia</span></span></p>
+
+</div>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>To demonstrate the features of <span class=literal><span
+style='font-family:Courier;color:red'>keytool</span></span>, we will serve as
+our own authority (as we did in the example) and use our own self-signed
+certificate. It turns out that <span class=literal><span style='font-family:
+Courier;color:red'>keytool</span></span> already did this for us when we created
+keys! A self-signed certificate already exists in the keystore; all we have to
+do is export it as follows:</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<div style='border:none;border-left:solid windowtext .75pt;padding:0in 0in 0in 2.0pt'>
+
+<p class=Code>C:\&gt; <span class=userinput><span style='color:red'>keytool
+-export -alias Jonathan -file Jonathan.cer -storepass buendia</span></span></p>
+
+</div>
+
+<h3><a name="ATID_ch20x2D32x2Dfm2x78ml"></a><!--[if supportFields]><span
+style='mso-bookmark:ATID_ch20x2D32x2Dfm2x78ml'></span><span style='mso-element:
+field-begin'></span><span style='mso-bookmark:ATID_ch20x2D32x2Dfm2x78ml'><span
+style='font-family:"Times New Roman";color:windowtext'><span
+style="mso-spacerun: yes"> </span></span></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:ATID_ch20x2D32x2Dfm2x78ml'><span style='font-family:"Times New Roman";
+color:windowtext'><span style="mso-spacerun: yes"> </span>PRIVATE &lt;sect3
+id=&quot;ch20-32-fm2xml&quot; number=&quot;20.4.3.3&quot;&gt; </span></span><span
+style='mso-element:field-end'></span><span style='mso-bookmark:ATID_ch20x2D32x2Dfm2x78ml'><span
+style='font-family:"Times New Roman";color:windowtext'>MACROBUTTON
+ATI_Paired_StartTag</span></span><span style='mso-bookmark:ATID_ch20x2D32x2Dfm2x78ml'><span
+style='font-family:"Times New Roman"'>&lt;sect3&gt;</span></span><span
+style='mso-bookmark:ATID_ch20x2D32x2Dfm2x78ml'></span><![endif]--><span
+style='mso-bookmark:ATID_ch20x2D32x2Dfm2x78ml'></span><!--[if supportFields]><span
+style='mso-bookmark:ATID_ch20x2D32x2Dfm2x78ml'></span><span style='mso-element:
+field-end'></span><![endif]--><span style='mso-bookmark:ATID_ch20x2D32x2Dfm2x78ml'><span
+style='font-family:"Times New Roman";color:windowtext'><o:p></o:p></span></span></h3>
+
+<h3><span style='mso-bookmark:ATID_ch20x2D32x2Dfm2x78ml'>Signing JARs</span></h3>
+
+<p class=MsoNormal>If we have a <!--[if supportFields]><span style='mso-element:
+field-begin'></span><span style="mso-spacerun: yes"> </span><span
+style='mso-element:field-begin'></span><span style="mso-spacerun:
+yes"> </span>PRIVATE &lt;indexterm number=&quot;4378&quot;&gt; <span
+style='mso-element:field-end'></span>MACROBUTTON ATI_Paired_StartTag<span
+style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE &quot;JAR (Java archive)
+files:signed:jarsigner utility&quot;<span style="mso-spacerun: yes">  </span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><span style="mso-spacerun:
+yes"> </span><!--[if supportFields]><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span>PRIVATE &lt;indexterm
+number=&quot;4379&quot;&gt; <span style='mso-element:field-end'></span>MACROBUTTON
+ATI_Paired_StartTag<span style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE &quot;signed JAR files:jarsigner
+utility&quot;<span style="mso-spacerun: yes">  </span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]-->signer keystore entry,
+initialized with its private and public keys, we are ready to sign JAR files.
+This is accomplished using another command-line utility, <span class=literal><span
+style='font-family:Courier;color:red'>jarsigner</span></span>. All we need to do
+is specify which keystore entry should do the signing, which JAR needs to be
+signed, and the keystore password.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<div style='border:none;border-left:solid windowtext .75pt;padding:0in 0in 0in 2.0pt'>
+
+<p class=Code>C:\&gt; <span class=userinput><span style='color:red'>jarsigner
+-storepass buendia testwrite.jar Jonathan</span></span></p>
+
+</div>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>If we now list the archive, we will <!--[if supportFields]><span
+style='mso-element:field-begin'></span><span style="mso-spacerun: yes"> </span><span
+style='mso-element:field-begin'></span><span style="mso-spacerun:
+yes"> </span>PRIVATE &lt;indexterm number=&quot;4380&quot;&gt; <span
+style='mso-element:field-end'></span>MACROBUTTON ATI_Paired_StartTag<span
+style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE &quot;manifests (JAR
+files):signature files and&quot;<span style="mso-spacerun: yes">  </span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]-->see that <span class=literal><span
+style='font-family:Courier;color:red'>jarsigner</span></span> has added two
+files to the <em>META-INF</em> directory: <em>JONATHAN.SF</em> and <em>JONATHAN.DSA</em>.
+<em>JONATHAN.SF</em> is the signature file—it is like the manifest file for
+this particular signature. It lists the objects that were signed and the
+signature <!--[if supportFields]><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span>PRIVATE &lt;indexterm
+class=&quot;endofrange&quot; startref=&quot;ch20-idx-1000003739-1&quot;
+number=&quot;4381&quot;&gt; <span style='mso-element:field-end'></span>MACROBUTTON
+ATI_Paired_StartTag<span style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--> <!--[if supportFields]><span
+style='mso-element:field-begin'></span><span style="mso-spacerun: yes"> </span><span
+style='mso-element:field-begin'></span><span style="mso-spacerun:
+yes"> </span>PRIVATE &lt;indexterm class=&quot;endofrange&quot; startref=&quot;ch20-idx-1000003739-2&quot;
+number=&quot;4382&quot;&gt; <span style='mso-element:field-end'></span>MACROBUTTON
+ATI_Paired_StartTag<span style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--> <!--[if supportFields]><span
+style='mso-element:field-begin'></span><span style="mso-spacerun: yes"> </span><span
+style='mso-element:field-begin'></span><span style="mso-spacerun:
+yes"> </span>PRIVATE &lt;indexterm class=&quot;endofrange&quot;
+startref=&quot;ch20-idx-1000003739-3&quot; number=&quot;4383&quot;&gt; <span
+style='mso-element:field-end'></span>MACROBUTTON ATI_Paired_StartTag<span
+style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--> <!--[if supportFields]><span
+style='mso-element:field-begin'></span><span style="mso-spacerun: yes"> </span><span
+style='mso-element:field-begin'></span><span style="mso-spacerun:
+yes"> </span>PRIVATE &lt;indexterm class=&quot;endofrange&quot;
+startref=&quot;ch20-idx-1000003739-4&quot; number=&quot;4384&quot;&gt; <span
+style='mso-element:field-end'></span>MACROBUTTON ATI_Paired_StartTag<span
+style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]-->algorithms. <em>JONATHAN.DSA</em>
+is the actual binary signature.</p>
+
+<p class=MsoNormal><!--[if supportFields]><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span>PRIVATE &lt;sect2
+id=&quot;ch20-33-fm2xml&quot; number=&quot;20.4.4&quot;&gt; <span
+style='mso-element:field-end'></span>MACROBUTTON
+ATI_Paired_StartTag&lt;sect2&gt;<![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--></p>
+
+</div>
+
+</body>
+
+</html>

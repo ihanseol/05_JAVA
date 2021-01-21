@@ -1,0 +1,70 @@
+<!--
+	This has been tested with jwsdp-1.5
+	Requires Java 5.0
+-->
+<project name="default" default="compile" basedir=".">
+
+	<!-- 
+		You must configure the jwsdphome property! 
+	-->
+	<property name="jwsdphome" value="/pkg/jwsdp-1.5"/>
+
+	<property name="src-dir" value="." />
+	<property name="build-dir" value="." />
+	<property name="lib-dir" value="lib" />
+
+	<property name="jwsdpshared" value="${jwsdphome}/jwsdp-shared"/>
+	<property name="jaxbhome" value="${jwsdphome}/jaxb"/>
+
+	<path id="lib-path">
+    	<pathelement location="${jaxbhome}/lib/jaxb-api.jar"/>
+    	<pathelement location="${jaxbhome}/lib/jaxb-impl.jar"/>
+    	<pathelement location="${jaxbhome}/lib/jaxb-libs.jar"/>
+    	<pathelement location="${jaxbhome}/lib/jaxb-xjc.jar"/>
+    	<pathelement location="${jwsdpshared}/lib/relaxngDatatype.jar"/>
+	    <pathelement location="${jwsdpshared}/lib/xsdlib.jar"/>
+	    <pathelement location="${jwsdpshared}/lib/namespace.jar"/>
+    	<pathelement location="${lib-dir}/jdom.jar"/>
+	</path>
+
+	<taskdef name="xjc" classname="com.sun.tools.xjc.XJCTask">
+	  <classpath>
+	  	<path refid="lib-path"/>
+	  </classpath>
+	</taskdef>
+
+	<target name="jaxb" depends="">
+		<xjc schema="zooinventory.xsd" package="learningjava" target=".">
+			<produces dir="." includes="**/*.java" />
+		</xjc>
+	</target>
+
+	<target name="compile" depends="jaxb">
+		<javac srcdir="${src-dir}" destdir="${build-dir}" 
+			includes="**/*.java">
+			<classpath>
+				<path refid="lib-path"/>
+			</classpath>
+		</javac>
+	</target>
+
+	<!--
+		This target will remove:
+			Compiled *.class
+			JAXB generated learningjava/
+	-->
+	<target name="clean">
+		<delete>
+			<fileset dir="${build-dir}" includes="*.class"/>
+			<fileset dir="${build-dir}/learningjava"/>
+		</delete>
+		<delete dir="${build-dir}/learningjava"/>
+	</target>
+
+	<!--  Show the classpath -->
+	<target name="classpath">
+		<property name="cp" refid="lib-path"/>
+		<echo message="CLASSPATH=${cp}"/>
+	</target>
+
+</project>

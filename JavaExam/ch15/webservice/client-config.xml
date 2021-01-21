@@ -1,0 +1,3 @@
+<configuration xmlns="http://java.sun.com/xml/ns/jax-rpc/ri/config">
+    <wsdl location="Echo.wsdl" packageName="learningjava.impl"/>
+</configuration>

@@ -1,0 +1,37 @@
+import javax.xml.parsers.*;
+import org.xml.dom.*;
+import org.xml.sax.InputSource;
+import org.w3c.dom.*;
+
+getFirstElement( Node node, String name ) {
+	return node.getElementsByTagName( name ).item(0);
+}
+getSimpleElementText( Node node, String name ) {
+	Node nameNode = getFirstElement( node, name );
+	Node textNode = nameNode.getFirstChild();
+	if ( textNode.getNodeType() != Node.TEXT_NODE )
+		throw new DOMException("Not a text node: "+name);
+	return textNode.getNodeValue();
+}
+
+factory = DocumentBuilderFactory.newInstance();
+parser = factory.newDocumentBuilder();
+document = parser.parse( "zooinventory.xml" );
+Node inventory = document.getDocumentElement();
+NodeList animals = inventory.getElementsByTagName("Animal");
+
+print("Animals = ");
+for(int i=0; i<animals.getLength(); i++) {
+	String name = getSimpleElementText( animals.item(i), "Name" );
+	String species = getSimpleElementText( animals.item(i), "Species" );
+	print( "  "+ name +"("+species+")" );
+}
+
+foodRecipe = getFirstElement( animals.item(1), "FoodRecipe" );
+name = getSimpleElementText( foodRecipe, "Name" );
+print("Recipe = " + name );
+NodeList ingredients = foodRecipe.getElementsByTagName("Ingredient");
+for(int i=0; i<ingredients.getLength(); i++) 
+	print( "  "+ingredients.item(i).getFirstChild().getNodeValue() );
+
+

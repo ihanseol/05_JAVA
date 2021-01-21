@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?><definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://hello.org/wsdl/Echo" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://hello.org/types/Echo" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="Echo" targetNamespace="http://hello.org/wsdl/Echo">
+  <types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://hello.org/types/Echo" xmlns:soap11-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://hello.org/types/Echo">
+      <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+      <complexType name="MyObject">
+        <sequence>
+          <element name="intValue" type="int"/>
+          <element name="stringValue" type="string"/></sequence></complexType></schema></types>
+  <message name="EchoService_echoInt">
+    <part name="int_1" type="xsd:int"/></message>
+  <message name="EchoService_echoIntResponse">
+    <part name="result" type="xsd:int"/></message>
+  <message name="EchoService_echoMyObject">
+    <part name="MyObject_1" type="ns2:MyObject"/></message>
+  <message name="EchoService_echoMyObjectResponse">
+    <part name="result" type="ns2:MyObject"/></message>
+  <message name="EchoService_echoString">
+    <part name="String_1" type="xsd:string"/></message>
+  <message name="EchoService_echoStringResponse">
+    <part name="result" type="xsd:string"/></message>
+  <portType name="EchoService">
+    <operation name="echoInt" parameterOrder="int_1">
+      <input message="tns:EchoService_echoInt"/>
+      <output message="tns:EchoService_echoIntResponse"/></operation>
+    <operation name="echoMyObject" parameterOrder="MyObject_1">
+      <input message="tns:EchoService_echoMyObject"/>
+      <output message="tns:EchoService_echoMyObjectResponse"/></operation>
+    <operation name="echoString" parameterOrder="String_1">
+      <input message="tns:EchoService_echoString"/>
+      <output message="tns:EchoService_echoStringResponse"/></operation></portType>
+  <binding name="EchoServiceBinding" type="tns:EchoService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc"/>
+    <operation name="echoInt">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="encoded" namespace="http://hello.org/wsdl/Echo"/></input>
+      <output>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="encoded" namespace="http://hello.org/wsdl/Echo"/></output></operation>
+    <operation name="echoMyObject">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="encoded" namespace="http://hello.org/wsdl/Echo"/></input>
+      <output>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="encoded" namespace="http://hello.org/wsdl/Echo"/></output></operation>
+    <operation name="echoString">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="encoded" namespace="http://hello.org/wsdl/Echo"/></input>
+      <output>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="encoded" namespace="http://hello.org/wsdl/Echo"/></output></operation></binding>
+  <service name="Echo">
+    <port name="EchoServicePort" binding="tns:EchoServiceBinding">
+      <soap:address location="http://flatland:8080/echo/echo" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"/></port></service></definitions>

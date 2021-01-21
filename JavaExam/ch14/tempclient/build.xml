@@ -1,0 +1,90 @@
+<!--
+	This client web service build has been tested with jwsdp-1.5
+	Requires Java 1.4.2+
+-->
+<project name="tempclient" default="run-client" basedir=".">
+ 
+  <!-- 
+  		You must configure the jwsdphome property! 
+	-->
+  <property name="jwsdphome" value="/pkg/jwsdp-1.5"/>
+
+  <property name="client" value="TemperatureLookup.java"/>
+  <property name="wscompile-config.file" value="client-config.xml"/>
+
+  <property name="jwsdpshared" value="${jwsdphome}/jwsdp-shared"/>
+  <property name="jaxphome" value="${jwsdphome}/jaxp"/>
+  <property name="jaxrpchome" value="${jwsdphome}/jaxrpc"/>
+  <property name="saajhome" value="${jwsdphome}/saaj"/>
+
+  <path id="compile.classpath">
+    <pathelement location="${jwsdpshared}/lib/mail.jar"/>
+    <pathelement location="${jwsdpshared}/lib/activation.jar"/>
+    <pathelement location="${jaxphome}/lib/jaxp-api.jar"/>
+    <pathelement location="${jaxphome}/lib/endorsed/dom.jar"/>
+    <pathelement location="${jaxphome}/lib/endorsed/sax.jar"/>
+    <pathelement location="${jaxphome}/lib/endorsed/xalan.jar"/>
+    <pathelement location="${jaxphome}/lib/endorsed/xercesImpl.jar"/>
+    <pathelement location="${jaxrpchome}/lib/jaxrpc-api.jar"/>
+    <pathelement location="${jaxrpchome}/lib/jaxrpc-spi.jar"/>
+    <pathelement location="${jaxrpchome}/lib/jaxrpc-impl.jar"/>
+    <pathelement location="${saajhome}/lib/saaj-api.jar"/>
+    <pathelement location="${saajhome}/lib/saaj-impl.jar"/>
+    <pathelement location="${jwsdpshared}/lib/relaxngDatatype.jar"/>
+    <pathelement location="${jwsdpshared}/lib/xsdlib.jar"/>
+    <pathelement location="${jwsdpshared}/lib/jax-qname.jar"/>
+    <pathelement location="${jwsdphome}/apache-ant/lib/ant.jar"/>
+  </path>
+
+  <path id="run.classpath">
+      <path refid="compile.classpath"/>
+      <pathelement location="classes"/>
+  </path>
+
+  <taskdef name="wscompile" classname="com.sun.xml.rpc.tools.ant.Wscompile">
+     <classpath refid="compile.classpath"/>
+  </taskdef>
+
+  <target name="prepare">
+	<mkdir dir="classes"/>
+  </target>
+
+  <target name="generate-client" depends="prepare">
+    <wscompile
+		base="classes"
+		client="true"
+		classpath="${compile.classpath}"
+		config="${wscompile-config.file}">
+		<classpath>
+			<path refid="compile.classpath"/>
+		</classpath>
+    </wscompile>
+  </target>
+
+  <target name="compile-client"  depends="generate-client">
+	<javac srcdir="." destdir="classes" includes="${client}">
+		<classpath refid="compile.classpath"/>
+    </javac>
+  </target>
+
+  <target name="run-client" depends="compile-client">
+	<waitfor>
+        <http url="http://services.xmethods.net:80"/>
+     </waitfor>
+	<java classname="TemperatureLookup"
+   		classpathref="run.classpath"
+		fork="true">
+    </java>
+  </target>
+
+  <target name="clean">
+    <delete dir="classes"/>
+  </target>
+
+  <!-- Show the classpath... -->
+  <target name="classpath">
+	<property name="cp" refid="run.classpath"/>
+	<echo message="CLASSPATH=${cp}"/>
+  </target>
+
+</project>

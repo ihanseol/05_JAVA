@@ -1,0 +1,3933 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 9">
+<meta name=Originator content="Microsoft Word 9">
+<link rel=File-List href="./DynEventAdapters_files/filelist.xml">
+<title>Putting Reflection to Work</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Pat</o:Author>
+  <o:Template>ora.dot</o:Template>
+  <o:LastAuthor>Debra Cameron</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>6</o:TotalTime>
+  <o:LastPrinted>2002-03-19T19:58:00Z</o:LastPrinted>
+  <o:Created>2002-03-19T19:58:00Z</o:Created>
+  <o:LastSaved>2002-03-19T19:58:00Z</o:LastSaved>
+  <o:Pages>3</o:Pages>
+  <o:Words>1684</o:Words>
+  <o:Characters>9769</o:Characters>
+  <o:Company>self</o:Company>
+  <o:Lines>222</o:Lines>
+  <o:Paragraphs>122</o:Paragraphs>
+  <o:CharactersWithSpaces>11790</o:CharactersWithSpaces>
+  <o:Version>9.2720</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:AttachedTemplate
+   HRef="C:\WINDOWS\Application Data\Microsoft\Templates\ora.dot"></w:AttachedTemplate>
+  <w:UpdateStylesOnOpen/>
+  <w:DisplayHorizontalDrawingGridEvery>0</w:DisplayHorizontalDrawingGridEvery>
+  <w:DisplayVerticalDrawingGridEvery>0</w:DisplayVerticalDrawingGridEvery>
+  <w:UseMarginsForDrawingGridOrigin/>
+  <w:Compatibility>
+   <w:FootnoteLayoutLikeWW8/>
+   <w:ShapeLayoutLikeWW8/>
+   <w:AlignTablesRowByRow/>
+   <w:ForgetLastTabAlignment/>
+   <w:LayoutRawTableWidth/>
+   <w:LayoutTableRowsApart/>
+  </w:Compatibility>
+ </w:WordDocument>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+@font-face
+	{font-family:Times;
+	panose-1:0 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-format:other;
+	mso-font-pitch:variable;
+	mso-font-signature:3 0 0 0 1 0;}
+@font-face
+	{font-family:Helvetica;
+	panose-1:0 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-format:other;
+	mso-font-pitch:variable;
+	mso-font-signature:3 0 0 0 1 0;}
+@font-face
+	{font-family:Courier;
+	panose-1:0 0 0 0 0 0 0 0 0 0;
+	mso-font-alt:"Courier New";
+	mso-font-charset:0;
+	mso-generic-font-family:modern;
+	mso-font-format:other;
+	mso-font-pitch:fixed;
+	mso-font-signature:3 0 0 0 1 0;}
+@font-face
+	{font-family:Geneva;
+	panose-1:0 0 0 0 0 0 0 0 0 0;
+	mso-font-alt:Arial;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-format:other;
+	mso-font-pitch:variable;
+	mso-font-signature:3 0 0 0 1 0;}
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+h1
+	{margin-top:16.0pt;
+	margin-right:0in;
+	margin-bottom:8.0pt;
+	margin-left:0in;
+	text-align:justify;
+	mso-line-height-alt:12.0pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	font-size:18.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Times;
+	color:red;
+	mso-font-kerning:0pt;
+	mso-bidi-font-weight:normal;}
+h2
+	{margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	text-align:justify;
+	mso-line-height-alt:12.0pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:2;
+	font-size:14.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Times;
+	color:red;
+	mso-bidi-font-weight:normal;}
+h3
+	{margin-top:8.0pt;
+	margin-right:0in;
+	margin-bottom:4.0pt;
+	margin-left:0in;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:3;
+	font-size:10.0pt;
+	font-family:Times;
+	color:red;
+	mso-bidi-font-weight:normal;}
+h4
+	{margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:4;
+	font-size:10.0pt;
+	font-family:Times;
+	color:red;
+	mso-bidi-font-weight:normal;}
+h5
+	{margin-top:3.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	text-align:justify;
+	mso-line-height-alt:12.0pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:5;
+	border:none;
+	mso-border-top-alt:solid windowtext .75pt;
+	padding:0in;
+	mso-padding-alt:2.0pt 0in 0in 0in;
+	font-size:14.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Times;
+	color:fuchsia;
+	mso-bidi-font-weight:normal;}
+h6
+	{margin-top:3.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:6;
+	font-size:10.0pt;
+	font-family:Times;
+	color:fuchsia;
+	mso-bidi-font-weight:normal;}
+p.MsoHeading7, li.MsoHeading7, div.MsoHeading7
+	{margin-top:2.0pt;
+	margin-right:0in;
+	margin-bottom:2.0pt;
+	margin-left:.25in;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:7;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:fuchsia;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.MsoHeading8, li.MsoHeading8, div.MsoHeading8
+	{margin-top:2.0pt;
+	margin-right:0in;
+	margin-bottom:2.0pt;
+	margin-left:.5in;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	mso-outline-level:8;
+	font-size:9.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Helvetica;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:fuchsia;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.MsoHeading9, li.MsoHeading9, div.MsoHeading9
+	{margin-top:2.0pt;
+	margin-right:0in;
+	margin-bottom:2.0pt;
+	margin-left:.75in;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	mso-outline-level:9;
+	font-size:9.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Helvetica;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:fuchsia;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.MsoFootnoteText, li.MsoFootnoteText, div.MsoFootnoteText
+	{margin-top:3.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	tab-stops:center 3.0in right 6.0in;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+	{margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	tab-stops:center 3.0in right 6.0in;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+span.MsoFootnoteReference
+	{vertical-align:super;}
+p.MsoListBullet, li.MsoListBullet, div.MsoListBullet
+	{mso-style-update:auto;
+	margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.25in;
+	text-align:justify;
+	text-indent:-.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	mso-list:l9 level1 lfo1;
+	tab-stops:list .25in;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+p.MsoListNumber, li.MsoListNumber, div.MsoListNumber
+	{margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.25in;
+	text-align:justify;
+	text-indent:-.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	mso-list:l8 level1 lfo6;
+	tab-stops:list .25in;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+p.MsoListBullet2, li.MsoListBullet2, div.MsoListBullet2
+	{mso-style-update:auto;
+	margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.5in;
+	text-align:justify;
+	text-indent:-.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	mso-list:l7 level1 lfo2;
+	tab-stops:list .5in;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+p.MsoListBullet3, li.MsoListBullet3, div.MsoListBullet3
+	{mso-style-update:auto;
+	margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.75in;
+	text-align:justify;
+	text-indent:-.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	mso-list:l6 level1 lfo3;
+	tab-stops:list .75in;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+p.MsoListBullet4, li.MsoListBullet4, div.MsoListBullet4
+	{mso-style-update:auto;
+	margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:1.0in;
+	text-align:justify;
+	text-indent:-.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	mso-list:l5 level1 lfo4;
+	tab-stops:list 1.0in;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+p.MsoListBullet5, li.MsoListBullet5, div.MsoListBullet5
+	{mso-style-update:auto;
+	margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:1.25in;
+	text-align:justify;
+	text-indent:-.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	mso-list:l4 level1 lfo5;
+	tab-stops:list 1.25in;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+p.MsoListNumber2, li.MsoListNumber2, div.MsoListNumber2
+	{margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.5in;
+	text-align:justify;
+	text-indent:-.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	mso-list:l3 level1 lfo7;
+	tab-stops:list .5in;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+p.MsoListNumber3, li.MsoListNumber3, div.MsoListNumber3
+	{margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.75in;
+	text-align:justify;
+	text-indent:-.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	mso-list:l2 level1 lfo8;
+	tab-stops:list .75in;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+p.MsoListNumber4, li.MsoListNumber4, div.MsoListNumber4
+	{margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:1.0in;
+	text-align:justify;
+	text-indent:-.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	mso-list:l1 level1 lfo9;
+	tab-stops:list 1.0in;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+p.MsoListNumber5, li.MsoListNumber5, div.MsoListNumber5
+	{margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:1.25in;
+	text-align:justify;
+	text-indent:-.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	mso-list:l0 level1 lfo10;
+	tab-stops:list 1.25in;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+a:link, span.MsoHyperlink
+	{color:red;
+	font-style:italic;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+p.MsoDocumentMap, li.MsoDocumentMap, div.MsoDocumentMap
+	{margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	background:navy;
+	font-size:10.0pt;
+	font-family:Geneva;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+p.ListBullet, li.ListBullet, div.ListBullet
+	{mso-style-name:">ListBullet\,>lb";
+	margin-top:4.0pt;
+	margin-right:0in;
+	margin-bottom:4.0pt;
+	margin-left:.5in;
+	text-align:justify;
+	text-indent:-.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	mso-list:l23 level1 lfo31;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:maroon;}
+p.ListBullet0, li.ListBullet0, div.ListBullet0
+	{mso-style-name:"ListBullet\,lb";
+	margin-top:4.0pt;
+	margin-right:0in;
+	margin-bottom:4.0pt;
+	margin-left:.25in;
+	text-align:justify;
+	text-indent:-.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	mso-list:l45 level1 lfo43;
+	tab-stops:list .25in;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:maroon;}
+p.CodeNum, li.CodeNum, div.CodeNum
+	{mso-style-name:CodeNum;
+	mso-style-parent:"Code\,x";
+	margin-top:0in;
+	margin-right:-67.7pt;
+	margin-bottom:0in;
+	margin-left:.25in;
+	margin-bottom:.0001pt;
+	text-indent:-.25in;
+	line-height:10.0pt;
+	mso-line-height-rule:exactly;
+	mso-pagination:widow-orphan;
+	mso-list:l88 level1 lfo44;
+	tab-stops:list .25in bar 5.25in;
+	border:none;
+	mso-border-left-alt:solid windowtext .75pt;
+	padding:0in;
+	mso-padding-alt:0in 0in 0in 2.0pt;
+	font-size:9.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Courier;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:green;
+	letter-spacing:-.5pt;}
+p.Code, li.Code, div.Code
+	{mso-style-name:"Code\,x";
+	margin-top:0in;
+	margin-right:-67.7pt;
+	margin-bottom:0in;
+	margin-left:.25in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	tab-stops:bar 5.25in;
+	border:none;
+	mso-border-left-alt:solid windowtext .75pt;
+	padding:0in;
+	mso-padding-alt:0in 0in 0in 2.0pt;
+	font-size:9.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Courier;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:green;
+	letter-spacing:-.5pt;}
+p.NoteListBullet, li.NoteListBullet, div.NoteListBullet
+	{mso-style-name:Note>ListBullet;
+	mso-style-parent:"Note\,n";
+	margin-top:4.0pt;
+	margin-right:.5in;
+	margin-bottom:4.0pt;
+	margin-left:.75in;
+	text-align:justify;
+	text-indent:-.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	mso-list:l61 level1 lfo45;
+	border:none;
+	mso-border-top-alt:solid windowtext .75pt;
+	mso-border-bottom-alt:solid windowtext .75pt;
+	padding:0in;
+	mso-padding-alt:2.0pt 0in 2.0pt 0in;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:teal;}
+p.Note, li.Note, div.Note
+	{mso-style-name:"Note\,n";
+	margin-top:6.0pt;
+	margin-right:.5in;
+	margin-bottom:6.0pt;
+	margin-left:.5in;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	border:none;
+	mso-border-top-alt:solid windowtext .75pt;
+	mso-border-bottom-alt:solid windowtext .75pt;
+	padding:0in;
+	mso-padding-alt:2.0pt 0in 2.0pt 0in;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:teal;}
+p.NoteListNumber, li.NoteListNumber, div.NoteListNumber
+	{mso-style-name:Note>ListNumber;
+	mso-style-parent:Note>ListBullet;
+	margin-top:4.0pt;
+	margin-right:.5in;
+	margin-bottom:4.0pt;
+	margin-left:.75in;
+	text-align:justify;
+	text-indent:-.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	mso-list:l25 level1 lfo33;
+	border:none;
+	mso-border-top-alt:solid windowtext .75pt;
+	mso-border-bottom-alt:solid windowtext .75pt;
+	padding:0in;
+	mso-padding-alt:2.0pt 0in 2.0pt 0in;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:teal;}
+p.NoteWarningListBullet, li.NoteWarningListBullet, div.NoteWarningListBullet
+	{mso-style-name:NoteWarning>ListBullet;
+	mso-style-parent:"NoteWarning\,nw";
+	margin-top:4.0pt;
+	margin-right:.5in;
+	margin-bottom:4.0pt;
+	margin-left:.75in;
+	text-align:justify;
+	text-indent:-.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	mso-list:l86 level1 lfo46;
+	border:none;
+	mso-border-top-alt:double windowtext 2.25pt;
+	mso-border-bottom-alt:double windowtext 2.25pt;
+	padding:0in;
+	mso-padding-alt:2.0pt 0in 2.0pt 0in;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:purple;}
+p.NoteWarning, li.NoteWarning, div.NoteWarning
+	{mso-style-name:"NoteWarning\,nw";
+	mso-style-parent:"Note\,n";
+	margin-top:6.0pt;
+	margin-right:.5in;
+	margin-bottom:6.0pt;
+	margin-left:.5in;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	border:none;
+	mso-border-top-alt:double windowtext 2.25pt;
+	mso-border-bottom-alt:double windowtext 2.25pt;
+	padding:0in;
+	mso-padding-alt:2.0pt 0in 2.0pt 0in;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:purple;}
+p.NoteWarningListNumber, li.NoteWarningListNumber, div.NoteWarningListNumber
+	{mso-style-name:NoteWarning>ListNumber;
+	mso-style-parent:Note>ListBullet;
+	margin-top:4.0pt;
+	margin-right:.5in;
+	margin-bottom:4.0pt;
+	margin-left:.75in;
+	text-align:justify;
+	text-indent:-.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	mso-list:l24 level1 lfo32;
+	border:none;
+	mso-border-top-alt:double windowtext 2.25pt;
+	mso-border-bottom-alt:double windowtext 2.25pt;
+	padding:0in;
+	mso-padding-alt:2.0pt 0in 2.0pt 0in;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:purple;}
+p.RefPurpose, li.RefPurpose, div.RefPurpose
+	{mso-style-name:"RefPurpose\,rp";
+	mso-style-parent:"RefSynopsis\,NutSynopsis\,rs";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.25in;
+	margin-bottom:.0001pt;
+	text-indent:-.25in;
+	line-height:10.0pt;
+	mso-line-height-rule:exactly;
+	mso-pagination:widow-orphan;
+	mso-list:l10 level1 lfo11;
+	tab-stops:.25in;
+	mso-element:frame;
+	mso-element-frame-width:2.0in;
+	mso-element-frame-hspace:9.35pt;
+	mso-element-wrap:around;
+	mso-element-anchor-vertical:paragraph;
+	mso-element-anchor-horizontal:column;
+	mso-element-left:right;
+	mso-element-top:-15.05pt;
+	mso-height-rule:exactly;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:fuchsia;
+	text-decoration:underline;
+	text-underline:single;}
+p.RefSynopsis, li.RefSynopsis, div.RefSynopsis
+	{mso-style-name:"RefSynopsis\,NutSynopsis\,rs";
+	margin-top:4.0pt;
+	margin-right:0in;
+	margin-bottom:4.0pt;
+	margin-left:0in;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:fuchsia;}
+p.SidebarListBullet, li.SidebarListBullet, div.SidebarListBullet
+	{mso-style-name:"SidebarListBullet\,ylb";
+	mso-style-parent:"ListBullet\,lb";
+	margin-top:4.0pt;
+	margin-right:.25in;
+	margin-bottom:4.0pt;
+	margin-left:.5in;
+	text-align:justify;
+	text-indent:-.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-list:l54 level1 lfo48;
+	mso-hyphenate:none;
+	border:none;
+	mso-border-alt:solid windowtext 1.5pt;
+	padding:0in;
+	mso-padding-alt:.25in .25in .25in .25in;
+	mso-border-shadow:yes;
+	mso-element:frame;
+	mso-element-frame-hspace:9.35pt;
+	mso-element-frame-vspace:9.35pt;
+	mso-element-wrap:no-wrap-beside;
+	mso-element-anchor-vertical:paragraph;
+	mso-element-anchor-horizontal:column;
+	mso-element-top:.05pt;
+	mso-height-rule:exactly;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:teal;}
+p.SidebarListNumber, li.SidebarListNumber, div.SidebarListNumber
+	{mso-style-name:"SidebarListNumber\,yln";
+	mso-style-parent:"ListNumber\,ln";
+	margin-top:4.0pt;
+	margin-right:.25in;
+	margin-bottom:4.0pt;
+	margin-left:.5in;
+	text-align:justify;
+	text-indent:-.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	mso-list:l84 level1 lfo49;
+	border:none;
+	mso-border-alt:solid windowtext 1.5pt;
+	padding:0in;
+	mso-padding-alt:.25in .25in .25in .25in;
+	mso-border-shadow:yes;
+	mso-element:frame;
+	mso-element-frame-hspace:9.35pt;
+	mso-element-frame-vspace:9.35pt;
+	mso-element-wrap:no-wrap-beside;
+	mso-element-anchor-vertical:paragraph;
+	mso-element-anchor-horizontal:column;
+	mso-element-top:.05pt;
+	mso-height-rule:exactly;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:teal;
+	layout-grid-mode:line;}
+p.ListNumber, li.ListNumber, div.ListNumber
+	{mso-style-name:"ListNumber\,ln";
+	mso-style-parent:"ListBullet\,lb";
+	margin-top:4.0pt;
+	margin-right:0in;
+	margin-bottom:4.0pt;
+	margin-left:.25in;
+	text-align:justify;
+	text-indent:-.25in;
+	mso-pagination:widow-orphan;
+	tab-stops:list .25in;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:navy;
+	layout-grid-mode:line;}
+span.literal
+	{mso-style-name:"literal\,fc";
+	mso-ascii-font-family:Courier;
+	mso-hansi-font-family:Courier;
+	color:red;}
+p.ChapterTitle, li.ChapterTitle, div.ChapterTitle
+	{mso-style-name:"ChapterTitle\,ct";
+	margin-top:4.0pt;
+	margin-right:0in;
+	margin-bottom:1.5in;
+	margin-left:0in;
+	text-align:right;
+	mso-line-height-alt:12.0pt;
+	mso-pagination:widow-orphan;
+	mso-outline-level:1;
+	font-size:24.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:red;}
+p.ChapterLabel, li.ChapterLabel, div.ChapterLabel
+	{mso-style-name:"ChapterLabel\,cl";
+	mso-style-parent:"ChapterTitle\,ct";
+	margin-top:4.0pt;
+	margin-right:0in;
+	margin-bottom:24.0pt;
+	margin-left:0in;
+	text-align:right;
+	mso-line-height-alt:12.0pt;
+	page-break-before:always;
+	mso-pagination:widow-orphan;
+	mso-outline-level:1;
+	font-size:48.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:red;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.CellCode, li.CellCode, div.CellCode
+	{mso-style-name:"CellCode\,tc";
+	mso-style-parent:"CellBody\,tb";
+	margin-top:2.0pt;
+	margin-right:0in;
+	margin-bottom:2.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan lines-together;
+	font-size:9.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Courier;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:navy;}
+p.ListBullet1, li.ListBullet1, div.ListBullet1
+	{mso-style-name:"ListBullet\.\.\.\,lbb";
+	margin-top:4.0pt;
+	margin-right:0in;
+	margin-bottom:4.0pt;
+	margin-left:.25in;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:maroon;}
+p.ListVariable, li.ListVariable, div.ListVariable
+	{mso-style-name:"ListVariable\,lv";
+	mso-style-next:"ListVariableTerm\,lvt";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:4.0pt;
+	margin-left:.25in;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:green;}
+p.ListNumber0, li.ListNumber0, div.ListNumber0
+	{mso-style-name:"ListNumber\.\.\.\,lnn";
+	mso-style-parent:"ListBullet\.\.\.\,lbb";
+	margin-top:4.0pt;
+	margin-right:0in;
+	margin-bottom:4.0pt;
+	margin-left:.25in;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:navy;}
+p.ListNumberStart, li.ListNumberStart, div.ListNumberStart
+	{mso-style-name:"ListNumberStart\,lns";
+	mso-style-parent:"ListNumber\,ln";
+	mso-style-next:"ListNumber\,ln";
+	margin-top:4.0pt;
+	margin-right:0in;
+	margin-bottom:4.0pt;
+	margin-left:.25in;
+	text-align:justify;
+	text-indent:-.25in;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	tab-stops:list .25in;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:navy;
+	layout-grid-mode:line;}
+p.FigureHolder, li.FigureHolder, div.FigureHolder
+	{mso-style-name:"FigureHolder\,gh";
+	margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	text-align:center;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:maroon;}
+p.FigureTitle, li.FigureTitle, div.FigureTitle
+	{mso-style-name:"FigureTitle\,gt";
+	margin-top:4.0pt;
+	margin-right:.5in;
+	margin-bottom:4.0pt;
+	margin-left:.5in;
+	text-align:center;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:maroon;
+	font-style:italic;
+	mso-bidi-font-style:normal;}
+p.ExampleTitle, li.ExampleTitle, div.ExampleTitle
+	{mso-style-name:"ExampleTitle\,xt";
+	mso-style-next:"Code\,x";
+	margin-top:4.0pt;
+	margin-right:-.2in;
+	margin-bottom:4.0pt;
+	margin-left:.25in;
+	text-align:center;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	border:none;
+	mso-border-left-alt:solid windowtext .75pt;
+	padding:0in;
+	mso-padding-alt:0in 0in 0in 2.0pt;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:green;
+	font-style:italic;
+	mso-bidi-font-style:normal;}
+p.CellBody, li.CellBody, div.CellBody
+	{mso-style-name:"CellBody\,tb";
+	margin-top:2.0pt;
+	margin-right:0in;
+	margin-bottom:2.0pt;
+	margin-left:0in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan lines-together;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:navy;}
+p.CellHeading, li.CellHeading, div.CellHeading
+	{mso-style-name:"CellHeading\,th";
+	mso-style-parent:"CellBody\,tb";
+	margin-top:2.0pt;
+	margin-right:0in;
+	margin-bottom:2.0pt;
+	margin-left:0in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan lines-together;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:navy;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.CellSubhead, li.CellSubhead, div.CellSubhead
+	{mso-style-name:"CellSubhead\,ts";
+	mso-style-parent:"CellHeading\,th";
+	margin-top:2.0pt;
+	margin-right:0in;
+	margin-bottom:2.0pt;
+	margin-left:0in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan lines-together;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:navy;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.CodeEmphasis, li.CodeEmphasis, div.CodeEmphasis
+	{mso-style-name:"CodeEmphasis\,xe";
+	mso-style-parent:"Code\,x";
+	margin-top:0in;
+	margin-right:-67.7pt;
+	margin-bottom:0in;
+	margin-left:.25in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	tab-stops:bar 5.25in;
+	border:none;
+	mso-border-left-alt:solid windowtext .75pt;
+	padding:0in;
+	mso-padding-alt:0in 0in 0in 2.0pt;
+	font-size:9.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Courier;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:green;
+	letter-spacing:-.5pt;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.TableTitle, li.TableTitle, div.TableTitle
+	{mso-style-name:"TableTitle\,tt";
+	mso-style-parent:"FigureTitle\,gt";
+	margin-top:12.0pt;
+	margin-right:.5in;
+	margin-bottom:4.0pt;
+	margin-left:.5in;
+	text-align:center;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:navy;
+	font-style:italic;
+	mso-bidi-font-style:normal;}
+p.Epigraph, li.Epigraph, div.Epigraph
+	{mso-style-name:"Epigraph\,e";
+	margin-top:4.0pt;
+	margin-right:0in;
+	margin-bottom:4.0pt;
+	margin-left:0in;
+	text-align:right;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;
+	font-style:italic;
+	mso-bidi-font-style:normal;}
+p.EpigraphAuthor, li.EpigraphAuthor, div.EpigraphAuthor
+	{mso-style-name:"EpigraphAuthor\,ea";
+	mso-style-parent:"Epigraph\,e";
+	margin-top:4.0pt;
+	margin-right:0in;
+	margin-bottom:4.0pt;
+	margin-left:0in;
+	text-align:right;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+p.EpigraphCitation, li.EpigraphCitation, div.EpigraphCitation
+	{mso-style-name:"EpigraphCitation\,ec";
+	mso-style-parent:"Epigraph\,e";
+	margin-top:4.0pt;
+	margin-right:0in;
+	margin-bottom:24.0pt;
+	margin-left:0in;
+	text-align:right;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;
+	font-style:italic;
+	mso-bidi-font-style:normal;}
+p.SidebarTitle, li.SidebarTitle, div.SidebarTitle
+	{mso-style-name:"SidebarTitle\,yt";
+	mso-style-parent:"SidebarBody\,yb";
+	margin-top:4.0pt;
+	margin-right:.25in;
+	margin-bottom:4.0pt;
+	margin-left:.25in;
+	text-align:center;
+	mso-line-height-alt:12.0pt;
+	mso-pagination:widow-orphan lines-together;
+	border:none;
+	mso-border-alt:solid windowtext 1.5pt;
+	padding:0in;
+	mso-padding-alt:.25in .25in .25in .25in;
+	mso-border-shadow:yes;
+	mso-element:frame;
+	mso-element-frame-hspace:9.35pt;
+	mso-element-frame-vspace:9.35pt;
+	mso-element-wrap:no-wrap-beside;
+	mso-element-anchor-vertical:paragraph;
+	mso-element-anchor-horizontal:column;
+	mso-element-top:.05pt;
+	mso-height-rule:exactly;
+	font-size:18.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:teal;}
+p.SidebarBody, li.SidebarBody, div.SidebarBody
+	{mso-style-name:"SidebarBody\,yb";
+	margin-top:4.0pt;
+	margin-right:.25in;
+	margin-bottom:4.0pt;
+	margin-left:.25in;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan lines-together;
+	border:none;
+	mso-border-alt:solid windowtext 1.5pt;
+	padding:0in;
+	mso-padding-alt:.25in .25in .25in .25in;
+	mso-border-shadow:yes;
+	mso-element:frame;
+	mso-element-frame-hspace:9.35pt;
+	mso-element-frame-vspace:9.35pt;
+	mso-element-wrap:no-wrap-beside;
+	mso-element-anchor-vertical:paragraph;
+	mso-element-anchor-horizontal:column;
+	mso-element-top:.05pt;
+	mso-height-rule:exactly;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:teal;}
+p.Quote, li.Quote, div.Quote
+	{mso-style-name:"Quote\,q";
+	margin-top:4.0pt;
+	margin-right:.25in;
+	margin-bottom:4.0pt;
+	margin-left:.25in;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:teal;}
+p.ListBullet2, li.ListBullet2, div.ListBullet2
+	{mso-style-name:">ListBullet\.\.\.\,>lbb";
+	mso-style-parent:"ListBullet\.\.\.\,lbb";
+	margin-top:4.0pt;
+	margin-right:0in;
+	margin-bottom:4.0pt;
+	margin-left:.5in;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:maroon;}
+p.ListVariable0, li.ListVariable0, div.ListVariable0
+	{mso-style-name:">ListVariable\,>lv";
+	mso-style-parent:"ListVariable\,lv";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:4.0pt;
+	margin-left:.5in;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:green;}
+p.ListNumberStart0, li.ListNumberStart0, div.ListNumberStart0
+	{mso-style-name:">ListNumberStart\,>lns";
+	mso-style-parent:"ListNumberStart\,lns";
+	mso-style-next:">ListNumber\,>ln";
+	margin-top:4.0pt;
+	margin-right:0in;
+	margin-bottom:4.0pt;
+	margin-left:.5in;
+	text-align:justify;
+	text-indent:-.25in;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	tab-stops:list .25in;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:navy;
+	layout-grid-mode:line;}
+p.ListNumber1, li.ListNumber1, div.ListNumber1
+	{mso-style-name:">ListNumber\,>ln";
+	mso-style-parent:"ListNumber\,ln";
+	margin-top:4.0pt;
+	margin-right:0in;
+	margin-bottom:4.0pt;
+	margin-left:.5in;
+	text-align:justify;
+	text-indent:-.25in;
+	mso-pagination:widow-orphan;
+	tab-stops:list .25in;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:navy;
+	layout-grid-mode:line;}
+p.ListNumber2, li.ListNumber2, div.ListNumber2
+	{mso-style-name:">ListNumber\.\.\.\,>lnn";
+	mso-style-parent:"ListNumber\.\.\.\,lnn";
+	margin-top:4.0pt;
+	margin-right:0in;
+	margin-bottom:4.0pt;
+	margin-left:.5in;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:navy;}
+span.bold
+	{mso-style-name:"bold\,fb";
+	mso-ascii-font-family:Times;
+	mso-hansi-font-family:Times;
+	color:red;
+	mso-ansi-language:EN-US;
+	font-weight:bold;}
+p.ListVariableTerm, li.ListVariableTerm, div.ListVariableTerm
+	{mso-style-name:"ListVariableTerm\,lvt";
+	mso-style-parent:"ListVariable\,lv";
+	mso-style-next:"ListVariable\,lv";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:green;}
+p.ListVariableTerm0, li.ListVariableTerm0, div.ListVariableTerm0
+	{mso-style-name:">ListVariableTerm\,>lvt";
+	mso-style-parent:">ListVariable\,>lv";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.25in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:green;
+	font-style:italic;
+	mso-bidi-font-style:normal;}
+p.ListSimple, li.ListSimple, div.ListSimple
+	{mso-style-name:"ListSimple\,ls";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.25in;
+	margin-bottom:.0001pt;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:blue;}
+span.technicalitalic
+	{mso-style-name:"technical italic\,fix";
+	mso-ascii-font-family:Times;
+	mso-hansi-font-family:Times;
+	color:red;
+	font-style:italic;}
+span.emphasis
+	{mso-style-name:"emphasis\,fi";
+	mso-ascii-font-family:Times;
+	mso-hansi-font-family:Times;
+	color:red;
+	mso-ansi-language:EN-US;
+	font-style:italic;}
+span.replaceable
+	{mso-style-name:"replaceable\,fci";
+	mso-ascii-font-family:Courier;
+	mso-hansi-font-family:Courier;
+	color:red;
+	font-style:italic;}
+span.onlineitem
+	{mso-style-name:"online item\,fiy";
+	mso-ascii-font-family:Times;
+	mso-hansi-font-family:Times;
+	color:red;
+	font-style:italic;}
+span.userinput
+	{mso-style-name:"user input\,fcb";
+	mso-ascii-font-family:Courier;
+	mso-hansi-font-family:Courier;
+	color:red;
+	font-weight:bold;}
+span.superscript
+	{mso-style-name:superscript;
+	color:red;
+	mso-text-raise:3.0pt;}
+span.subscript
+	{mso-style-name:subscript;
+	mso-ansi-font-size:10.0pt;
+	mso-ascii-font-family:Times;
+	mso-hansi-font-family:Times;
+	color:red;
+	mso-text-raise:-3.0pt;}
+p.Comment, li.Comment, div.Comment
+	{mso-style-name:"Comment\,z";
+	margin-top:4.0pt;
+	margin-right:0in;
+	margin-bottom:4.0pt;
+	margin-left:0in;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+p.SidebarCode, li.SidebarCode, div.SidebarCode
+	{mso-style-name:"SidebarCode\,yc";
+	mso-style-parent:"SidebarBody\,yb";
+	margin-top:0in;
+	margin-right:.25in;
+	margin-bottom:0in;
+	margin-left:.25in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	line-height:10.0pt;
+	mso-line-height-rule:exactly;
+	mso-pagination:widow-orphan lines-together;
+	border:none;
+	mso-border-alt:solid windowtext 1.5pt;
+	padding:0in;
+	mso-padding-alt:.25in .25in .25in .25in;
+	mso-border-shadow:yes;
+	mso-element:frame;
+	mso-element-frame-hspace:9.35pt;
+	mso-element-frame-vspace:9.35pt;
+	mso-element-wrap:no-wrap-beside;
+	mso-element-anchor-vertical:paragraph;
+	mso-element-anchor-horizontal:column;
+	mso-element-top:.05pt;
+	mso-height-rule:exactly;
+	font-size:9.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Courier;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:teal;}
+span.userinputreplaceable
+	{mso-style-name:"user input replaceable\,fcbi";
+	mso-style-parent:"user input\,fcb";
+	mso-ascii-font-family:Courier;
+	mso-hansi-font-family:Courier;
+	color:red;
+	font-weight:bold;
+	font-style:italic;}
+p.NoteCode, li.NoteCode, div.NoteCode
+	{mso-style-name:Note>Code;
+	mso-style-parent:"Note\,n";
+	margin-top:0in;
+	margin-right:.5in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	line-height:10.0pt;
+	mso-line-height-rule:exactly;
+	mso-pagination:widow-orphan;
+	border:none;
+	mso-border-top-alt:solid windowtext .75pt;
+	mso-border-bottom-alt:solid windowtext .75pt;
+	padding:0in;
+	mso-padding-alt:2.0pt 0in 2.0pt 0in;
+	font-size:9.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Courier;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:teal;}
+span.Symbol
+	{mso-style-name:Symbol;
+	mso-ascii-font-family:Symbol;
+	mso-hansi-font-family:Symbol;
+	color:red;
+	border:none;}
+p.NoteWarningCode, li.NoteWarningCode, div.NoteWarningCode
+	{mso-style-name:NoteWarning>Code;
+	mso-style-parent:"NoteWarning\,nw";
+	margin-top:0in;
+	margin-right:.5in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	line-height:10.0pt;
+	mso-line-height-rule:exactly;
+	mso-pagination:widow-orphan;
+	border:none;
+	mso-border-top-alt:double windowtext 2.25pt;
+	mso-border-bottom-alt:double windowtext 2.25pt;
+	padding:0in;
+	mso-padding-alt:2.0pt 0in 2.0pt 0in;
+	font-size:9.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Courier;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:purple;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+@list l0
+	{mso-list-id:-132;
+	mso-list-type:simple;
+	mso-list-template-ids:-903439920;}
+@list l0:level1
+	{mso-level-tab-stop:1.25in;
+	mso-level-number-position:left;
+	margin-left:1.25in;
+	text-indent:-.25in;}
+@list l1
+	{mso-list-id:-131;
+	mso-list-type:simple;
+	mso-list-template-ids:1349692094;}
+@list l1:level1
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	margin-left:1.0in;
+	text-indent:-.25in;}
+@list l2
+	{mso-list-id:-130;
+	mso-list-type:simple;
+	mso-list-template-ids:-1421164964;}
+@list l2:level1
+	{mso-level-tab-stop:.75in;
+	mso-level-number-position:left;
+	margin-left:.75in;
+	text-indent:-.25in;}
+@list l3
+	{mso-list-id:-129;
+	mso-list-type:simple;
+	mso-list-template-ids:359945280;}
+@list l3:level1
+	{mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4
+	{mso-list-id:-128;
+	mso-list-type:simple;
+	mso-list-template-ids:1739995856;}
+@list l4:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:1.25in;
+	mso-level-number-position:left;
+	margin-left:1.25in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l5
+	{mso-list-id:-127;
+	mso-list-type:simple;
+	mso-list-template-ids:635846536;}
+@list l5:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	margin-left:1.0in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l6
+	{mso-list-id:-126;
+	mso-list-type:simple;
+	mso-list-template-ids:2143173986;}
+@list l6:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.75in;
+	mso-level-number-position:left;
+	margin-left:.75in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l7
+	{mso-list-id:-125;
+	mso-list-type:simple;
+	mso-list-template-ids:522454614;}
+@list l7:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l8
+	{mso-list-id:-120;
+	mso-list-type:simple;
+	mso-list-template-ids:746241926;}
+@list l8:level1
+	{mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l9
+	{mso-list-id:-119;
+	mso-list-type:simple;
+	mso-list-template-ids:-342228500;}
+@list l9:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l10
+	{mso-list-id:-2;
+	mso-list-type:simple;
+	mso-list-template-ids:0;}
+@list l10:level1
+	{mso-level-start-at:0;
+	mso-level-style-link:RefPurpose;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l11
+	{mso-list-id:1;
+	mso-list-type:simple;
+	mso-list-template-ids:-1;}
+@list l11:level1
+	{mso-level-start-at:0;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l12
+	{mso-list-id:2;
+	mso-list-type:simple;
+	mso-list-template-ids:-2145630574;}
+@list l12:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l13
+	{mso-list-id:3;
+	mso-list-type:simple;
+	mso-list-template-ids:-2145630574;}
+@list l13:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l14
+	{mso-list-id:4;
+	mso-list-type:simple;
+	mso-list-template-ids:-1;}
+@list l14:level1
+	{mso-level-start-at:0;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l15
+	{mso-list-id:5;
+	mso-list-type:simple;
+	mso-list-template-ids:-1;}
+@list l15:level1
+	{mso-level-start-at:0;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l16
+	{mso-list-id:6;
+	mso-list-type:simple;
+	mso-list-template-ids:-1;}
+@list l16:level1
+	{mso-level-start-at:0;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l17
+	{mso-list-id:7;
+	mso-list-type:simple;
+	mso-list-template-ids:-999938550;}
+@list l17:level1
+	{mso-level-start-at:2;
+	mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l18
+	{mso-list-id:9;
+	mso-list-type:simple;
+	mso-list-template-ids:-1;}
+@list l18:level1
+	{mso-level-start-at:0;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l19
+	{mso-list-id:10;
+	mso-list-type:simple;
+	mso-list-template-ids:-1;}
+@list l19:level1
+	{mso-level-start-at:0;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l20
+	{mso-list-id:11;
+	mso-list-type:simple;
+	mso-list-template-ids:-1;}
+@list l20:level1
+	{mso-level-start-at:0;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l21
+	{mso-list-id:12;
+	mso-list-type:simple;
+	mso-list-template-ids:-1;}
+@list l21:level1
+	{mso-level-start-at:0;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l22
+	{mso-list-id:13;
+	mso-list-type:simple;
+	mso-list-template-ids:-1;}
+@list l22:level1
+	{mso-level-start-at:0;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l23
+	{mso-list-id:14;
+	mso-list-type:simple;
+	mso-list-template-ids:0;}
+@list l23:level1
+	{mso-level-number-format:bullet;
+	mso-level-style-link:>ListBullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l24
+	{mso-list-id:15;
+	mso-list-type:simple;
+	mso-list-template-ids:-198919550;}
+@list l24:level1
+	{mso-level-style-link:NoteWarning>ListNumber;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l25
+	{mso-list-id:16;
+	mso-list-type:simple;
+	mso-list-template-ids:0;}
+@list l25:level1
+	{mso-level-style-link:Note>ListNumber;
+	mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l26
+	{mso-list-id:23336855;
+	mso-list-type:simple;
+	mso-list-template-ids:-1;}
+@list l26:level1
+	{mso-level-start-at:0;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l27
+	{mso-list-id:72243313;
+	mso-list-type:simple;
+	mso-list-template-ids:-1512123078;}
+@list l27:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l28
+	{mso-list-id:81339472;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l28:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l29
+	{mso-list-id:82722815;
+	mso-list-type:simple;
+	mso-list-template-ids:-1207784814;}
+@list l29:level1
+	{mso-level-start-at:3;
+	mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l30
+	{mso-list-id:109252563;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l30:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	text-indent:-.25in;}
+@list l31
+	{mso-list-id:191458823;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l31:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l32
+	{mso-list-id:200940153;
+	mso-list-type:simple;
+	mso-list-template-ids:-311238496;}
+@list l32:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l33
+	{mso-list-id:246306559;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l33:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.3in;
+	text-indent:-.25in;}
+@list l34
+	{mso-list-id:318266831;
+	mso-list-type:simple;
+	mso-list-template-ids:-1;}
+@list l34:level1
+	{mso-level-start-at:0;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l35
+	{mso-list-id:381058107;
+	mso-list-type:simple;
+	mso-list-template-ids:-2145630574;}
+@list l35:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l36
+	{mso-list-id:429206223;
+	mso-list-type:simple;
+	mso-list-template-ids:-768445754;}
+@list l36:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-text:"%1\)";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.55in;
+	text-indent:-.25in;}
+@list l37
+	{mso-list-id:433549853;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l37:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.3in;
+	text-indent:-.25in;}
+@list l38
+	{mso-list-id:436368843;
+	mso-list-type:simple;
+	mso-list-template-ids:-1;}
+@list l38:level1
+	{mso-level-start-at:0;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l39
+	{mso-list-id:517742026;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l39:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.3in;
+	text-indent:-.25in;}
+@list l40
+	{mso-list-id:543298772;
+	mso-list-type:simple;
+	mso-list-template-ids:-768445754;}
+@list l40:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-text:"%1\)";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.55in;
+	text-indent:-.25in;}
+@list l41
+	{mso-list-id:549146146;
+	mso-list-type:simple;
+	mso-list-template-ids:-1;}
+@list l41:level1
+	{mso-level-start-at:0;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l42
+	{mso-list-id:566457592;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l42:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.3in;
+	text-indent:-.25in;}
+@list l43
+	{mso-list-id:567962367;
+	mso-list-type:simple;
+	mso-list-template-ids:-2145630574;}
+@list l43:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l44
+	{mso-list-id:591621228;
+	mso-list-type:simple;
+	mso-list-template-ids:-2145630574;}
+@list l44:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l45
+	{mso-list-id:601913694;
+	mso-list-type:simple;
+	mso-list-template-ids:1252566738;}
+@list l45:level1
+	{mso-level-number-format:bullet;
+	mso-level-style-link:ListBullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l46
+	{mso-list-id:610085353;
+	mso-list-type:simple;
+	mso-list-template-ids:-1;}
+@list l46:level1
+	{mso-level-start-at:0;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l47
+	{mso-list-id:626856251;
+	mso-list-type:simple;
+	mso-list-template-ids:-1;}
+@list l47:level1
+	{mso-level-start-at:0;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l48
+	{mso-list-id:677538203;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l48:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.3in;
+	text-indent:-.25in;}
+@list l49
+	{mso-list-id:690567196;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l49:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.3in;
+	text-indent:-.25in;}
+@list l50
+	{mso-list-id:734008717;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l50:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.3in;
+	text-indent:-.25in;}
+@list l51
+	{mso-list-id:734671284;
+	mso-list-type:simple;
+	mso-list-template-ids:-1;}
+@list l51:level1
+	{mso-level-start-at:0;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l52
+	{mso-list-id:735669632;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l52:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l53
+	{mso-list-id:751976439;
+	mso-list-type:simple;
+	mso-list-template-ids:-1;}
+@list l53:level1
+	{mso-level-start-at:0;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l54
+	{mso-list-id:815411582;
+	mso-list-type:simple;
+	mso-list-template-ids:1325411750;}
+@list l54:level1
+	{mso-level-number-format:bullet;
+	mso-level-style-link:SidebarListBullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l55
+	{mso-list-id:822477435;
+	mso-list-type:simple;
+	mso-list-template-ids:-768445754;}
+@list l55:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-text:"%1\)";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.55in;
+	text-indent:-.25in;}
+@list l56
+	{mso-list-id:831334942;
+	mso-list-type:simple;
+	mso-list-template-ids:-1;}
+@list l56:level1
+	{mso-level-start-at:0;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l57
+	{mso-list-id:860123194;
+	mso-list-type:simple;
+	mso-list-template-ids:-922948940;}
+@list l57:level1
+	{mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l58
+	{mso-list-id:937718857;
+	mso-list-type:simple;
+	mso-list-template-ids:-804226846;}
+@list l58:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l59
+	{mso-list-id:939605999;
+	mso-list-type:simple;
+	mso-list-template-ids:-2145630574;}
+@list l59:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l60
+	{mso-list-id:948970068;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l60:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.3in;
+	text-indent:-.25in;}
+@list l61
+	{mso-list-id:952833409;
+	mso-list-type:simple;
+	mso-list-template-ids:-1557993748;}
+@list l61:level1
+	{mso-level-number-format:bullet;
+	mso-level-style-link:Note>ListBullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l62
+	{mso-list-id:970327993;
+	mso-list-type:simple;
+	mso-list-template-ids:-768445754;}
+@list l62:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-text:"%1\)";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	text-indent:-.25in;}
+@list l63
+	{mso-list-id:978149076;
+	mso-list-type:simple;
+	mso-list-template-ids:-2145630574;}
+@list l63:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l64
+	{mso-list-id:984234660;
+	mso-list-type:simple;
+	mso-list-template-ids:-520836446;}
+@list l64:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l65
+	{mso-list-id:986662064;
+	mso-list-type:simple;
+	mso-list-template-ids:-768445754;}
+@list l65:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-text:"%1\)";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.55in;
+	text-indent:-.25in;}
+@list l66
+	{mso-list-id:993993563;
+	mso-list-type:simple;
+	mso-list-template-ids:-2145630574;}
+@list l66:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l67
+	{mso-list-id:1006324633;
+	mso-list-type:simple;
+	mso-list-template-ids:-1;}
+@list l67:level1
+	{mso-level-start-at:0;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l68
+	{mso-list-id:1013723002;
+	mso-list-type:simple;
+	mso-list-template-ids:-1;}
+@list l68:level1
+	{mso-level-start-at:0;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l69
+	{mso-list-id:1015883530;
+	mso-list-type:simple;
+	mso-list-template-ids:1567379614;}
+@list l69:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l70
+	{mso-list-id:1053387318;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l70:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l71
+	{mso-list-id:1072001493;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l71:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l72
+	{mso-list-id:1094666222;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l72:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	text-indent:-.25in;}
+@list l73
+	{mso-list-id:1096171451;
+	mso-list-type:simple;
+	mso-list-template-ids:-768445754;}
+@list l73:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-text:"%1\)";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	text-indent:-.25in;}
+@list l74
+	{mso-list-id:1130242251;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l74:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	text-indent:-.25in;}
+@list l75
+	{mso-list-id:1158956619;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l75:level1
+	{mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l76
+	{mso-list-id:1167331328;
+	mso-list-type:simple;
+	mso-list-template-ids:-147952942;}
+@list l76:level1
+	{mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l77
+	{mso-list-id:1213812495;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l77:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.3in;
+	text-indent:-.25in;}
+@list l78
+	{mso-list-id:1220751754;
+	mso-list-type:simple;
+	mso-list-template-ids:-768445754;}
+@list l78:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-text:"%1\)";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.55in;
+	text-indent:-.25in;}
+@list l79
+	{mso-list-id:1221667886;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l79:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.3in;
+	text-indent:-.25in;}
+@list l80
+	{mso-list-id:1253317287;
+	mso-list-type:simple;
+	mso-list-template-ids:-768445754;}
+@list l80:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-text:"%1\)";
+	mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l81
+	{mso-list-id:1264608548;
+	mso-list-type:simple;
+	mso-list-template-ids:-768445754;}
+@list l81:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-text:"%1\)";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.55in;
+	text-indent:-.25in;}
+@list l82
+	{mso-list-id:1267613843;
+	mso-list-type:simple;
+	mso-list-template-ids:-1;}
+@list l82:level1
+	{mso-level-start-at:0;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l83
+	{mso-list-id:1270772914;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l83:level1
+	{mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l84
+	{mso-list-id:1318650478;
+	mso-list-type:simple;
+	mso-list-template-ids:-2145630574;}
+@list l84:level1
+	{mso-level-style-link:SidebarListNumber;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l85
+	{mso-list-id:1329216303;
+	mso-list-type:simple;
+	mso-list-template-ids:-1;}
+@list l85:level1
+	{mso-level-start-at:0;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l86
+	{mso-list-id:1370960661;
+	mso-list-type:simple;
+	mso-list-template-ids:1134695778;}
+@list l86:level1
+	{mso-level-number-format:bullet;
+	mso-level-style-link:NoteWarning>ListBullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l87
+	{mso-list-id:1376155942;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l87:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	text-indent:-.25in;}
+@list l88
+	{mso-list-id:1381124722;
+	mso-list-type:simple;
+	mso-list-template-ids:-22622980;}
+@list l88:level1
+	{mso-level-style-link:CodeNum;
+	mso-level-text:%1;
+	mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l89
+	{mso-list-id:1386903609;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l89:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.3in;
+	text-indent:-.25in;}
+@list l90
+	{mso-list-id:1426534621;
+	mso-list-type:simple;
+	mso-list-template-ids:-768445754;}
+@list l90:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-text:"%1\)";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	text-indent:-.25in;}
+@list l91
+	{mso-list-id:1470629908;
+	mso-list-type:simple;
+	mso-list-template-ids:-1;}
+@list l91:level1
+	{mso-level-start-at:0;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l92
+	{mso-list-id:1491553866;
+	mso-list-type:simple;
+	mso-list-template-ids:-2145630574;}
+@list l92:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l93
+	{mso-list-id:1503668661;
+	mso-list-type:simple;
+	mso-list-template-ids:-1172537794;}
+@list l93:level1
+	{mso-level-start-at:2;
+	mso-level-number-format:alpha-lower;
+	mso-level-text:"%1\)";
+	mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l94
+	{mso-list-id:1505123349;
+	mso-list-type:simple;
+	mso-list-template-ids:-2145630574;}
+@list l94:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l95
+	{mso-list-id:1545294944;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l95:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	text-indent:-.25in;}
+@list l96
+	{mso-list-id:1545363375;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l96:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l97
+	{mso-list-id:1579444145;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l97:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l98
+	{mso-list-id:1584223467;
+	mso-list-type:simple;
+	mso-list-template-ids:-1;}
+@list l98:level1
+	{mso-level-start-at:0;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l99
+	{mso-list-id:1588613459;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l99:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	text-indent:-.25in;}
+@list l100
+	{mso-list-id:1591506843;
+	mso-list-type:simple;
+	mso-list-template-ids:-768445754;}
+@list l100:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-text:"%1\)";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	text-indent:-.25in;}
+@list l101
+	{mso-list-id:1620529064;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l101:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l102
+	{mso-list-id:1624728391;
+	mso-list-type:simple;
+	mso-list-template-ids:-2145630574;}
+@list l102:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l103
+	{mso-list-id:1653489373;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l103:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	text-indent:-.25in;}
+@list l104
+	{mso-list-id:1685087635;
+	mso-list-type:simple;
+	mso-list-template-ids:-2145630574;}
+@list l104:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l105
+	{mso-list-id:1685135365;
+	mso-list-type:simple;
+	mso-list-template-ids:-2145630574;}
+@list l105:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l106
+	{mso-list-id:1697736387;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l106:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	text-indent:-.25in;}
+@list l107
+	{mso-list-id:1796753672;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l107:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	text-indent:-.25in;}
+@list l108
+	{mso-list-id:1844199869;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l108:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l109
+	{mso-list-id:1859469637;
+	mso-list-type:simple;
+	mso-list-template-ids:-768445754;}
+@list l109:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-text:"%1\)";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	text-indent:-.25in;}
+@list l110
+	{mso-list-id:1869100159;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l110:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	text-indent:-.25in;}
+@list l111
+	{mso-list-id:1891068077;
+	mso-list-type:simple;
+	mso-list-template-ids:-768445754;}
+@list l111:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-text:"%1\)";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	text-indent:-.25in;}
+@list l112
+	{mso-list-id:1929659350;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l112:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.3in;
+	text-indent:-.25in;}
+@list l113
+	{mso-list-id:1945724350;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l113:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.3in;
+	text-indent:-.25in;}
+@list l114
+	{mso-list-id:2012564902;
+	mso-list-type:simple;
+	mso-list-template-ids:-1;}
+@list l114:level1
+	{mso-level-start-at:0;
+	mso-level-text:*;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l115
+	{mso-list-id:2029015648;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l115:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	text-indent:-.25in;}
+@list l116
+	{mso-list-id:2054499230;
+	mso-list-type:simple;
+	mso-list-template-ids:-768445754;}
+@list l116:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-text:"%1\)";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.55in;
+	text-indent:-.25in;}
+@list l117
+	{mso-list-id:2066710041;
+	mso-list-type:simple;
+	mso-list-template-ids:67698703;}
+@list l117:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.3in;
+	text-indent:-.25in;}
+@list l10:level1 lfo11
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l11:level1 lfo12
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Times;}
+@list l12:level1 lfo13
+	{mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Times;}
+@list l14:level1 lfo15
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Times;}
+@list l15:level1 lfo16
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Times;}
+@list l16:level1 lfo17
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Times;}
+@list l17:level1 lfo18
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Times;}
+@list l11:level1 lfo19
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Courier;}
+@list l12:level1 lfo20
+	{mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Courier;}
+@list l13:level1 lfo21
+	{mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Courier;}
+@list l14:level1 lfo22
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Courier;}
+@list l15:level1 lfo23
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Courier;}
+@list l16:level1 lfo24
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Courier;}
+@list l18:level1 lfo26
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Courier;}
+@list l19:level1 lfo27
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Courier;}
+@list l20:level1 lfo28
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Courier;}
+@list l21:level1 lfo29
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Courier;}
+@list l22:level1 lfo30
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Courier;}
+@list l46:level1 lfo34
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Arial;
+	mso-bidi-font-family:"Times New Roman";}
+@list l17:level1 lfo35
+	{mso-level-start-at:1;}
+@list l85:level1 lfo36
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:"Courier New";
+	mso-bidi-font-family:"Times New Roman";}
+@list l53:level1 lfo37
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:"Courier New";
+	mso-bidi-font-family:"Times New Roman";}
+@list l91:level1 lfo38
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Arial;
+	mso-bidi-font-family:"Times New Roman";}
+@list l41:level1 lfo39
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Arial;
+	mso-bidi-font-family:"Times New Roman";}
+@list l56:level1 lfo40
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Arial;
+	mso-bidi-font-family:"Times New Roman";}
+@list l114:level1 lfo41
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Arial;
+	mso-bidi-font-family:"Times New Roman";}
+@list l51:level1 lfo42
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Arial;
+	mso-bidi-font-family:"Times New Roman";}
+@list l10:level1 lfo47
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l26:level1 lfo50
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l67:level1 lfo51
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l47:level1 lfo52
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l98:level1 lfo53
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l82:level1 lfo58
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Times;}
+@list l38:level1 lfo59
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Times;}
+@list l68:level1 lfo60
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Times;}
+@list l34:level1 lfo61
+	{mso-level-start-at:1;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	mso-level-legacy:yes;
+	mso-level-legacy-indent:.25in;
+	mso-level-legacy-space:0in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Times;}
+ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+</head>
+
+<body lang=EN-US link=red vlink=purple style='tab-interval:.5in'>
+
+<div class=Section1>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal><i>This section was originally published in the first
+edition of Learning Java in the JavaBeans chapter.<span style="mso-spacerun:
+yes">  </span>The dynamic event adapter developed in this section is redundant
+with the new Java 1.4 </i><span class=literal><i><span style='font-family:Courier;
+color:red'>java.beans.EventHandler</span></i></span><i> API.<span
+style="mso-spacerun: yes">  </span>However, the techniques involved are
+generally useful in JavaBeans and other application areas, so we have moved
+this information to the CD.<o:p></o:p></i></p>
+
+<h1>Putting Reflection to Work</h1>
+
+<p class=MsoNormal><!--[if supportFields]><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span>PRIVATE &lt;indexterm
+class=&quot;startofrange&quot; id=&quot;ch19-idx-3339-1&quot;
+number=&quot;4065&quot;&gt; <span style='mso-element:field-end'></span>MACROBUTTON
+ATI_Paired_StartTag<span style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE reflection<span style="mso-spacerun:
+yes">  </span><![endif]--><!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->In
+this section, we'll build a dynamic event adapter that can be configured at
+runtime.</p>
+
+<p class=MsoNormal>In Chapter 15, “Swing,” we saw how <!--[if supportFields]><span
+style='mso-element:field-begin'></span><span style="mso-spacerun: yes"> </span><span
+style='mso-element:field-begin'></span><span style="mso-spacerun:
+yes"> </span>PRIVATE &lt;indexterm class=&quot;startofrange&quot;
+id=&quot;ch19-idx-1000004504-1&quot; number=&quot;4066&quot;&gt; <span
+style='mso-element:field-end'></span>MACROBUTTON ATI_Paired_StartTag<span
+style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE &quot;adapter classes:generic
+adapter for ActionEvents&quot;<span style="mso-spacerun: yes">  </span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><span style="mso-spacerun:
+yes"> </span><!--[if supportFields]><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span>PRIVATE &lt;indexterm
+class=&quot;startofrange&quot; id=&quot;ch19-idx-1000004504-2&quot;
+number=&quot;4067&quot;&gt; <span style='mso-element:field-end'></span>MACROBUTTON
+ATI_Paired_StartTag<span style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE &quot;ActionEvent class:generic
+adapter for, creating&quot;<span style="mso-spacerun: yes">  </span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]-->adapter classes could be built
+to connect event firings to arbitrary methods in our code, allowing us to
+cleanly separate GUI and logic in our applications. In this chapter, we have
+described how the BeanBox interposes adapters between Beans to do this for us.
+We have also described how the BeanBox uses adapters to bind and constrain
+properties between Beans.</p>
+
+<p class=MsoNormal>One of the <!--[if supportFields]><span style='mso-element:
+field-begin'></span><span style="mso-spacerun: yes"> </span><span
+style='mso-element:field-begin'></span><span style="mso-spacerun:
+yes"> </span>PRIVATE &lt;indexterm class=&quot;startofrange&quot;
+id=&quot;ch19-idx-1000004512-1&quot; number=&quot;4068&quot;&gt; <span
+style='mso-element:field-end'></span>MACROBUTTON ATI_Paired_StartTag<span
+style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE &quot;events:adapter classes for
+connecting sources and targets&quot;<span style="mso-spacerun: yes">  </span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]-->primary motivations behind the
+AWT/Swing event model was to reduce the need to subclass components to perform
+simple hookups. But if we start relying heavily on special adapter classes, we
+can quickly end up with as many adapters as objects. <!--[if supportFields]><span
+style='mso-element:field-begin'></span><span style="mso-spacerun: yes"> </span><span
+style='mso-element:field-begin'></span><span style="mso-spacerun:
+yes"> </span>PRIVATE &lt;indexterm number=&quot;4069&quot;&gt; <span
+style='mso-element:field-end'></span>MACROBUTTON ATI_Paired_StartTag<span
+style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE &quot;anonymous:inner
+classes&quot;<span style="mso-spacerun: yes">  </span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><span style="mso-spacerun:
+yes"> </span><!--[if supportFields]><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span>PRIVATE &lt;indexterm
+number=&quot;4070&quot;&gt; <span style='mso-element:field-end'></span>MACROBUTTON
+ATI_Paired_StartTag<span style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE &quot;classes:anonymous inner
+classes&quot;<span style="mso-spacerun: yes">  </span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><span style="mso-spacerun:
+yes"> </span><!--[if supportFields]><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span>PRIVATE &lt;indexterm
+number=&quot;4071&quot;&gt; <span style='mso-element:field-end'></span>MACROBUTTON
+ATI_Paired_StartTag<span style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE &quot;inner
+classes:anonymous&quot;<span style="mso-spacerun: yes">  </span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]-->Anonymous inner classes let us
+hide the existence of these classes, but they're still there. A potential solution
+for large or specialized applications is to create <em>generic</em><!--[if supportFields]><span
+style='mso-element:field-begin'></span> <span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span>PRIVATE &lt;indexterm
+number=&quot;4072&quot;&gt; <span style='mso-element:field-end'></span>MACROBUTTON
+ATI_Paired_StartTag<span style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE &quot;generic event
+adapters&quot;<span style="mso-spacerun: yes">  </span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><span style="mso-spacerun:
+yes"> </span>event adapters that can serve a number of event sources and
+targets simultaneously.</p>
+
+<p class=MsoNormal>The following example, <span class=literal><span
+style='font-family:Courier;color:red'>DynamicActionAdapter</span></span><!--[if supportFields]><span
+style='mso-element:field-begin'></span> <span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span>PRIVATE &lt;indexterm
+class=&quot;startofrange&quot; id=&quot;ch19-idx-1000004506-1&quot;
+number=&quot;4073&quot;&gt; <span style='mso-element:field-end'></span>MACROBUTTON
+ATI_Paired_StartTag<span style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE &quot;DynamicActionAdapter
+(example)&quot;<span style="mso-spacerun: yes">  </span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]-->, is a generic adapter for <span
+class=literal><span style='font-family:Courier;color:red'>ActionEvent</span></span>s.
+A single instance of <span class=literal><span style='font-family:Courier;
+color:red'>DynamicActionAdapter</span></span> can be used to hook up a number
+of <span class=literal><span style='font-family:Courier;color:red'>ActionEvent</span></span>
+sources. <span class=literal><span style='font-family:Courier;color:red'>DynamicActionAdapter</span></span>
+uses reflection on both the source and target objects. This enables us to
+direct each event on the source object to an arbitrary method of the target
+object.</p>
+
+<p class=MsoNormal>Here's the code:</p>
+
+<div style='border:none;border-left:solid windowtext .75pt;padding:0in 0in 0in 2.0pt'>
+
+<p class=Code>//file: DynamicActionAdapter.java</p>
+
+<p class=Code>import java.awt.*; </p>
+
+<p class=Code>import java.util.Hashtable; </p>
+
+<p class=Code>import java.lang.reflect.Method; </p>
+
+<p class=Code>import java.awt.event.*;</p>
+
+<p class=Code><span style="mso-spacerun: yes"> </span></p>
+
+<p class=Code>class DynamicActionAdapter implements ActionListener { </p>
+
+<p class=Code><span style="mso-spacerun: yes">  </span>Hashtable actions = new
+Hashtable( ); </p>
+
+<p class=Code><span style="mso-spacerun: yes">   </span></p>
+
+<p class=Code><span style="mso-spacerun: yes">  </span>public void hookup(
+Object sourceObject, Object targetObject,</p>
+
+<p class=Code><span style="mso-spacerun: yes">                     
+</span>String targetMethod ) { </p>
+
+<p class=Code><span style="mso-spacerun: yes">   
+</span>actions.put(sourceObject, </p>
+
+<p class=Code><span style="mso-spacerun: yes">      </span>new
+Target(targetObject, targetMethod));</p>
+
+<p class=Code><span style="mso-spacerun: yes">    </span>invokeReflectedMethod(
+sourceObject, &quot;addActionListener&quot;,</p>
+
+<p class=Code><span style="mso-spacerun: yes">      </span>new Object[] {this},
+new Class[] {ActionListener.class});</p>
+
+<p class=Code><span style="mso-spacerun: yes">  </span>} </p>
+
+<p class=Code><span style="mso-spacerun: yes"> </span></p>
+
+<p class=Code><span style="mso-spacerun: yes">  </span>public void
+actionPerformed(ActionEvent e) { </p>
+
+<p class=Code><span style="mso-spacerun: yes">    </span>Target target =
+(Target)actions.get( e.getSource( ) ); </p>
+
+<p class=Code><span style="mso-spacerun: yes">    </span>if ( target == null ) </p>
+
+<p class=Code><span style="mso-spacerun: yes">      </span>throw new RuntimeException(&quot;unknown
+source&quot;); </p>
+
+<p class=Code><span style="mso-spacerun: yes">   
+</span>invokeReflectedMethod(target.object, target.methodName, </p>
+
+<p class=Code><span style="mso-spacerun: yes">                         
+</span>null, null);</p>
+
+<p class=Code><span style="mso-spacerun: yes">  </span>} </p>
+
+<p class=Code><span style="mso-spacerun: yes"> </span></p>
+
+<p class=Code><span style="mso-spacerun: yes">  </span>private void
+invokeReflectedMethod(<span style="mso-spacerun: yes">  </span></p>
+
+<p class=Code><span style="mso-spacerun: yes">    </span>Object target, String
+methodName, </p>
+
+<p class=Code><span style="mso-spacerun: yes">    </span>Object [] args, Class
+[] argTypes ) {</p>
+
+<p class=Code><span style="mso-spacerun: yes"> </span></p>
+
+<p class=Code><span style="mso-spacerun: yes">    </span>try { </p>
+
+<p class=Code><span style="mso-spacerun: yes">      </span>Method method = </p>
+
+<p class=Code><span style="mso-spacerun: yes">        </span>target.getClass(
+).getMethod( methodName, argTypes ); </p>
+
+<p class=Code><span style="mso-spacerun: yes">      </span>method.invoke(
+target, args ); </p>
+
+<p class=Code><span style="mso-spacerun: yes">    </span>}</p>
+
+<p class=Code><span style="mso-spacerun: yes">    </span>catch ( Exception e )
+{ </p>
+
+<p class=Code><span style="mso-spacerun: yes">      </span>throw new
+RuntimeException(&quot;invocation problem: &quot;+e); </p>
+
+<p class=Code><span style="mso-spacerun: yes">    </span>} </p>
+
+<p class=Code><span style="mso-spacerun: yes">  </span>} </p>
+
+<p class=Code><span style="mso-spacerun: yes"> </span></p>
+
+<p class=Code><span style="mso-spacerun: yes">  </span>class Target { </p>
+
+<p class=Code><span style="mso-spacerun: yes">    </span>Object object; </p>
+
+<p class=Code><span style="mso-spacerun: yes">    </span>String methodName; </p>
+
+<p class=Code><span style="mso-spacerun: yes"> </span></p>
+
+<p class=Code><span style="mso-spacerun: yes">    </span>Target( Object object,
+String methodName ) { </p>
+
+<p class=Code><span style="mso-spacerun: yes">      </span>this.object =
+object; </p>
+
+<p class=Code><span style="mso-spacerun: yes">      </span>this.methodName =
+methodName; </p>
+
+<p class=Code><span style="mso-spacerun: yes">    </span>} </p>
+
+<p class=Code><span style="mso-spacerun: yes">  </span>} </p>
+
+<p class=Code>}</p>
+
+</div>
+
+<p class=MsoNormal>Once we have an instance of <span class=literal><span
+style='font-family:Courier;color:red'>DynamicActionAdapter</span></span>, we
+can use its <span class=literal><span style='font-family:Courier;color:red'>hookup(
+)</span></span> <!--[if supportFields]><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span>PRIVATE &lt;indexterm
+number=&quot;4074&quot;&gt; <span style='mso-element:field-end'></span>MACROBUTTON
+ATI_Paired_StartTag<span style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE hookup()<span style="mso-spacerun:
+yes">  </span><![endif]--><!--[if supportFields]><span style='mso-element:field-end'></span><![endif]--><span
+style="mso-spacerun: yes"> </span>method to connect an <span class=literal><span
+style='font-family:Courier;color:red'>ActionEvent</span></span> source to some
+method of a target object. The target object doesn't have to be an <span
+class=literal><span style='font-family:Courier;color:red'>ActionListener</span></span>—or
+any other particular kind of object. The following application, <span
+class=literal><span style='font-family:Courier;color:red'>DynamicHookupTest</span></span>,
+uses an instance of our adapter to connect a button to its own <span
+class=literal><span style='font-family:Courier;color:red'>launchTheMissiles( )</span></span>
+method:</p>
+
+<div style='border:none;border-left:solid windowtext .75pt;padding:0in 0in 0in 2.0pt'>
+
+<p class=Code>//file: DynamicHookupTest.java</p>
+
+<p class=Code>import javax.swing.*;</p>
+
+<p class=Code>import java.awt.event.*;</p>
+
+<p class=Code><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=Code>public class DynamicHookupTest extends JFrame { </p>
+
+<p class=Code><span style="mso-spacerun: yes">  </span>DynamicActionAdapter
+actionAdapter = new DynamicActionAdapter( );</p>
+
+<p class=Code><span style="mso-spacerun: yes">  </span>JLabel label = new
+JLabel( &quot;Ready...&quot;, JLabel.CENTER );</p>
+
+<p class=Code><span style="mso-spacerun: yes">  </span>int count;</p>
+
+<p class=Code><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=Code><span style="mso-spacerun: yes">  </span>public
+DynamicHookupTest( ) {</p>
+
+<p class=Code><span style="mso-spacerun: yes">    </span>JButton launchButton =
+new JButton(&quot;Launch!&quot;);</p>
+
+<p class=Code><span style="mso-spacerun: yes">   </span><span
+style="mso-spacerun: yes"> </span>getContentPane( ).add( launchButton,
+&quot;South&quot; );</p>
+
+<p class=Code><span style="mso-spacerun: yes">    </span>getContentPane( ).add(
+label, &quot;Center&quot; );</p>
+
+<p class=Code><span style="mso-spacerun: yes">   
+</span>actionAdapter.hookup(launchButton, this, &quot;launchTheMissiles&quot;);</p>
+
+<p class=Code><span style="mso-spacerun: yes">  </span>}</p>
+
+<p class=Code><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=Code><span style="mso-spacerun: yes">  </span>public void
+launchTheMissiles( ) {<span style="mso-spacerun: yes">  </span></p>
+
+<p class=Code><span style="mso-spacerun: yes">   
+</span>label.setText(&quot;Launched: &quot;+ count++ );</p>
+
+<p class=Code><span style="mso-spacerun: yes">  </span>}</p>
+
+<p class=Code><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=Code><span style="mso-spacerun: yes">  </span>public static void
+main(String[] args) {</p>
+
+<p class=Code><span style="mso-spacerun: yes">    </span>JFrame f = new
+DynamicHookupTest( );</p>
+
+<p class=Code><span style="mso-spacerun: yes">   
+</span>f.addWindowListener(new WindowAdapter( ) {</p>
+
+<p class=Code><span style="mso-spacerun: yes">      </span>public void
+windowClosing(WindowEvent we) { System.exit(0); }</p>
+
+<p class=Code><span style="mso-spacerun: yes">    </span>});</p>
+
+<p class=Code><span style="mso-spacerun: yes">    </span>f.setSize(150, 150);</p>
+
+<p class=Code><span style="mso-spacerun: yes">    </span>f.setVisible( true );</p>
+
+<p class=Code><span style="mso-spacerun: yes">  </span>}</p>
+
+<p class=Code>}</p>
+
+</div>
+
+<p class=MsoNormal>Here we simply call the dynamic adapter's <span
+class=literal><span style='font-family:Courier;color:red'>hookup( )</span></span>
+method, passing it the <span class=literal><span style='font-family:Courier;
+color:red'>ActionEvent</span></span> source, the target object, and a string
+with the name of the method to invoke when the event arrives.</p>
+
+<p class=MsoNormal>As for the code, it's pretty straightforward. <span
+class=literal><span style='font-family:Courier;color:red'>DynamicActionAdapter</span></span>
+implements the <span class=literal><span style='font-family:Courier;color:red'>ActionListener</span></span>
+interface. When <span class=literal><span style='font-family:Courier;
+color:red'>hookup( )</span></span> is called, it registers itself with the
+event source, using reflection on the source object to invoke its <span
+class=literal><span style='font-family:Courier;color:red'>addAction-Listener( )</span></span>
+method. It stores information about the target object and method in a <span
+class=literal><span style='font-family:Courier;color:red'>Target</span></span>
+object, using an inner class. This object is stored in a <span class=literal><span
+style='font-family:Courier;color:red'>Hashtable</span></span><!--[if supportFields]><span
+style='mso-element:field-begin'></span> <span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span>PRIVATE &lt;indexterm
+number=&quot;4075&quot;&gt; <span style='mso-element:field-end'></span>MACROBUTTON
+ATI_Paired_StartTag<span style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE Hashtables:actions<span
+style="mso-spacerun: yes">  </span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><span style="mso-spacerun:
+yes"> </span><!--[if supportFields]><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span>PRIVATE &lt;indexterm
+number=&quot;4076&quot;&gt; <span style='mso-element:field-end'></span>MACROBUTTON
+ATI_Paired_StartTag<span style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE &quot;actions hashtable&quot;<span
+style="mso-spacerun: yes">  </span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><span style="mso-spacerun:
+yes"> </span>called <span class=literal><span style='font-family:Courier;
+color:red'>actions</span></span>.</p>
+
+<p class=MsoNormal>When an action event arrives, the dynamic adapter looks up
+the target for the event source in the <span class=literal><span
+style='font-family:Courier;color:red'>Hashtable</span></span>. It then uses
+reflection on the target object, to look up and invoke the requested method. Our
+adapter can invoke only a method that takes no arguments. If the method doesn't
+exist, the adapter throws a <span class=literal><span style='font-family:Courier;
+color:red'>RuntimeException</span></span>.</p>
+
+<p class=MsoNormal>The heart of the adapter is the <span class=literal><span
+style='font-family:Courier;color:red'>invokeReflectedMethod( )</span></span> <!--[if supportFields]><span
+style='mso-element:field-begin'></span><span style="mso-spacerun: yes"> </span><span
+style='mso-element:field-begin'></span><span style="mso-spacerun:
+yes"> </span>PRIVATE &lt;indexterm number=&quot;4077&quot;&gt; <span
+style='mso-element:field-end'></span>MACROBUTTON ATI_Paired_StartTag<span
+style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE &quot;invokeReflectedMethod()
+(private)&quot;<span style="mso-spacerun: yes">  </span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><span style="mso-spacerun:
+yes"> </span>method. This is a <span class=literal><span style='font-family:
+Courier;color:red'>private</span></span> method that uses reflection to look up
+and invoke an arbitrary method in an arbitrary class. First, it calls the
+target's <span class=literal><span style='font-family:Courier;color:red'>getClass(
+)</span></span> <!--[if supportFields]><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span>PRIVATE &lt;indexterm
+number=&quot;4078&quot;&gt; <span style='mso-element:field-end'></span>MACROBUTTON
+ATI_Paired_StartTag<span style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE getClass()<span style="mso-spacerun:
+yes">  </span><![endif]--><!--[if supportFields]><span style='mso-element:field-end'></span><![endif]--><span
+style="mso-spacerun: yes"> </span>method to get the target's <span
+class=literal><span style='font-family:Courier;color:red'>Class</span></span>
+object. It uses this object to call <span class=literal><span style='font-family:
+Courier;color:red'>getMethod( )</span></span> <!--[if supportFields]><span
+style='mso-element:field-begin'></span><span style="mso-spacerun: yes"> </span><span
+style='mso-element:field-begin'></span><span style="mso-spacerun:
+yes"> </span>PRIVATE &lt;indexterm number=&quot;4079&quot;&gt; <span
+style='mso-element:field-end'></span>MACROBUTTON ATI_Paired_StartTag<span
+style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE getMethod()<span
+style="mso-spacerun: yes">  </span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]-->, which returns a <span
+class=literal><span style='font-family:Courier;color:red'>Method</span></span>
+object. Once we have a <span class=literal><span style='font-family:Courier;
+color:red'>Method</span></span>, we can call <span class=literal><span
+style='font-family:Courier;color:red'>invoke( )</span></span> <!--[if supportFields]><span
+style='mso-element:field-begin'></span><span style="mso-spacerun: yes"> </span><span
+style='mso-element:field-begin'></span><span style="mso-spacerun:
+yes"> </span>PRIVATE &lt;indexterm number=&quot;4080&quot;&gt; <span
+style='mso-element:field-end'></span>MACROBUTTON ATI_Paired_StartTag<span
+style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE invoke()<span style="mso-spacerun:
+yes">  </span><![endif]--><!--[if supportFields]><span style='mso-element:field-end'></span><![endif]--><span
+style="mso-spacerun: yes"> </span>to invoke the method.</p>
+
+<p class=MsoNormal>The dynamic adapter is important because it has almost no
+built-in knowledge. It doesn't know what kind of object will be the event
+source. Likewise, it doesn't know what object will receive the event, or what
+method it should call to deliver the event. All this information is provided at
+runtime, in the call to <span class=literal><span style='font-family:Courier;
+color:red'>hookup( )</span></span>. We use reflection to look up and invoke the
+event source's <span class=literal><span style='font-family:Courier;color:red'>addActionListener(
+)</span></span> method, and to look up and invoke the target's event handler.
+All this is done on the fly. Therefore, you <!--[if supportFields]><span
+style='mso-element:field-begin'></span><span style="mso-spacerun: yes"> </span><span
+style='mso-element:field-begin'></span><span style="mso-spacerun:
+yes"> </span>PRIVATE &lt;indexterm class=&quot;endofrange&quot;
+startref=&quot;ch19-idx-1000004506-1&quot; number=&quot;4081&quot;&gt; <span
+style='mso-element:field-end'></span>MACROBUTTON ATI_Paired_StartTag<span
+style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]-->can use this adapter in almost
+any situation requiring an <span class=literal><span style='font-family:Courier;
+color:red'>ActionEvent</span></span>.</p>
+
+<h2><a name="ATID_ch19x2D25x2Dfm2x78ml"></a><!--[if supportFields]><span
+style='mso-bookmark:ATID_ch19x2D25x2Dfm2x78ml'></span><span style='mso-element:
+field-begin'></span><span style='mso-bookmark:ATID_ch19x2D25x2Dfm2x78ml'><span
+style='font-family:"Times New Roman";color:windowtext'><span
+style="mso-spacerun: yes"> </span></span></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:ATID_ch19x2D25x2Dfm2x78ml'><span style='font-family:"Times New Roman";
+color:windowtext'><span style="mso-spacerun: yes"> </span>PRIVATE &lt;sect2
+id=&quot;ch19-25-fm2xml&quot; number=&quot;19.4.1&quot;&gt; </span></span><span
+style='mso-element:field-end'></span><span style='mso-bookmark:ATID_ch19x2D25x2Dfm2x78ml'><span
+style='font-family:"Times New Roman";color:windowtext'>MACROBUTTON
+ATI_Paired_StartTag</span></span><span style='mso-bookmark:ATID_ch19x2D25x2Dfm2x78ml'><span
+style='font-family:"Times New Roman"'>&lt;sect2&gt;</span></span><span
+style='mso-bookmark:ATID_ch19x2D25x2Dfm2x78ml'></span><![endif]--><span
+style='mso-bookmark:ATID_ch19x2D25x2Dfm2x78ml'></span><!--[if supportFields]><span
+style='mso-bookmark:ATID_ch19x2D25x2Dfm2x78ml'></span><span style='mso-element:
+field-end'></span><![endif]--><span style='mso-bookmark:ATID_ch19x2D25x2Dfm2x78ml'>Safety
+Implications</span></h2>
+
+<p class=MsoNormal>If the target's <!--[if supportFields]><span
+style='mso-element:field-begin'></span><span style="mso-spacerun: yes"> </span><span
+style='mso-element:field-begin'></span><span style="mso-spacerun:
+yes"> </span>PRIVATE &lt;indexterm number=&quot;4082&quot;&gt; <span
+style='mso-element:field-end'></span>MACROBUTTON ATI_Paired_StartTag<span
+style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE &quot;security:reflection and
+beans&quot;<span style="mso-spacerun: yes">  </span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><span style="mso-spacerun:
+yes"> </span><!--[if supportFields]><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span>PRIVATE &lt;indexterm
+number=&quot;4083&quot;&gt; <span style='mso-element:field-end'></span>MACROBUTTON
+ATI_Paired_StartTag<span style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE &quot;reflection:security problems
+with use&quot;<span style="mso-spacerun: yes">  </span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><span style="mso-spacerun:
+yes"> </span><!--[if supportFields]><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span>PRIVATE &lt;indexterm
+number=&quot;4084&quot;&gt; <span style='mso-element:field-end'></span>MACROBUTTON
+ATI_Paired_StartTag<span style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE &quot;RuntimeException
+class&quot;<span style="mso-spacerun: yes">  </span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]-->event-handling method isn't
+found, the adapter throws a <span class=literal><span style='font-family:Courier;
+color:red'>RuntimeException</span></span>. Therein lies the problem with this
+technique. By using reflection to locate and invoke methods, we abandon Java's
+strong typing and head off in the direction of scripting languages. We add
+power at the expense of safety.</p>
+
+<h2><a name="ATID_ch19x2D26x2Dfm2x78ml"></a><!--[if supportFields]><span
+style='mso-bookmark:ATID_ch19x2D26x2Dfm2x78ml'></span><span style='mso-element:
+field-begin'></span><span style='mso-bookmark:ATID_ch19x2D26x2Dfm2x78ml'><span
+style='font-family:"Times New Roman";color:windowtext'><span
+style="mso-spacerun: yes"> </span></span></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:ATID_ch19x2D26x2Dfm2x78ml'><span style='font-family:"Times New Roman";
+color:windowtext'><span style="mso-spacerun: yes"> </span>PRIVATE &lt;sect2
+id=&quot;ch19-26-fm2xml&quot; number=&quot;19.4.2&quot;&gt; </span></span><span
+style='mso-element:field-end'></span><span style='mso-bookmark:ATID_ch19x2D26x2Dfm2x78ml'><span
+style='font-family:"Times New Roman";color:windowtext'>MACROBUTTON
+ATI_Paired_StartTag</span></span><span style='mso-bookmark:ATID_ch19x2D26x2Dfm2x78ml'><span
+style='font-family:"Times New Roman"'>&lt;sect2&gt;</span></span><span
+style='mso-bookmark:ATID_ch19x2D26x2Dfm2x78ml'></span><![endif]--><span
+style='mso-bookmark:ATID_ch19x2D26x2Dfm2x78ml'></span><!--[if supportFields]><span
+style='mso-bookmark:ATID_ch19x2D26x2Dfm2x78ml'></span><span style='mso-element:
+field-end'></span><![endif]--><span style='mso-bookmark:ATID_ch19x2D26x2Dfm2x78ml'>Runtime
+Event Hookups with Reflection</span></h2>
+
+<p class=MsoNormal><!--[if supportFields]><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span>PRIVATE &lt;indexterm
+number=&quot;4085&quot;&gt; <span style='mso-element:field-end'></span>MACROBUTTON
+ATI_Paired_StartTag<span style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE &quot;compile-time event
+hookups&quot;<span style="mso-spacerun: yes">  </span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span><span style="mso-spacerun: yes"> </span><span
+style='mso-element:field-begin'></span><span style="mso-spacerun:
+yes"> </span>PRIVATE &lt;indexterm number=&quot;4086&quot;&gt; <span
+style='mso-element:field-end'></span>MACROBUTTON ATI_Paired_StartTag<span
+style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE &quot;reflection:runtime event
+hookups&quot;<span style="mso-spacerun: yes">  </span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><span style="mso-spacerun:
+yes"> </span><!--[if supportFields]><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span><span style='mso-element:field-begin'></span><span
+style="mso-spacerun: yes"> </span>PRIVATE &lt;indexterm
+number=&quot;4087&quot;&gt; <span style='mso-element:field-end'></span>MACROBUTTON
+ATI_Paired_StartTag<span style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE &quot;events:runtime hookups with
+reflection&quot;<span style="mso-spacerun: yes">  </span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]-->Our dynamic event adapter is
+limited to handling <span class=literal><span style='font-family:Courier;
+color:red'>ActionEvent</span></span>s. What if we want to build something like
+the BeanBox that can hook up arbitrary event sources to arbitrary destinations?
+Can we build an adapter that can listen to any kind of event?</p>
+
+<p class=MsoNormal>The answer is &quot;yes.&quot; We can use the powerful new
+interface proxy reflection feature introduced in SDK 1.3. The <span
+class=literal><span style='font-family:Courier;color:red'>java.lang.reflect.Proxy</span></span>
+class is a factory that can generate adapters implementing any type of
+interface at runtime. By specifying one or more event listener interface (e.g.,
+<span class=literal><span style='font-family:Courier;color:red'>ActionListener</span></span>)
+we get an adapter that implements those listener interfaces generated for us on
+the fly. The adapter is a specially created class that delegates all of the
+method calls on its interfaces to a designated <span class=literal><span
+style='font-family:Courier;color:red'>InvocationHandler</span></span> object.
+See Chapter 7, &quot;Working with Objects and Classes&quot; for more
+information about the reflection interface proxy.</p>
+
+<p class=MsoNormal>We should repeat that this is a feature that was introduced
+in the SDK 1.3. In versions of Java prior to 1.3, there is no standard way to
+create an object that implements a specified interface at runtime. That is,
+there is no way to make a specified &quot;kind&quot; of event listener without
+creating the class yourself. The BeanBox and other utilities which generated
+adapters dynamically prior to the SDK 1.3 did so by creating Java byte <!--[if supportFields]><span
+style='mso-element:field-begin'></span><span style="mso-spacerun: yes"> </span><span
+style='mso-element:field-begin'></span><span style="mso-spacerun:
+yes"> </span>PRIVATE &lt;indexterm class=&quot;endofrange&quot;
+startref=&quot;ch19-idx-1000004504-1&quot; number=&quot;4088&quot;&gt; <span
+style='mso-element:field-end'></span>MACROBUTTON ATI_Paired_StartTag<span
+style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--> <!--[if supportFields]><span
+style='mso-element:field-begin'></span><span style="mso-spacerun: yes"> </span><span
+style='mso-element:field-begin'></span><span style="mso-spacerun:
+yes"> </span>PRIVATE &lt;indexterm class=&quot;endofrange&quot;
+startref=&quot;ch19-idx-1000004504-2&quot; number=&quot;4089&quot;&gt; <span
+style='mso-element:field-end'></span>MACROBUTTON ATI_Paired_StartTag<span
+style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]-->code on the fly <!--[if supportFields]><span
+style='mso-element:field-begin'></span><span style="mso-spacerun: yes"> </span><span
+style='mso-element:field-begin'></span><span style="mso-spacerun:
+yes"> </span>PRIVATE &lt;indexterm class=&quot;endofrange&quot;
+startref=&quot;ch19-idx-1000004512-1&quot; number=&quot;4090&quot;&gt; <span
+style='mso-element:field-end'></span>MACROBUTTON ATI_Paired_StartTag<span
+style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]-->and loading it through a <!--[if supportFields]><span
+style='mso-element:field-begin'></span><span style="mso-spacerun: yes"> </span><span
+style='mso-element:field-begin'></span><span style="mso-spacerun:
+yes"> </span>PRIVATE &lt;indexterm class=&quot;startofrange&quot;
+id=&quot;ch19-idx-1000004495-1&quot; number=&quot;4091&quot;&gt; <span
+style='mso-element:field-end'></span>MACROBUTTON ATI_Paired_StartTag<span
+style='color:red'>&lt;indexterm&gt;</span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><!--[if supportFields]><span
+style='mso-element:field-begin'></span> XE reflection<span style="mso-spacerun:
+yes">  </span><![endif]--><!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->class
+loader.</p>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,10 @@
+import javax.xml.transform.*;
+import javax.xml.transform.stream.*;
+
+factory = TransformerFactory.newInstance();
+transformer = factory.newTransformer( new StreamSource("zooinventory.xsl") );
+xmlsource = new StreamSource("zooinventory.xml");
+output = new StreamResult( System.out );
+transformer.transform( xmlsource, output );
+
+
