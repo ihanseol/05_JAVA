@@ -42,19 +42,21 @@
 
 @echo off
 
-SET _GIT_="C:\Program Files\Git\usr\bin\"
-SET _TCOMMANDER_="c:\Program Files\totalcmd\ini\config\"
+SET _GIT_=C:\Program Files\Git\usr\bin\
+SET _TCOMMANDER_=c:\Program Files\totalcmd\ini\config\
 
-SET _VI_="c:\Program Files\Vim\vim90\gvim.exe"
-SET _CODE_="c:\Users\minhwasoo\AppData\Local\Programs\Microsoft VS Code\Code.exe"
-SET _SUBLIME_="c:\Program Files\Sublime Text\sublime_text.exe"
+SET _VI_=c:\Program Files\Vim\vim90\gvim.exe
+SET _CODE_=c:\Users\minhwasoo\AppData\Local\Programs\Microsoft VS Code\Code.exe
+SET _SUBLIME_=c:\Program Files\Sublime Text\sublime_text.exe
 
-SET _ME_="c:\Users\minhwasoo\"
+SET _ME_=c:\Users\minhwasoo\
 
-:: SET _AliasReload_=doskey /macrofile=user_aliases.cmd
+:: SET _EDITOR_=gvim
+:: SET _EDITOR_=code
+SET _EDITOR_=sublime_text
 
 
-SET PATH=%PATH%; %_GIT_%; %_TCOMMANDER_%; c:\Program Files\Vim\vim90; c:\Program Files\Sublime Text 3\; c:\Users\minhwasoo;
+SET PATH=%PATH%;%_GIT_%;%_TCOMMANDER_%;%_ME_%;c:\Program Files\Vim\vim90;c:\Program Files\Sublime Text 3\
 
 
 

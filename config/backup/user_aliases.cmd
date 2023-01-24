@@ -17,12 +17,14 @@ gpull=git pull origin master
 l=ls --show-control-chars -F --color $*
 ls=ls --show-control-chars -F --color $*
 ll=ls -l -F --show-control-chars --color $*
+lp=cls $t dir
+
 
 ..=..\$*
 ...=..\..\$*
-~=c: $t cd %USERPROFILE%
-
-
+~=cd /d %USERPROFILE%
+~~=cd /d %ProgramData%
+~~~=cd /d %APPDATA%
 
 pwd=cd
 clear=cls
@@ -32,36 +34,27 @@ clear=cls
 ;= unalias=alias /d $1
 
 vi=gvim $*
-cmderr=cd /d %_TCOMMANDER_%
-lp=cls $t dir
-find=findstr /sin $*
-
-
-eh=%_VI_% "C:\windows\system32\drivers\etc\hosts"
-qal=%_VI_% "%_TCOMMANDER_%\user_aliases.cmd" 
-sett=%_VI_% "%_TCOMMANDER_%\user_profile.cmd"
-
-;= eh=%_CODE_% "C:\windows\system32\drivers\etc\hosts"
-;= qal=%_CODE_% "%_TCOMMANDER_%\user_aliases.cmd" 
-;= sett=%_CODE_% "%_TCOMMANDER_%\user_profile.cmd"
-
-
-
-;= eh=%_SUBLIME_% "C:\windows\system32\drivers\etc\hosts"
-;= qal=%_SUBLIME_% "%_TCOMMANDER_%\user_aliases.cmd" 
-;= sett=%_SUBLIME_% "%_TCOMMANDER_%\user_profile.cmd"
-
-
-
-;= min=c: $t cd %_ME_%
-
-ana=cd C:\ProgramData\Anaconda3\envs
 sub=sublime_text $*
+find=findstr /sin $*
+reload=AliasReload.cmd
 
 history=doskey /history
+
+
+cmder_config=cd /d %_TCOMMANDER_%
+ana=cd /d C:\ProgramData\Anaconda3\envs
+
+
+;= qho : quick hosts file
+;= qal : quick alias command
+;= qpr : quick profile command
+
+qho=%_EDITOR_% "C:\windows\system32\drivers\etc\hosts"
+qal=cd %_TCOMMANDER_% $t %_EDITOR_% "user_aliases.cmd"
+qpr=cd %_TCOMMANDER_% $t %_EDITOR_% "user_profile.cmd"
+
+
 ;= h [SHOW | SAVE | TSAVE ]
-
-
 h=IF ".$*." == ".." (echo "usage: h [ SHOW | SAVE | TSAVE ]" && doskey/history) ELSE (IF /I "$1" == "SAVE" (doskey/history $g$g %USERPROFILE%\cmd\history.log & ECHO Command history saved) ELSE (IF /I "$1" == "TSAVE" (echo **** %date% %time% **** >> %USERPROFILE%\cmd\history.log & doskey/history $g$g %USERPROFILE%\cmd\history.log & ECHO Command history saved) ELSE (IF /I "$1" == "SHOW" (type %USERPROFILE%\cmd\history.log) ELSE (doskey/history))))
 loghistory=doskey /history >> %USERPROFILE%\cmd\history.log
 
