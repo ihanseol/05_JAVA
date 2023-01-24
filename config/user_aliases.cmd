@@ -28,7 +28,7 @@ lla=ls -al --show-control-chars --color $*
 
 ..=..\$*
 ...=..\..\$*
-~=cd /d %USERPROFILE%
+~=cd /d %USERPROFILE%/Desktop
 ~~=cd /d %ProgramData%
 ~~~=cd /d %APPDATA%
 

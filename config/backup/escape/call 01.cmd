@@ -3,8 +3,8 @@
 
 dir /b *.bat *.cmd
 
-echo.
-echo.
+echo this is a test.
+echo this is a echo.
 
 for /f "usebackq" %%x in ( `dir /b *.bat *.cmd 2^>nul` ) do (
 	if %ERRORLEVEL% NEQ 0 (

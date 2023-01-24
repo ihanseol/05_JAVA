@@ -53,7 +53,7 @@ set "CODE=c:\Users\minhwasoo\AppData\Local\Programs\Microsoft VS Code"
 set "SUBLIMETEXT=c:\Program Files\Sublime Text"
 set "FZFP=c:\Users\minhwasoo\.fzf\bin"
 
-set "ME=c:\Users\minhwasoo"
+set "ME=c:\Users\minhwasoo\Desktop"
 
 :: FDEV - Folder Dev
 set "FDEV=d:\12_dev"
