@@ -28,9 +28,18 @@ lla=ls -al --show-control-chars --color $*
 
 ..=..\$*
 ...=..\..\$*
-~=cd /d %USERPROFILE%/Desktop
+~=cd /d %USERPROFILE%
 ~~=cd /d %ProgramData%
 ~~~=cd /d %APPDATA%
+
+cdcmder=cd /d %TCOMMANDER%
+cddev=cd /d %FDEV%
+cddesk=cd /d %USERPROFILE%/Desktop
+cdappdata=cd /d %APPDATA%
+cdlocal=cd /d %APPDATA%\..\Local
+cdana=cd /d C:\ProgramData\Anaconda3\envs
+
+
 
 pwd=cd
 clear=cls
@@ -46,11 +55,6 @@ find=findstr /sin $*
 history=doskey /history
 listall=doskey /macros
 unloadall="%TCOMMANDER%"\doskey_unload.cmd
-
-
-cdcmder=cd /d %TCOMMANDER%
-cddev=cd /d %FDEV%
-cdana=cd /d C:\ProgramData\Anaconda3\envs
 
 
 ;= qho : quick hosts file
