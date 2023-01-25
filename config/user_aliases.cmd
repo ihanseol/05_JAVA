@@ -48,10 +48,9 @@ listall=doskey /macros
 unloadall="%TCOMMANDER%"\doskey_unload.cmd
 
 
-cmder_config=cd /d %TCOMMANDER%
-cdev=cd /d %FDEV%
-
-ana=cd /d C:\ProgramData\Anaconda3\envs
+cdcmder=cd /d %TCOMMANDER%
+cddev=cd /d %FDEV%
+cdana=cd /d C:\ProgramData\Anaconda3\envs
 
 
 ;= qho : quick hosts file
