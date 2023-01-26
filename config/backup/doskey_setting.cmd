@@ -1,5 +1,9 @@
  
 @echo off
+:: setlocal enableextensions disabledelayedexpansion
+"c:\Program Files\totalcmd\ini\config\user_profile.cmd" 
 
- call "c:\Program Files\totalcmd\ini\config\user_profile.cmd"
- @doskey  /macrofile="c:\Program Files\totalcmd\ini\config\user_aliases.cmd"
+
+
+ 
+ 

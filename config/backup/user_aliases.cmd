@@ -14,10 +14,16 @@ gpush=git push origin master
 gpull=git pull origin master
 
  
+;= l=ls --show-control-chars -F --color $*
+;= ls=ls --show-control-chars -F --color $*
+;= ll=ls -l -F --show-control-chars --color $*
+;= lp=cls $t dir
+
+
 l=ls --show-control-chars -F --color $*
-ls=ls --show-control-chars -F --color $*
-ll=ls -l -F --show-control-chars --color $*
-lp=cls $t dir
+ll=ls -alF --show-control-chars --color $*
+la=ls -A --color $*
+lla=ls -al --show-control-chars --color $*
 
 
 ..=..\$*
@@ -26,32 +32,45 @@ lp=cls $t dir
 ~~=cd /d %ProgramData%
 ~~~=cd /d %APPDATA%
 
+cdcmder=cd /d %TCOMMANDER%
+cddev=cd /d %FDEV%
+cddesk=cd /d %USERPROFILE%/Desktop
+cdappdata=cd /d %APPDATA%
+cdlocal=cd /d %APPDATA%\..\Local
+cdana=cd /d C:\ProgramData\Anaconda3\envs
+
+
+
 pwd=cd
 clear=cls
 
-;= mydir=cd /d %_ME_%
-;= history=cat "%_TCOMMANDER_%\config\.history"
-;= unalias=alias /d $1
+
+history=cat "%USERPROFILE%"\cmd\history.log
+unalias=alias /d $1
 
 vi=gvim $*
-sub=sublime_text $*
+sub=subl $*
 find=findstr /sin $*
-reload=AliasReload.cmd
 
 history=doskey /history
-
-
-cmder_config=cd /d %_TCOMMANDER_%
-ana=cd /d C:\ProgramData\Anaconda3\envs
+listall=doskey /macros
+unloadall="%TCOMMANDER%"\doskey_unload.cmd
 
 
 ;= qho : quick hosts file
 ;= qal : quick alias command
 ;= qpr : quick profile command
 
-qho=%_EDITOR_% "C:\windows\system32\drivers\etc\hosts"
-qal=cd %_TCOMMANDER_% $t %_EDITOR_% "user_aliases.cmd"
-qpr=cd %_TCOMMANDER_% $t %_EDITOR_% "user_profile.cmd"
+
+setvi=SET EDITOR=gvim $t echo Setting Editor to GVIM
+setcode=SET EDITOR=code $t echo Setting Editor to VsCode
+setsubl=SET EDITOR=subl $t echo Setting Editor to SubLime Text
+
+qho=start /B %EDITOR% "C:\windows\system32\drivers\etc\hosts"
+;= qal=cd /d %TCOMMANDER% $t if %EDITOR% == code (echo code ) else (echo other)
+
+qal=cd /d %TCOMMANDER% $t if %EDITOR% == code (%EDITOR% "user_aliases.cmd") else (start /B %EDITOR% "user_aliases.cmd")
+qpr=cd /d %TCOMMANDER% $t start /B %EDITOR% "user_profile.cmd"
 
 
 ;= h [SHOW | SAVE | TSAVE ]
