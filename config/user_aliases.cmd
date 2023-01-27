@@ -32,13 +32,19 @@ lla=ls -al --show-control-chars --color $*
 ~~=cd /d %ProgramData%
 ~~~=cd /d %APPDATA%
 
+
+cdwin=cd /d %SystemRoot%
+cd32=cd /d %windir%/system32
+cd64=cd /d %windir%/SysWOW64
+cddata=cd /d %ProgramData%
+cdprog=cd /d %ProgramData%
 cdcmder=cd /d %TCOMMANDER%
 cddev=cd /d %FDEV%
 cddesk=cd /d %USERPROFILE%/Desktop
+cdhome=cd /d %USERPROFILE%
 cdappdata=cd /d %APPDATA%
 cdlocal=cd /d %APPDATA%\..\Local
 cdana=cd /d C:\ProgramData\Anaconda3\envs
-
 
 
 pwd=cd
@@ -46,7 +52,11 @@ clear=cls
 
 
 history=cat "%USERPROFILE%"\cmd\history.log
-unalias=alias /d $1
+::unalias=alias /d $1
+
+unalias=doskey_unload.cmd
+lsalias=doskey /macros
+
 
 vi=gvim $*
 sub=subl $*

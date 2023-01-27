@@ -5,5 +5,6 @@ for /F "delims==" %%M in ('doskey /macros') do (
 )
 
 doskey reloadall="%TCOMMANDER%"\doskey_setting.cmd
+doskey resource="%TCOMMANDER%"\doskey_setting.cmd
 
 exit /b
