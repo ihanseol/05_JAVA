@@ -44,6 +44,7 @@ cddesk=cd /d %USERPROFILE%/Desktop
 cdhome=cd /d %USERPROFILE%
 cdappdata=cd /d %APPDATA%
 cdlocal=cd /d %APPDATA%\..\Local
+cdgame=cd /d d:\11_exaData\06_util\099_Game
 cdana=cd /d C:\ProgramData\Anaconda3\envs
 
 
