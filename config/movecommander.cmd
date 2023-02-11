@@ -57,7 +57,7 @@ echo Source Folder : %src_folder%
 echo Destination Folder : %dst_folder%
 echo --------------------------------------------------------------------
 
-move /y "%src_folder%" "%dst_folder%"
+move  "%src_folder%" "%dst_folder%"
 
 
 
