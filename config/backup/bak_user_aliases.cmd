@@ -39,8 +39,7 @@ cd64=cd /d %windir%/SysWOW64
 cddata=cd /d %ProgramData%
 cdprog=cd /d %ProgramData%
 cdcmder=cd /d %TCOMMANDER%
-:: cdtc=cd /d %TCOMMANDER%/../..
-cdtc=cd /d %tc%
+cdtc=cd /d %TC%
 cddev=cd /d %FDEV%
 cddesk=cd /d %USERPROFILE%/Desktop
 cddown=cd /d %USERPROFILE%/Downloads
@@ -48,7 +47,7 @@ cdhome=cd /d %USERPROFILE%
 cdappdata=cd /d %APPDATA%
 cdlocal=cd /d %APPDATA%\..\Local
 cdgame=cd /d d:\11_exaData\06_util\099_Game
-cdana=cd /d C:\ProgramData\Anaconda3\envs
+;= cdana=cd /d C:\ProgramData\Anaconda3\envs
 
 
 pwd=cd
@@ -56,7 +55,7 @@ clear=cls
 
 
 history=cat "%USERPROFILE%"\cmd\history.log
-::unalias=alias /d $1
+;= unalias=alias /d $1
 
 unalias=doskey_unload.cmd
 lsalias=doskey /macros
@@ -71,9 +70,9 @@ listall=doskey /macros
 unloadall="%TCOMMANDER%"\doskey_unload.cmd
 
 
-;= qho : quick hosts file
-;= qal : quick alias command
-;= qpr : quick profile command
+;=   qho : quick hosts file
+;=   qal : quick alias command
+;=   qpr : quick profile command
 
 
 setvi=SET EDITOR=gvim $t echo Setting Editor to GVIM
@@ -81,7 +80,7 @@ setcode=SET EDITOR=code $t echo Setting Editor to VsCode
 setsubl=SET EDITOR=subl $t echo Setting Editor to SubLime Text
 
 qho=start /B %EDITOR% "C:\windows\system32\drivers\etc\hosts"
-;= qal=cd /d %TCOMMANDER% $t if %EDITOR% == code (echo code ) else (echo other)
+;=   qal=cd /d %TCOMMANDER% $t if %EDITOR% == code (echo code ) else (echo other)
 
 qal=cd /d %TCOMMANDER% $t if %EDITOR% == code (%EDITOR% "user_aliases.cmd") else (start /B %EDITOR% "user_aliases.cmd")
 qpr=cd /d %TCOMMANDER% $t start /B %EDITOR% "user_profile.cmd"

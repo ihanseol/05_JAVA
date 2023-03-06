@@ -1,5 +1,3 @@
-%[:%
-
 :: use this file to run your own startup commands
 :: use in front of the command to prevent printing the command
 
@@ -40,14 +38,12 @@
  
 :: set PATH=%PATH%;c:\util\Sysinternals;D:\devel\gradle-2.9\bin;
 
-%:]%
-
 
 @echo off
 
 set "GITT=C:\Program Files\Git\usr\bin"
 set "TCOMMANDER=c:\Program Files\totalcmd\ini\config"
-set "tc="c:\Program Files\totalcmd"
+set "TC="c:\Program Files\totalcmd"
 
 set "VII=c:\Program Files\Vim\vim90"
 set "CODE=c:\Users\minhwasoo\AppData\Local\Programs\Microsoft VS Code"

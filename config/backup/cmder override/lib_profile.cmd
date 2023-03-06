@@ -38,6 +38,8 @@ exit /b
 
     pushd "%~1"
     for /f "usebackq" %%x in ( `dir /b *.bat *.cmd 2^>nul` ) do (
+        :: hwasoo add next
+        :: if %ERRORLEVEL% NEQ 0 
         if %ERRORLEVEL% NEQ 0 (
             %print_verbose% "Calling '%~1\%%x'..."
             call "%~1\%%x"
