@@ -19,10 +19,11 @@ if "%CMD%" == "5" goto 05_JAVA
 
 
 :01_Linux
+@echo.
 @echo -------------------------------------------------
 @echo   01_Linux 
 @echo -------------------------------------------------
-@echo
+@echo.
 
 
 cd /d d:/12_dev/01_Linux
@@ -36,10 +37,11 @@ goto exit
 
 :02_Excel
 
+@echo.
 @echo -------------------------------------------------
 @echo   02_Excel
 @echo -------------------------------------------------
-@echo
+@echo.
 
 cd /d d:/12_dev/02_Excel
 
@@ -53,10 +55,11 @@ goto exit
 
 :03_visual_lisp
 
+@echo.
 @echo -------------------------------------------------
 @echo   03_visual_lisp
 @echo -------------------------------------------------
-@echo
+@echo.
 
 
 cd /d d:/12_dev/03_visual_lisp
@@ -69,10 +72,11 @@ goto exit
 
 
 :04_PyhtonDemoDojang
+@echo.
 @echo -------------------------------------------------
 @echo   04_PyhtonDemoDojang
 @echo -------------------------------------------------
-@echo
+@echo.
 
 
 cd /d d:/12_dev/04_PyhtonDemoDojang
@@ -86,11 +90,11 @@ goto exit
 
 :05_JAVA
 
-
+@echo.
 @echo -------------------------------------------------
 @echo   05_JAVA
 @echo -------------------------------------------------
-@echo
+@echo.
 
 
 cd /d d:/12_dev/05_JAVA
@@ -104,10 +108,11 @@ goto exit
 
 :allpush
 
+@echo.
 @echo -------------------------------------------------
 @echo   d:/12_dev/01_Linux
 @echo -------------------------------------------------
-@echo
+@echo.
 
 
 cd /d d:/12_dev/01_Linux
@@ -117,10 +122,11 @@ git commit -a -m "add"
 git push origin master
 
 
+@echo.
 @echo -------------------------------------------------
 @echo   d:/12_dev/03_visual_lisp 
 @echo -------------------------------------------------
-@echo
+@echo.
 
 
 cd /d d:/12_dev/03_visual_lisp
@@ -131,10 +137,11 @@ git push origin master
 
 
 
+@echo.
 @echo -------------------------------------------------
 @echo   d:/12_dev/04_PyhtonDemoDojang 
 @echo -------------------------------------------------
-@echo
+@echo.
 
 cd /d d:/12_dev/04_PyhtonDemoDojang
 git status
@@ -143,10 +150,11 @@ git commit -a -m "add"
 git push origin master
 
 
+@echo.
 @echo -------------------------------------------------
 @echo   d:/12_dev/05_JAVA
 @echo -------------------------------------------------
-@echo
+@echo.
 
 
 cd /d d:/12_dev/05_JAVA
