@@ -34,7 +34,12 @@ cddown=cd /d %USERPROFILE%/Downloads
 cdhome=cd /d %USERPROFILE%
 cdappdata=cd /d %APPDATA%
 cdlocal=cd /d %APPDATA%\..\Local
+cdhost=cd /d c:\Windows\System32\Drivers\etc
 cdgame=cd /d d:\11_exaData\06_util\099_Game
+cdsend=cd /d d:\05_Send
+cdsend2=cd /d d:\06_Send2
+
+
 
 
 pwd=cd
