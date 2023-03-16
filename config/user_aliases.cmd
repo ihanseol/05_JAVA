@@ -4,9 +4,8 @@ gl=git log --oneline --all --graph --decorate  $*
 gs=git status $*
 ga=git add $*
 gc=git commit $*
-gpush=git push origin master
-gpull=git pull origin master
-
+gpush=git push 
+gpull=git pull 
 
 l=ls --show-control-chars -F --color $*
 ll=ls -alF --show-control-chars --color $*
