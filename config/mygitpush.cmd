@@ -9,6 +9,7 @@ IF "%CMD%" == "" (
 
 if "%CMD%" == "1" goto 01_Linux
 if "%CMD%" == "2" goto 02_Excel
+if "%CMD%" == "22" goto 02_Excel2
 if "%CMD%" == "3" goto 03_visual_lisp
 if "%CMD%" == "4" goto 04_PyhtonDemoDojang
 if "%CMD%" == "5" goto 05_JAVA
@@ -30,8 +31,8 @@ cd /d d:/12_dev/01_Linux
 
 git status
 git add .
-git commit -a -m "add"
-git push origin master
+git commit -m "add"
+git push 
 goto exit
 
 
@@ -47,10 +48,25 @@ cd /d d:/12_dev/02_Excel
 
 git status
 git add .
-git commit -a -m "add"
-git push origin master
+git commit -m "add"
+git push 
 goto exit
 
+:02_Excel2
+
+@echo.
+@echo -------------------------------------------------
+@echo   02_Excel2
+@echo -------------------------------------------------
+@echo.
+
+cd /d d:/12_dev/02_Excel2
+
+git status
+git add .
+git commit -m "add"
+git push
+goto exit
 
 
 :03_visual_lisp
@@ -66,8 +82,8 @@ cd /d d:/12_dev/03_visual_lisp
 
 git status
 git add .
-git commit -a -m "add"
-git push origin master
+git commit -m "add"
+git push 
 goto exit
 
 
@@ -82,8 +98,8 @@ goto exit
 cd /d d:/12_dev/04_PyhtonDemoDojang
 git status
 git add .
-git commit -a -m "add"
-git push origin master
+git commit -m "add"
+git push 
 goto exit
 
 
@@ -100,10 +116,12 @@ goto exit
 cd /d d:/12_dev/05_JAVA
 git status
 git add .
-git commit -a -m "add"
-git push origin master
+git commit -m "add"
+git push 
 
 goto exit
+
+
 
 
 :allpush
@@ -118,8 +136,39 @@ goto exit
 cd /d d:/12_dev/01_Linux
 git status
 git add .
-git commit -a -m "add"
-git push origin master
+git commit -m "add"
+git push 
+
+
+
+@echo.
+@echo -------------------------------------------------
+@echo   02_Excel
+@echo -------------------------------------------------
+@echo.
+
+cd /d d:/12_dev/02_Excel
+
+git status
+git add .
+git commit -m "add"
+git push 
+goto exit
+
+:02_Excel2
+
+@echo.
+@echo -------------------------------------------------
+@echo   02_Excel2
+@echo -------------------------------------------------
+@echo.
+
+cd /d d:/12_dev/02_Excel2
+
+git status
+git add .
+git commit -m "add"
+git push
 
 
 @echo.
@@ -132,8 +181,8 @@ git push origin master
 cd /d d:/12_dev/03_visual_lisp
 git status
 git add .
-git commit -a -m "add"
-git push origin master
+git commit  -m "add"
+git push 
 
 
 
@@ -146,8 +195,8 @@ git push origin master
 cd /d d:/12_dev/04_PyhtonDemoDojang
 git status
 git add .
-git commit -a -m "add"
-git push origin master
+git commit  -m "add"
+git push 
 
 
 @echo.
@@ -160,8 +209,8 @@ git push origin master
 cd /d d:/12_dev/05_JAVA
 git status
 git add .
-git commit -a -m "add"
-git push origin master
+git commit  -m "add"
+git push 
 
 
 :exit

@@ -9,6 +9,7 @@ IF "%CMD%" == "" (
 
 if "%CMD%" == "1" goto 01_Linux
 if "%CMD%" == "2" goto 02_Excel
+if "%CMD%" == "22" goto 02_Excel2
 if "%CMD%" == "3" goto 03_visual_lisp
 if "%CMD%" == "4" goto 04_PyhtonDemoDojang
 if "%CMD%" == "5" goto 05_JAVA
@@ -41,6 +42,18 @@ cd /d d:/12_dev/02_Excel
 git pull
 exit /b
 
+
+:02_Excel2
+
+@echo.
+@echo -------------------------------------------------
+@echo   02_Excel2
+@echo -------------------------------------------------
+@echo.
+
+cd /d d:/12_dev/02_Excel2
+git pull
+exit /b
 
 
 :03_visual_lisp
@@ -82,8 +95,6 @@ git pull
 exit /b
 
 
-
-
 :allpull
 
 @echo.
@@ -103,6 +114,15 @@ git pull
 @echo.
 
 cd /d d:/12_dev/02_Excel
+git pull
+
+@echo.
+@echo -------------------------------------------------
+@echo   02_Excel2
+@echo -------------------------------------------------
+@echo.
+
+cd /d d:/12_dev/02_Excel2
 git pull
 
 
@@ -132,7 +152,6 @@ git pull
 @echo   05_JAVA
 @echo -------------------------------------------------
 @echo.
-
 
 cd /d d:/12_dev/05_JAVA
 git pull
