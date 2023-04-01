@@ -13,6 +13,7 @@ if "%CMD%" == "22" goto 02_Excel2
 if "%CMD%" == "3" goto 03_visual_lisp
 if "%CMD%" == "4" goto 04_PyhtonDemoDojang
 if "%CMD%" == "5" goto 05_JAVA
+if "%CMD%" == "7" goto 07_AutoIT
 
 
 @echo on
@@ -121,6 +122,22 @@ git push
 
 goto exit
 
+:07_AutoIT
+
+@echo.
+@echo -------------------------------------------------
+@echo   07_AutoIt_Script
+@echo -------------------------------------------------
+@echo.
+
+
+cd /d d:/12_dev/07_AutoIt_Script
+git status
+git add .
+git commit -m "add"
+git push 
+
+goto exit
 
 
 
