@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<webServices
+    xmlns="http://java.sun.com/xml/ns/jax-rpc/ri/dd" version="1.0"
+    targetNamespaceBase="http://learningjava.com/wsdl"
+    typeNamespaceBase="http://learningjava.com/types"
+    urlPatternBase="/ws">
+
+    <endpoint
+        name="Echo"
+        displayName="EchoService"
+        description="Example Echo Service" 
+        interface="learningjava.EchoService"  
+        implementation="learningjava.EchoServiceImpl" 
+	 />
+ 
+    <endpointMapping endpointName="Echo" urlPattern="/echo"/>
+
+</webServices>

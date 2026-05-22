@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="appa"/>
+	<classpathentry kind="src" path="ch02"/>
+	<classpathentry kind="src" path="ch03"/>
+	<classpathentry kind="src" path="ch07"/>
+	<classpathentry kind="src" path="ch08"/>
+	<classpathentry kind="src" path="ch09"/>
+	<classpathentry kind="src" path="ch10"/>
+	<classpathentry kind="src" path="ch11"/>
+	<classpathentry kind="src" path="ch12"/>
+	<classpathentry kind="src" path="ch13"/>
+	<classpathentry excluding="tempclient/" kind="src" path="ch14"/>
+	<classpathentry excluding="webapp/|webservice/" kind="src" path="ch15"/>
+	<classpathentry kind="src" path="ch16"/>
+	<classpathentry kind="src" path="ch17"/>
+	<classpathentry kind="src" path="ch18"/>
+	<classpathentry kind="src" path="ch19"/>
+	<classpathentry kind="src" path="ch20"/>
+	<classpathentry kind="src" path="ch21"/>
+	<classpathentry excluding="magicbeans/" kind="src" path="ch22"/>
+	<classpathentry kind="lib" path="ch22/magicbeans.jar"/>
+	<classpathentry excluding="src/" kind="src" path="ch23"/>
+	<classpathentry kind="src" path="ch24"/>
+	<classpathentry kind="lib" path="ch24/lib/jdom.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

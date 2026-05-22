@@ -1,0 +1,18 @@
+import org.xml.sax.*;
+import org.xml.sax.helpers.*;
+import javax.xml.parsers.*;
+import java.beans.*;
+
+SAXParserFactory factory = SAXParserFactory.newInstance();
+SAXParser saxParser = factory.newSAXParser();
+XMLReader parser = saxParser.getXMLReader();
+SAXModelBuilder mb = new SAXModelBuilder();
+parser.setContentHandler( mb );
+parser.parse( new InputSource("zooinventory.xml") );
+Inventory inventory = (Inventory)mb.getModel();
+print(inventory);
+
+XMLEncoder xmle = new XMLEncoder( System.out );
+xmle.writeObject(inventory);
+xmle.close();
+

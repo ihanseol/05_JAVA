@@ -1,0 +1,29 @@
+import javax.xml.parsers.*;
+import org.xml.sax.InputSource;
+
+factory = SAXParserFactory.newInstance();
+//factory.setValidating(true);
+saxParser = factory.newSAXParser();
+parser = saxParser.getXMLReader();
+parser.setContentHandler( this );
+//parser.setErrorHandler(this);
+
+invoke( meth, args ) {
+	print( meth );
+}
+
+characters( ch, start, len ) {
+	print("Chars: start="+start+", len="+len );
+	for(i=0; i<len; i++) 
+		System.out.print( ch[start+i] );
+}
+
+startElement( namespace, localname, qname, atts ) {
+	print("--- startElement ---- ");
+	print ( "namespace: "+namespace );
+	print ( "localname: "+localname);
+	print ( "qname: "+qname);
+	print ( "atts: "+atts);
+}
+
+parser.parse( new InputSource(bsh.args[0]) );

@@ -1,0 +1,10 @@
+
+import temp.*;
+
+impl = new TemperatureService_Impl();
+print(impl);
+port = impl.getTemperaturePort();
+print( port );
+temp=port.getTemp("63112");
+print("temp = "+temp);
+
