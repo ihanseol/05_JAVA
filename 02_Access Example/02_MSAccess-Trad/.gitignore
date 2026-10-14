@@ -1,0 +1,29 @@
+*.log
+*.xlsx
+*.csv
+*.txt
+Trad-Access*
+Test/*
+tmp/*
+StringUtils/*
+Doc/Images/*
+SourcesV1/*
+Sources/modules/modFileAccess.bas
+Sources/tbldefs/aTC.sql
+Sources/tbldefs/aTC.xml
+Sources/tbldefs/aTO.sql
+Sources/tbldefs/aTO.xml
+Sources/tbldefs/aTT.sql
+Sources/tbldefs/aTT.xml
+Sources/modules/A_CTest.cls
+Sources/modules/A_Test.bas
+Sources/proj-properties.json
+Sources/queries/%22T_Objets%22 et %22T_ObjetChilds%22 sans correspondance.bas
+Sources/queries/%22T_Objets%22 et %22T_ObjetChilds%22 sans correspondance.sql
+Sources/forms/a_test.bas
+Sources/modules/A_TestTbl.bas
+Sources/tbldefs/aTParam.sql
+Sources/tbldefs/aTParam.xml
+Sources/modules/StringBuilder.cls
+Sources/modules/StringUtils.bas
+Sources/forms/aCopie de iF_NonInclus.bas
